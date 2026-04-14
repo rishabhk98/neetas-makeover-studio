@@ -24,7 +24,8 @@
 const PHONE_1 = '918318410873';   // +91 83184 10873
 const PHONE_2 = '919450155997';   // +91 94501 55997
 
-// CallMeBot API keys (optional — leave as-is if not using WhatsApp notifications)
+// CallMeBot API keys
+// Setup: Save +34 623 78 95 95 on WhatsApp → send "I allow callmebot to send me messages" → get API key
 const CALLMEBOT_KEY_1 = 'REPLACE_WITH_KEY_FOR_8318410873';
 const CALLMEBOT_KEY_2 = 'REPLACE_WITH_KEY_FOR_9450155997';
 
