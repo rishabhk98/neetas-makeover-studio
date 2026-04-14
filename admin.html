@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard — Neeta's Makeover Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --rose: #B76E79;
+            --rose-dark: #9B5A65;
+            --gold: #C9956C;
+            --cream: #FFF8F0;
+            --card: #FFF0F3;
+            --text: #3D2B2B;
+            --muted: #8B6B6B;
+            --white: #FFFFFF;
+            --green: #25D366;
+            --green-dark: #128C7E;
+            --red: #ef4444;
+            --shadow: 0 4px 20px rgba(183,110,121,0.15);
+            --radius: 16px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+        h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; }
+
+        /* ── LOGIN SCREEN ── */
+        #loginScreen {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1E1015 0%, #4A1D28 35%, #B76E79 80%, #C9956C 100%);
+            display: flex; align-items: center; justify-content: center; padding: 2rem;
+        }
+        .login-box {
+            background: rgba(255,255,255,0.97);
+            border-radius: 24px; padding: 3rem 2.5rem;
+            max-width: 400px; width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .login-icon { font-size: 3rem; color: var(--rose); margin-bottom: 1rem; }
+        .login-box h1 { font-size: 1.6rem; color: var(--text); margin-bottom: 0.3rem; }
+        .login-box p { color: var(--muted); font-size: 0.88rem; margin-bottom: 2rem; }
+        .login-input {
+            width: 100%; padding: 14px 18px; margin-bottom: 1rem;
+            border: 2px solid rgba(183,110,121,0.2); border-radius: 12px;
+            font-family: 'Lato', sans-serif; font-size: 1rem; color: var(--text);
+            outline: none; transition: border-color 0.3s;
+        }
+        .login-input:focus { border-color: var(--rose); }
+        .login-btn {
+            width: 100%; padding: 15px; border: none; border-radius: 50px;
+            background: linear-gradient(135deg, var(--rose), var(--gold));
+            color: var(--white); font-family: 'Lato', sans-serif;
+            font-size: 1rem; font-weight: 700; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(183,110,121,0.4); transition: all 0.3s;
+        }
+        .login-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(183,110,121,0.55); }
+        .login-error { color: var(--red); font-size: 0.85rem; margin-top: 0.75rem; display: none; }
+
+        /* ── DASHBOARD ── */
+        #dashboard { display: none; }
+
+        .topbar {
+            background: linear-gradient(135deg, #1E1015, #4A1D28);
+            color: var(--white); padding: 1rem 1.5rem;
+            display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .topbar-left h2 { font-size: 1.1rem; color: var(--white); }
+        .topbar-left p { font-size: 0.75rem; color: rgba(255,255,255,0.6); margin-top: 2px; }
+        .topbar-right { display: flex; gap: 10px; }
+        .tb-btn {
+            padding: 8px 16px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.25);
+            background: transparent; color: rgba(255,255,255,0.85);
+            font-family: 'Lato', sans-serif; font-size: 0.82rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.3s;
+        }
+        .tb-btn:hover { background: rgba(255,255,255,0.15); }
+        .tb-btn.refresh { background: rgba(183,110,121,0.4); border-color: var(--rose); }
+
+        .main { max-width: 800px; margin: 0 auto; padding: 1.5rem; }
+
+        /* ── STATS BAR ── */
+        .stats-bar {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 12px; margin-bottom: 1.5rem;
+        }
+        .stat-card {
+            background: var(--white); border-radius: 14px; padding: 1.2rem 1rem;
+            text-align: center; box-shadow: var(--shadow);
+            border-top: 3px solid var(--rose);
+        }
+        .stat-card.gold { border-top-color: var(--gold); }
+        .stat-card.green { border-top-color: var(--green); }
+        .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--rose); font-weight: 700; }
+        .stat-card.gold .stat-num { color: var(--gold); }
+        .stat-card.green .stat-num { color: #22c55e; }
+        .stat-lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+
+        /* ── TABS ── */
+        .tabs { display: flex; gap: 0; margin-bottom: 1.5rem; background: var(--white); border-radius: 14px; padding: 5px; box-shadow: var(--shadow); }
+        .tab-btn {
+            flex: 1; padding: 10px; border: none; border-radius: 10px; background: transparent;
+            font-family: 'Lato', sans-serif; font-size: 0.85rem; font-weight: 700;
+            color: var(--muted); cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .tab-btn.active { background: linear-gradient(135deg, var(--rose), var(--gold)); color: var(--white); }
+        .tab-btn .tab-count {
+            background: rgba(255,255,255,0.3); border-radius: 20px;
+            padding: 1px 7px; font-size: 0.72rem;
+        }
+        .tab-btn:not(.active) .tab-count { background: var(--card); color: var(--rose); }
+
+        /* ── SECTION HEADER ── */
+        .section-label {
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--muted); margin: 1.5rem 0 0.75rem;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(183,110,121,0.15); }
+
+        /* ── BOOKING CARD ── */
+        .booking-card {
+            background: var(--white); border-radius: var(--radius);
+            padding: 1.2rem 1.5rem; margin-bottom: 10px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--rose);
+            display: flex; align-items: center; gap: 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .booking-card:hover { transform: translateX(3px); box-shadow: 0 6px 25px rgba(183,110,121,0.2); }
+        .booking-card.cancelled { border-left-color: #ccc; opacity: 0.6; }
+
+        .bk-time {
+            min-width: 72px; text-align: center;
+            font-family: 'Playfair Display', serif; font-size: 1.3rem;
+            color: var(--rose); font-weight: 700; line-height: 1.1;
+        }
+        .bk-time small { display: block; font-family: 'Lato', sans-serif; font-size: 0.65rem; color: var(--muted); font-weight: 400; text-transform: uppercase; letter-spacing: 1px; }
+        .booking-card.cancelled .bk-time { color: var(--muted); }
+
+        .bk-divider { width: 1px; background: rgba(183,110,121,0.15); align-self: stretch; flex-shrink: 0; }
+
+        .bk-info { flex: 1; min-width: 0; }
+        .bk-name { font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 3px; }
+        .bk-phone { font-size: 0.85rem; color: var(--muted); }
+        .bk-status-cancelled { font-size: 0.72rem; color: var(--red); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+        .bk-actions { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; }
+        .bk-btn {
+            display: flex; align-items: center; gap: 6px;
+            padding: 7px 12px; border-radius: 50px; border: none;
+            font-family: 'Lato', sans-serif; font-size: 0.78rem; font-weight: 700;
+            cursor: pointer; white-space: nowrap; transition: all 0.25s;
+            text-decoration: none;
+        }
+        .bk-wa  { background: linear-gradient(135deg, var(--green), var(--green-dark)); color: var(--white); }
+        .bk-wa:hover { transform: scale(1.05); color: var(--white); }
+        .bk-call { background: var(--card); color: var(--rose); border: 1px solid rgba(183,110,121,0.2); }
+        .bk-call:hover { background: var(--rose); color: var(--white); }
+        .bk-cancel { background: #fff0f0; color: var(--red); border: 1px solid rgba(239,68,68,0.2); }
+        .bk-cancel:hover { background: var(--red); color: var(--white); }
+
+        /* ── EMPTY STATE ── */
+        .empty {
+            text-align: center; padding: 3rem 1rem;
+            color: var(--muted); font-size: 0.92rem;
+        }
+        .empty i { font-size: 2.5rem; opacity: 0.3; margin-bottom: 1rem; display: block; }
+
+        /* ── LOADING ── */
+        .loading {
+            text-align: center; padding: 3rem;
+            color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 1rem;
+        }
+        .spinner {
+            width: 36px; height: 36px; border: 4px solid rgba(183,110,121,0.2);
+            border-top-color: var(--rose); border-radius: 50%; animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── TOAST ── */
+        .toast {
+            position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            background: var(--text); color: var(--white); padding: 12px 24px;
+            border-radius: 50px; font-size: 0.88rem; font-weight: 700;
+            z-index: 1000; opacity: 0; transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .toast.show { opacity: 1; }
+        .toast.success { background: #22c55e; }
+        .toast.error   { background: var(--red); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            .topbar { padding: 0.9rem 1rem; }
+            .topbar-left h2 { font-size: 0.95rem; }
+            .main { padding: 1rem; }
+            .stats-bar { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .stat-card { padding: 0.9rem 0.5rem; }
+            .stat-num { font-size: 1.5rem; }
+            .booking-card { padding: 1rem; gap: 0.8rem; }
+            .bk-time { min-width: 60px; font-size: 1.1rem; }
+            .bk-actions { gap: 5px; }
+            .bk-btn { padding: 6px 10px; font-size: 0.72rem; }
+            .tb-btn { font-size: 0.78rem; padding: 8px 6px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── LOGIN SCREEN ── -->
+<div id="loginScreen">
+    <div class="login-box">
+        <div class="login-icon"><i class="fas fa-spa"></i></div>
+        <h1>Neeta's Makeover Studio</h1>
+        <p>Owner Dashboard &mdash; Bookings</p>
+        <input type="password" id="pwdInput" class="login-input" placeholder="Enter password"
+               onkeydown="if(event.key==='Enter') doLogin()">
+        <button class="login-btn" onclick="doLogin()">
+            <i class="fas fa-sign-in-alt"></i> View Bookings
+        </button>
+        <p class="login-error" id="loginError"><i class="fas fa-exclamation-circle"></i> Incorrect password</p>
+    </div>
+</div>
+
+<!-- ── DASHBOARD ── -->
+<div id="dashboard">
+    <div class="topbar">
+        <div class="topbar-left">
+            <h2><i class="fas fa-spa" style="color:var(--rose)"></i> &nbsp;Booking Dashboard</h2>
+            <p id="todayLabel"></p>
+        </div>
+        <div class="topbar-right">
+            <button class="tb-btn refresh" onclick="loadBookings()">
+                <i class="fas fa-sync-alt" id="refreshIcon"></i> Refresh
+            </button>
+            <button class="tb-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <div class="main">
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-num" id="statToday">—</div>
+                <div class="stat-lbl">Today</div>
+            </div>
+            <div class="stat-card gold">
+                <div class="stat-num" id="statUpcoming">—</div>
+                <div class="stat-lbl">Upcoming</div>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-num" id="statTotal">—</div>
+                <div class="stat-lbl">All Time</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" id="tabToday" onclick="showTab('today')">
+                <i class="fas fa-calendar-day"></i> Today <span class="tab-count" id="cntToday">0</span>
+            </button>
+            <button class="tab-btn" id="tabUpcoming" onclick="showTab('upcoming')">
+                <i class="fas fa-calendar-alt"></i> Upcoming <span class="tab-count" id="cntUpcoming">0</span>
+            </button>
+            <button class="tab-btn" id="tabPast" onclick="showTab('past')">
+                <i class="fas fa-history"></i> Past <span class="tab-count" id="cntPast">0</span>
+            </button>
+        </div>
+
+        <!-- Content -->
+        <div id="content">
+            <div class="loading"><div class="spinner"></div><span>Loading bookings&hellip;</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+    // ── PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE ──
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_Rz-_kiljkveSDfVZhPvpA9-BUf1W-vGFrwsMLANfamZQ90Eqny7PmMBmvEI-m0ve/exec';
+
+    const DAY_FULL   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const MON_SHORT  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const MON_FULL   = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    let pwd = '';
+    let allBookings = [];
+    let activeTab = 'today';
+
+    // ── HELPERS ──
+    function istToday() {
+        const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+        return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    }
+    function fmtTime(t) {
+        const [h,m] = t.split(':').map(Number);
+        return `${h%12||12}:${String(m).padStart(2,'0')} ${h<12?'AM':'PM'}`;
+    }
+    function fmtDate(dateStr) {
+        const d = new Date(dateStr + 'T00:00:00');
+        return `${DAY_FULL[d.getDay()]}, ${d.getDate()} ${MON_FULL[d.getMonth()]}`;
+    }
+    function showToast(msg, type='') {
+        const t = document.getElementById('toast');
+        t.textContent = msg; t.className = 'toast show ' + type;
+        setTimeout(() => t.className = 'toast', 2800);
+    }
+
+    // ── LOGIN ──
+    function doLogin() {
+        const input = document.getElementById('pwdInput').value;
+        if (!input) return;
+        pwd = input;
+        document.getElementById('loginError').style.display = 'none';
+        loadBookings(true);
+    }
+    function logout() {
+        pwd = ''; allBookings = [];
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('loginScreen').style.display = 'flex';
+        document.getElementById('pwdInput').value = '';
+    }
+
+    // ── LOAD BOOKINGS ──
+    async function loadBookings(isLogin = false) {
+        const icon = document.getElementById('refreshIcon');
+        icon.classList.add('fa-spin');
+        document.getElementById('content').innerHTML =
+            '<div class="loading"><div class="spinner"></div><span>Loading bookings&hellip;</span></div>';
+        try {
+            const res = await fetch(`${APPS_SCRIPT_URL}?action=all&password=${encodeURIComponent(pwd)}`);
+            const data = await res.json();
+            if (data.error === 'Unauthorized') {
+                if (isLogin) {
+                    document.getElementById('loginError').style.display = 'block';
+                    pwd = '';
+                } else {
+                    showToast('Session expired. Please login again.', 'error');
+                    logout();
+                }
+                icon.classList.remove('fa-spin');
+                return;
+            }
+            allBookings = data.bookings || [];
+            if (isLogin) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                setTodayLabel();
+            }
+            updateStats();
+            renderTab(activeTab);
+        } catch(e) {
+            document.getElementById('content').innerHTML =
+                '<div class="empty"><i class="fas fa-wifi"></i>Could not load bookings. Check your connection and try again.</div>';
+            showToast('Network error', 'error');
+        }
+        icon.classList.remove('fa-spin');
+    }
+
+    function setTodayLabel() {
+        const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+        document.getElementById('todayLabel').textContent =
+            `${DAY_FULL[d.getDay()]}, ${d.getDate()} ${MON_FULL[d.getMonth()]} ${d.getFullYear()}`;
+    }
+
+    // ── STATS ──
+    function updateStats() {
+        const today = istToday();
+        const confirmed = allBookings.filter(b => b.status !== 'CANCELLED');
+        const todayCount    = confirmed.filter(b => b.date === today).length;
+        const upcomingCount = confirmed.filter(b => b.date > today).length;
+
+        document.getElementById('statToday').textContent    = todayCount;
+        document.getElementById('statUpcoming').textContent = upcomingCount;
+        document.getElementById('statTotal').textContent    = confirmed.length;
+
+        // Tab counts (include cancelled in past)
+        const pastCount = allBookings.filter(b => b.date < today).length;
+        document.getElementById('cntToday').textContent    = todayCount;
+        document.getElementById('cntUpcoming').textContent = upcomingCount;
+        document.getElementById('cntPast').textContent     = pastCount;
+    }
+
+    // ── TABS ──
+    function showTab(tab) {
+        activeTab = tab;
+        ['today','upcoming','past'].forEach(t => {
+            document.getElementById('tab' + t.charAt(0).toUpperCase() + t.slice(1))
+                .classList.toggle('active', t === tab);
+        });
+        renderTab(tab);
+    }
+
+    function renderTab(tab) {
+        const today = istToday();
+        let bookings;
+        if (tab === 'today') {
+            bookings = allBookings.filter(b => b.date === today && b.status !== 'CANCELLED');
+        } else if (tab === 'upcoming') {
+            bookings = allBookings.filter(b => b.date > today && b.status !== 'CANCELLED');
+        } else {
+            bookings = allBookings.filter(b => b.date < today);
+        }
+
+        const content = document.getElementById('content');
+        if (!bookings.length) {
+            content.innerHTML = `<div class="empty"><i class="fas fa-calendar-times"></i>${
+                tab === 'today' ? 'No bookings for today yet.' :
+                tab === 'upcoming' ? 'No upcoming bookings.' : 'No past bookings.'
+            }</div>`;
+            return;
+        }
+
+        // Sort by date then time
+        bookings.sort((a,b) => (a.date+a.time).localeCompare(b.date+b.time));
+
+        let html = '';
+        let lastDate = '';
+        bookings.forEach(b => {
+            if (b.date !== lastDate) {
+                const label = b.date === today ? '📅 Today' : fmtDate(b.date);
+                html += `<div class="section-label">${label}</div>`;
+                lastDate = b.date;
+            }
+            const isCancelled = b.status === 'CANCELLED';
+            const [h,m] = b.time.split(':').map(Number);
+            const ampm = h < 12 ? 'AM' : 'PM';
+            const hour = h%12||12;
+            const waMsg = encodeURIComponent(`Hello ${b.name} ji! Your appointment at Neeta's Makeover Studio is confirmed for ${fmtDate(b.date)} at ${fmtTime(b.time)}. Looking forward to seeing you! 🌸`);
+            html += `
+            <div class="booking-card ${isCancelled ? 'cancelled' : ''}" id="card-${b.row}">
+                <div class="bk-time">
+                    ${hour}:${String(m).padStart(2,'0')}
+                    <small>${ampm}</small>
+                </div>
+                <div class="bk-divider"></div>
+                <div class="bk-info">
+                    <div class="bk-name"><i class="fas fa-user" style="font-size:0.8rem;color:var(--rose);margin-right:5px"></i>${b.name}</div>
+                    <div class="bk-phone"><i class="fas fa-phone" style="font-size:0.75rem;margin-right:5px"></i>${b.phone}</div>
+                    ${isCancelled ? '<div class="bk-status-cancelled">Cancelled</div>' : ''}
+                </div>
+                ${!isCancelled ? `
+                <div class="bk-actions">
+                    <a href="https://wa.me/91${b.phone}?text=${waMsg}" target="_blank" class="bk-btn bk-wa">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="tel:+91${b.phone}" class="bk-btn bk-call">
+                        <i class="fas fa-phone"></i> Call
+                    </a>
+                    <button class="bk-btn bk-cancel" onclick="cancelBooking(${b.row}, '${b.name}')">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>` : ''}
+            </div>`;
+        });
+        content.innerHTML = html;
+    }
+
+    // ── CANCEL BOOKING ──
+    async function cancelBooking(row, name) {
+        if (!confirm(`Cancel booking for ${name}?`)) return;
+        try {
+            const res = await fetch(`${APPS_SCRIPT_URL}?action=cancel&password=${encodeURIComponent(pwd)}&row=${row}`);
+            const data = await res.json();
+            if (data.ok) {
+                showToast(`Booking for ${name} cancelled`, 'success');
+                loadBookings();
+            } else {
+                showToast(data.error || 'Failed to cancel', 'error');
+            }
+        } catch(e) {
+            showToast('Network error', 'error');
+        }
+    }
+
+    // Auto-login if password stored in sessionStorage
+    const savedPwd = sessionStorage.getItem('adminPwd');
+    if (savedPwd) { pwd = savedPwd; loadBookings(true); }
+
+    // Save password to session on successful login (handled in loadBookings)
+    const origLoad = loadBookings;
+    // Store pwd in session after login
+    document.getElementById('pwdInput').addEventListener('input', () => {
+        sessionStorage.removeItem('adminPwd');
+    });
+
+    // Store on successful dashboard show
+    const observer = new MutationObserver(() => {
+        if (document.getElementById('dashboard').style.display !== 'none' && pwd) {
+            sessionStorage.setItem('adminPwd', pwd);
+        }
+    });
+    observer.observe(document.getElementById('dashboard'), { attributes: true, attributeFilter: ['style'] });
+</script>
+</body>
+</html>
