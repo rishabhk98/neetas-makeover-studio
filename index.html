@@ -1214,12 +1214,30 @@
         sc.scrollIntoView({ behavior:'smooth', block:'nearest' });
     }
 
+    // Returns true if the given dateStr (YYYY-MM-DD) is today in IST
+    function bkIsToday(dateStr) {
+        const istNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+        const todayStr = `${istNow.getFullYear()}-${String(istNow.getMonth()+1).padStart(2,'0')}-${String(istNow.getDate()).padStart(2,'0')}`;
+        return todayStr === dateStr;
+    }
+
+    // Removes slots that have already started (based on IST) when date is today
+    function bkRemovePastSlots(slots, dateStr) {
+        if (!bkIsToday(dateStr)) return slots;
+        const istNow = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+        const nowMins = istNow.getHours() * 60 + istNow.getMinutes();
+        return slots.filter(s => {
+            const [h, m] = s.split(':').map(Number);
+            return (h * 60 + m) > nowMins;
+        });
+    }
+
     async function bkLoadSlots(dateStr) {
         const grid = document.getElementById('slotsGrid');
         const loading = document.getElementById('slotsLoading');
         grid.style.display = 'none'; loading.style.display = 'flex';
         bkBooked = [];
-        const allSlots = bkGenSlots(new Date(dateStr + 'T00:00:00'));
+        const allSlots = bkRemovePastSlots(bkGenSlots(new Date(dateStr + 'T00:00:00')), dateStr);
         if (APPS_SCRIPT_URL) {
             try {
                 const res = await fetch(`${APPS_SCRIPT_URL}?action=slots&date=${dateStr}`);
