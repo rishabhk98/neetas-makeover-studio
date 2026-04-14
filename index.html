@@ -501,6 +501,141 @@
             .hero-stats { gap: 1.5rem; }
             .float-wa { bottom: 1.25rem; right: 1.25rem; }
         }
+
+        /* ============================================================
+           BOOKING SECTION
+        ============================================================ */
+        .booking { padding: 6rem 0; background: var(--cream); }
+
+        /* Step bar */
+        .step-bar {
+            display: flex; align-items: center; justify-content: center;
+            gap: 0; margin-bottom: 2.5rem;
+        }
+        .step-item { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .step-num {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: #E8E0E0; color: var(--text-light);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.9rem; transition: var(--transition);
+        }
+        .step-lbl { font-size: 0.7rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; transition: var(--transition); }
+        .step-item.active .step-num { background: var(--rose-gold); color: var(--white); }
+        .step-item.active .step-lbl { color: var(--rose-gold); }
+        .step-item.done .step-num { background: #25D366; color: var(--white); }
+        .step-item.done .step-lbl { color: #25D366; }
+        .step-connector { width: 60px; height: 2px; background: #E8E0E0; margin: 0 4px; margin-bottom: 22px; }
+
+        /* Booking card */
+        .booking-card {
+            background: var(--white); border-radius: var(--radius);
+            padding: 2rem; margin-bottom: 1.5rem;
+            border: 1px solid rgba(183,110,121,0.12);
+            box-shadow: var(--shadow);
+        }
+        .booking-card-title {
+            font-family: 'Playfair Display', serif; font-size: 1.2rem;
+            color: var(--text-dark); margin-bottom: 1.2rem;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .booking-card-title i { color: var(--rose-gold); }
+
+        /* Date picker */
+        .date-picker { display: flex; gap: 10px; flex-wrap: wrap; }
+        .date-btn {
+            display: flex; flex-direction: column; align-items: center;
+            padding: 12px 14px; min-width: 68px;
+            border: 2px solid rgba(183,110,121,0.18); border-radius: 14px;
+            cursor: pointer; background: var(--cream); transition: var(--transition);
+            font-family: inherit;
+        }
+        .date-btn:hover { border-color: var(--rose-gold); background: var(--card-bg); transform: translateY(-2px); }
+        .date-btn.selected { border-color: var(--rose-gold); background: linear-gradient(135deg, var(--rose-gold), var(--gold)); }
+        .date-btn.selected .d-name, .date-btn.selected .d-num, .date-btn.selected .d-month { color: var(--white); }
+        .date-btn .d-name { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); text-align: center; }
+        .date-btn .d-name small { display: block; font-size: 0.6rem; font-weight: 400; margin-top: 1px; }
+        .date-btn .d-num { font-family: 'Playfair Display', serif; font-size: 1.55rem; color: var(--text-dark); font-weight: 700; line-height: 1.1; }
+        .date-btn .d-month { font-size: 0.68rem; color: var(--text-light); }
+
+        /* Slots */
+        .slots-date-label { color: var(--rose-gold); font-weight: 700; font-size: 0.88rem; margin-bottom: 1rem; }
+        .slots-loading { display: flex; align-items: center; gap: 12px; color: var(--text-light); font-size: 0.9rem; padding: 0.75rem 0; }
+        .spinner {
+            width: 22px; height: 22px; border: 3px solid rgba(183,110,121,0.2);
+            border-top-color: var(--rose-gold); border-radius: 50%;
+            animation: spin 0.8s linear infinite; flex-shrink: 0;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr)); gap: 10px; }
+        .slot-btn {
+            padding: 10px 6px; border: 2px solid rgba(183,110,121,0.18); border-radius: 10px;
+            text-align: center; cursor: pointer; background: var(--cream);
+            font-size: 0.82rem; font-weight: 700; color: var(--text-dark);
+            font-family: inherit; transition: var(--transition);
+        }
+        .slot-btn:hover:not(.booked) { border-color: var(--rose-gold); background: var(--card-bg); transform: translateY(-2px); }
+        .slot-btn.selected { border-color: var(--rose-gold); background: linear-gradient(135deg, var(--rose-gold), var(--gold)); color: var(--white); }
+        .slot-btn.booked { background: #f5f5f5; color: #bbb; cursor: not-allowed; border-color: #e8e8e8; text-decoration: line-through; }
+
+        /* Booking form */
+        .booking-selection-summary {
+            display: flex; align-items: center; gap: 8px;
+            color: var(--rose-gold); font-weight: 700; font-size: 0.9rem;
+            background: var(--card-bg); padding: 10px 16px; border-radius: 10px;
+            margin-bottom: 1.2rem;
+        }
+        .booking-form { display: flex; flex-direction: column; gap: 12px; max-width: 520px; }
+        .booking-input {
+            width: 100%; padding: 14px 18px;
+            border: 2px solid rgba(183,110,121,0.18); border-radius: 12px;
+            font-family: 'Lato', sans-serif; font-size: 0.95rem; color: var(--text-dark);
+            background: var(--white); transition: var(--transition); outline: none;
+        }
+        .booking-input:focus { border-color: var(--rose-gold); box-shadow: 0 0 0 3px rgba(183,110,121,0.12); }
+        .booking-input::placeholder { color: var(--text-light); }
+        .booking-submit {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 15px 28px; border-radius: 50px; border: none; cursor: pointer;
+            background: linear-gradient(135deg, var(--rose-gold), var(--gold));
+            color: var(--white); font-family: 'Lato', sans-serif;
+            font-size: 1rem; font-weight: 700; transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(183,110,121,0.4);
+        }
+        .booking-submit:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(183,110,121,0.55); }
+        .booking-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+        /* Result cards */
+        .booking-success, .booking-error { text-align: center; padding: 2.5rem 2rem; border-radius: var(--radius); }
+        .booking-success { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 2px solid #86efac; }
+        .booking-error { background: linear-gradient(135deg, #fef2f2, #fee2e2); border: 2px solid #fca5a5; }
+        .result-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+        .result-icon i { color: #22c55e; }
+        .result-icon.error i { color: #ef4444; }
+        .booking-success h3, .booking-error h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--text-dark); }
+        .booking-success p, .booking-error p { color: var(--text-medium); }
+        .result-summary { display: flex; gap: 1.5rem; justify-content: center; margin-top: 1rem; flex-wrap: wrap; }
+        .result-summary span { display: flex; align-items: center; gap: 6px; color: var(--rose-gold); font-weight: 700; font-size: 0.88rem; }
+
+        /* Quick contact */
+        .quick-contact { text-align: center; margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(183,110,121,0.12); }
+        .qc-title { color: var(--text-light); font-size: 0.88rem; margin-bottom: 1rem; }
+        .qc-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .qc-btn { display: flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; transition: var(--transition); border: 2px solid transparent; }
+        .qc-wa { background: linear-gradient(135deg, #25D366, #128C7E); color: var(--white); box-shadow: 0 4px 12px rgba(37,211,102,0.3); }
+        .qc-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,0.45); color: var(--white); }
+        .qc-call { background: var(--card-bg); color: var(--rose-gold); border-color: rgba(183,110,121,0.3); }
+        .qc-call:hover { background: var(--rose-gold); color: var(--white); transform: translateY(-2px); }
+
+        @media (max-width: 640px) {
+            .date-picker { gap: 8px; }
+            .date-btn { padding: 10px 10px; min-width: 58px; }
+            .date-btn .d-num { font-size: 1.3rem; }
+            .slots-grid { grid-template-columns: repeat(3, 1fr); }
+            .step-connector { width: 30px; }
+            .qc-btns { flex-direction: column; align-items: center; }
+            .qc-btn { width: 100%; max-width: 320px; justify-content: center; }
+        }
     </style>
 </head>
 <body>
@@ -516,11 +651,12 @@
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#booking">Book</a></li>
             <li><a href="#hours">Hours</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="https://wa.me/918318410873?text=Hello!%20I%20would%20like%20to%20book%20an%20appointment%20at%20New%20Shagun%20Beauty%20Parlour." class="btn btn-primary nav-cta" target="_blank" rel="noopener">
-            <i class="fab fa-whatsapp"></i> Book Now
+        <a href="#booking" class="btn btn-primary nav-cta">
+            <i class="fas fa-calendar-alt"></i> Book Now
         </a>
         <div class="hamburger" id="hamburger" onclick="openMenu()">
             <span></span><span></span><span></span>
@@ -534,10 +670,11 @@
     <a href="#about" onclick="closeMenu()">About</a>
     <a href="#services" onclick="closeMenu()">Services</a>
     <a href="#gallery" onclick="closeMenu()">Gallery</a>
+    <a href="#booking" onclick="closeMenu()">Book</a>
     <a href="#hours" onclick="closeMenu()">Hours</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
-    <a href="https://wa.me/918318410873?text=Hello!%20I%20would%20like%20to%20book%20an%20appointment." class="btn btn-primary" target="_blank" rel="noopener" onclick="closeMenu()">
-        <i class="fab fa-whatsapp"></i> Book Appointment
+    <a href="#booking" class="btn btn-primary" onclick="closeMenu()">
+        <i class="fas fa-calendar-alt"></i> Book Appointment
     </a>
 </div>
 
@@ -552,8 +689,8 @@
         <p class="hero-tagline">&ldquo; Unveil Your Inner Glow &rdquo;</p>
         <p class="hero-sub">By <strong>Neeta Verma</strong> &nbsp;|&nbsp; Gomti Plaza, Patrakar Puram, Lucknow</p>
         <div class="hero-buttons">
-            <a href="https://wa.me/918318410873?text=Hello%20Neeta%20ji!%20I%20would%20like%20to%20book%20an%20appointment%20at%20New%20Shagun%20Beauty%20Parlour." class="btn btn-primary" target="_blank" rel="noopener">
-                <i class="fab fa-whatsapp"></i> Book on WhatsApp
+            <a href="#booking" class="btn btn-primary">
+                <i class="fas fa-calendar-alt"></i> Book Appointment
             </a>
             <a href="#services" class="btn btn-outline">
                 <i class="fas fa-spa"></i> View Services
@@ -724,6 +861,83 @@
             Follow us on Instagram:
             <a href="https://instagram.com/newshagunnbeautyparlour" target="_blank" rel="noopener">@newshagunnbeautyparlour</a>
         </p>
+    </div>
+</section>
+
+<!-- ===== BOOKING ===== -->
+<section class="booking" id="booking">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Book an Appointment</h2>
+            <p>Choose your date, pick a time, and we'll confirm your slot</p>
+        </div>
+
+        <!-- Step bar -->
+        <div class="step-bar fade-in">
+            <div class="step-item active" id="bstep1">
+                <span class="step-num">1</span>
+                <span class="step-lbl">Date</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item" id="bstep2">
+                <span class="step-num">2</span>
+                <span class="step-lbl">Time</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step-item" id="bstep3">
+                <span class="step-num">3</span>
+                <span class="step-lbl">Details</span>
+            </div>
+        </div>
+
+        <!-- Step 1: Date Picker -->
+        <div class="booking-card fade-in">
+            <h3 class="booking-card-title"><i class="fas fa-calendar-alt"></i> Step 1 — Choose a Date</h3>
+            <div class="date-picker" id="datePicker"></div>
+        </div>
+
+        <!-- Step 2: Time Slots -->
+        <div class="booking-card fade-in" id="slotsCard" style="display:none">
+            <h3 class="booking-card-title"><i class="fas fa-clock"></i> Step 2 — Choose a Time Slot</h3>
+            <p class="slots-date-label" id="slotsDateLabel"></p>
+            <div class="slots-loading" id="slotsLoading" style="display:none">
+                <div class="spinner"></div>
+                <span>Checking availability&hellip;</span>
+            </div>
+            <div class="slots-grid" id="slotsGrid"></div>
+        </div>
+
+        <!-- Step 3: Customer Details -->
+        <div class="booking-card fade-in" id="detailsCard" style="display:none">
+            <h3 class="booking-card-title"><i class="fas fa-user"></i> Step 3 — Your Details</h3>
+            <p class="booking-selection-summary" id="selectionSummary"></p>
+            <div class="booking-form">
+                <input type="text" id="bookingName" class="booking-input" placeholder="Your Full Name *" maxlength="60" autocomplete="name">
+                <input type="tel" id="bookingPhone" class="booking-input" placeholder="Your Mobile Number * (10 digits)" maxlength="10" pattern="[6-9][0-9]{9}" inputmode="numeric" autocomplete="tel">
+                <button class="booking-submit" id="bookingSubmit" onclick="submitBooking()">
+                    <i class="fas fa-check-circle"></i> Confirm Appointment
+                </button>
+            </div>
+        </div>
+
+        <!-- Result -->
+        <div id="bookingResult"></div>
+
+        <!-- Quick Contact -->
+        <div class="quick-contact fade-in">
+            <p class="qc-title"><i class="fas fa-headset"></i> Have a question? Contact us directly:</p>
+            <div class="qc-btns">
+                <a href="https://wa.me/918318410873?text=Hello%20Neeta%20ji!%20I%20have%20a%20question%20about%20booking." class="qc-btn qc-wa" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> +91 83184 10873
+                </a>
+                <a href="https://wa.me/919450155997?text=Hello!%20I%20have%20a%20question%20about%20booking." class="qc-btn qc-wa" target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> +91 94501 55997
+                </a>
+                <a href="tel:+918318410873" class="qc-btn qc-call">
+                    <i class="fas fa-phone"></i> Call Us
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -912,6 +1126,220 @@
         `;
         pc.appendChild(p);
     }
+
+    /* ===== BOOKING SYSTEM ===== */
+
+    // IMPORTANT: Paste your Google Apps Script Web App URL below after deploying Code.gs
+    // Leave empty ('') to show fallback WhatsApp/Call buttons instead
+    const APPS_SCRIPT_URL = '';
+
+    const SHOP_HOURS = {
+        0: [{ open: '11:00', close: '20:30' }],  // Sunday
+        1: [{ open: '11:00', close: '20:30' }],  // Monday
+        2: [{ open: '11:00', close: '23:30' }],  // Tuesday (last slot 11:30 PM, salon open till midnight)
+        3: [{ open: '11:00', close: '20:30' }],  // Wednesday (afternoon only)
+        4: [{ open: '11:00', close: '20:30' }],  // Thursday
+        5: [{ open: '11:00', close: '20:30' }],  // Friday
+        6: [{ open: '11:00', close: '20:30' }],  // Saturday
+    };
+
+    const DAY_SHORT  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const DAY_FULL   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const MON_SHORT  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const MON_FULL   = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+    let bkDate = null, bkSlot = null, bkBooked = [];
+
+    function bkFmtDate(d) {
+        return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    }
+    function bkFmtTime(t) {
+        const [h, m] = t.split(':').map(Number);
+        return `${h%12||12}:${String(m).padStart(2,'0')} ${h<12?'AM':'PM'}`;
+    }
+    function bkGenSlots(date) {
+        const sessions = SHOP_HOURS[date.getDay()] || [];
+        const slots = [];
+        sessions.forEach(s => {
+            const [oh,om] = s.open.split(':').map(Number);
+            const [ch,cm] = s.close.split(':').map(Number);
+            let cur = oh*60+om, end = ch*60+cm;
+            while (cur < end) {
+                slots.push(`${String(Math.floor(cur/60)).padStart(2,'0')}:${String(cur%60).padStart(2,'0')}`);
+                cur += 30;
+            }
+        });
+        return slots;
+    }
+    function bkSetStep(n) {
+        [1,2,3].forEach(i => {
+            const el = document.getElementById('bstep'+i);
+            el.classList.remove('active','done');
+            if (i < n) el.classList.add('done');
+            else if (i === n) el.classList.add('active');
+        });
+    }
+
+    // Build 7-day date picker
+    function bkBuildDates() {
+        const dp = document.getElementById('datePicker');
+        const now = new Date();
+        for (let i = 0; i < 7; i++) {
+            const d = new Date(now); d.setDate(now.getDate() + i);
+            const btn = document.createElement('button');
+            btn.className = 'date-btn';
+            btn.dataset.date = bkFmtDate(d);
+            btn.innerHTML = `
+                <span class="d-name">${DAY_SHORT[d.getDay()]}${i===0?'<br><small>Today</small>':''}</span>
+                <span class="d-num">${d.getDate()}</span>
+                <span class="d-month">${MON_SHORT[d.getMonth()]}</span>
+            `;
+            btn.addEventListener('click', () => bkSelectDate(d, btn));
+            dp.appendChild(btn);
+        }
+    }
+
+    function bkSelectDate(date, btn) {
+        document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        bkDate = date; bkSlot = null;
+        bkSetStep(2);
+        const sc = document.getElementById('slotsCard');
+        sc.style.display = 'block';
+        document.getElementById('detailsCard').style.display = 'none';
+        document.getElementById('bookingResult').innerHTML = '';
+        document.getElementById('slotsDateLabel').textContent =
+            `${DAY_FULL[date.getDay()]}, ${date.getDate()} ${MON_FULL[date.getMonth()]} ${date.getFullYear()}`;
+        bkLoadSlots(bkFmtDate(date));
+        sc.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+
+    async function bkLoadSlots(dateStr) {
+        const grid = document.getElementById('slotsGrid');
+        const loading = document.getElementById('slotsLoading');
+        grid.style.display = 'none'; loading.style.display = 'flex';
+        bkBooked = [];
+        const allSlots = bkGenSlots(new Date(dateStr + 'T00:00:00'));
+        if (APPS_SCRIPT_URL) {
+            try {
+                const res = await fetch(`${APPS_SCRIPT_URL}?action=slots&date=${dateStr}`);
+                const data = await res.json();
+                bkBooked = data.booked || [];
+            } catch(e) { bkBooked = []; }
+        }
+        loading.style.display = 'none'; grid.style.display = 'grid';
+        bkRenderSlots(allSlots, bkBooked);
+    }
+
+    function bkRenderSlots(all, booked) {
+        const grid = document.getElementById('slotsGrid');
+        grid.innerHTML = '';
+        if (!all.length) {
+            grid.innerHTML = '<p style="color:var(--text-light);grid-column:1/-1;text-align:center;padding:1.5rem 0">No slots available on this day.</p>';
+            return;
+        }
+        all.forEach(s => {
+            const isBooked = booked.includes(s);
+            const btn = document.createElement('button');
+            btn.className = 'slot-btn' + (isBooked ? ' booked' : '');
+            btn.textContent = bkFmtTime(s);
+            btn.dataset.slot = s;
+            btn.disabled = isBooked;
+            if (!isBooked) btn.addEventListener('click', () => bkSelectSlot(s, btn));
+            grid.appendChild(btn);
+        });
+    }
+
+    function bkSelectSlot(slot, btn) {
+        document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        bkSlot = slot;
+        bkSetStep(3);
+        const summary = `${DAY_FULL[bkDate.getDay()]}, ${bkDate.getDate()} ${MON_FULL[bkDate.getMonth()]} &nbsp;·&nbsp; ${bkFmtTime(slot)}`;
+        document.getElementById('selectionSummary').innerHTML = `<i class="fas fa-calendar-check"></i>&nbsp; ${summary}`;
+        const dc = document.getElementById('detailsCard');
+        dc.style.display = 'block';
+        document.getElementById('bookingResult').innerHTML = '';
+        document.getElementById('bookingName').value = '';
+        document.getElementById('bookingPhone').value = '';
+        dc.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+
+    async function submitBooking() {
+        const name  = document.getElementById('bookingName').value.trim();
+        const phone = document.getElementById('bookingPhone').value.trim();
+        if (!name)  { alert('Please enter your name.'); return; }
+        if (!/^[6-9][0-9]{9}$/.test(phone)) { alert('Please enter a valid 10-digit Indian mobile number (starts with 6-9).'); return; }
+        if (!bkDate || !bkSlot) { alert('Please select a date and time slot.'); return; }
+
+        const submitBtn = document.getElementById('bookingSubmit');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<div class="spinner" style="width:18px;height:18px;border-width:2px"></div> Confirming\u2026';
+
+        const dateStr = bkFmtDate(bkDate);
+        const resultDiv = document.getElementById('bookingResult');
+        const prettyDate = `${DAY_FULL[bkDate.getDay()]}, ${bkDate.getDate()} ${MON_FULL[bkDate.getMonth()]}`;
+
+        // No backend configured — open WhatsApp instead
+        if (!APPS_SCRIPT_URL) {
+            const msg = encodeURIComponent(
+                `Hello Neeta ji!\nI want to book an appointment.\n\nName: ${name}\nPhone: ${phone}\nDate: ${prettyDate}\nTime: ${bkFmtTime(bkSlot)}\n\nPlease confirm.`
+            );
+            window.open(`https://wa.me/918318410873?text=${msg}`, '_blank');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Confirm Appointment';
+            return;
+        }
+
+        try {
+            const res = await fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify({ name, phone, date: dateStr, time: bkSlot }),
+            });
+            const data = await res.json();
+            if (data.ok) {
+                document.getElementById('detailsCard').style.display = 'none';
+                bkBooked.push(bkSlot);
+                document.querySelectorAll('.slot-btn').forEach(b => {
+                    if (b.dataset.slot === bkSlot) { b.classList.add('booked'); b.classList.remove('selected'); b.disabled = true; }
+                });
+                resultDiv.innerHTML = `
+                    <div class="booking-success fade-in visible">
+                        <div class="result-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>Appointment Booked!</h3>
+                        <p>Thank you, <strong>${name}</strong>! We'll contact you at <strong>${phone}</strong> to confirm your appointment.</p>
+                        <div class="result-summary">
+                            <span><i class="fas fa-calendar"></i> ${prettyDate}</span>
+                            <span><i class="fas fa-clock"></i> ${bkFmtTime(bkSlot)}</span>
+                        </div>
+                    </div>`;
+                bkSlot = null;
+                bkSetStep(1);
+            } else {
+                throw new Error(data.error || 'Booking failed');
+            }
+        } catch(err) {
+            const msg = encodeURIComponent(
+                `Hello Neeta ji!\nI tried booking online but got an error.\n\nName: ${name}\nPhone: ${phone}\nDate: ${prettyDate}\nTime: ${bkFmtTime(bkSlot)}\n\nPlease confirm.`
+            );
+            resultDiv.innerHTML = `
+                <div class="booking-error fade-in visible">
+                    <div class="result-icon error"><i class="fas fa-exclamation-circle"></i></div>
+                    <h3>Something went wrong</h3>
+                    <p>Please book directly via WhatsApp — quick and easy!</p>
+                    <a href="https://wa.me/918318410873?text=${msg}" target="_blank" rel="noopener"
+                       style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:50px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-weight:700;text-decoration:none;margin-top:1.2rem">
+                        <i class="fab fa-whatsapp"></i> Book via WhatsApp
+                    </a>
+                </div>`;
+        }
+
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> Confirm Appointment';
+        resultDiv.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+
+    bkBuildDates();
 
     /* ===== BUSINESS HOURS ===== */
     const schedule = [
