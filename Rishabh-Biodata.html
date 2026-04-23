@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biodata – Rishabh Kumar</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --maroon:    #6e1212;
+      --maroon2:   #8b1a1a;
+      --maroon-lt: #a83232;
+      --gold:      #c9a84c;
+      --gold-lt:   #e8cc85;
+      --gold-pale: #f5e9c8;
+      --cream:     #fdf8f1;
+      --cream2:    #f7f0e6;
+      --dark:      #1a0808;
+      --mid:       #4a2020;
+      --light-txt: #7a4a4a;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #e8ddd0;
+      background-image:
+        radial-gradient(ellipse at 20% 20%, #d6c5b0 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 80%, #c8b89e 0%, transparent 60%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 48px 16px;
+    }
+
+    /* ══════════════════════════════════════
+       OUTER WRAPPER – decorative border
+    ══════════════════════════════════════ */
+    .wrapper {
+      width: 100%;
+      max-width: 900px;
+      padding: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--maroon) 40%, var(--gold) 60%, var(--maroon));
+      border-radius: 6px;
+      box-shadow: 0 20px 80px rgba(0,0,0,.35), 0 4px 16px rgba(0,0,0,.2);
+    }
+
+    .page {
+      background: var(--cream);
+      border-radius: 2px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100%;
+    }
+
+    /* ══════════════════════════════════════
+       TOP BANNER – full width
+    ══════════════════════════════════════ */
+    .banner {
+      grid-column: 1 / -1;
+      background: var(--dark);
+      background-image: linear-gradient(135deg, #1a0808 0%, var(--maroon) 50%, #2d0a0a 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 30px 44px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Mandala-style background rings */
+    .banner::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 60px solid rgba(201,168,76,.06);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .banner::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      border: 40px solid rgba(201,168,76,.05);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .banner-om {
+      font-size: 22px;
+      color: var(--gold);
+      letter-spacing: 4px;
+      position: relative;
+      opacity: .9;
+    }
+
+    .banner h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 16px;
+      text-transform: uppercase;
+      position: relative;
+      text-shadow: 0 2px 20px rgba(201,168,76,.4);
+      line-height: 1;
+    }
+
+    .banner-rule {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      width: 340px;
+    }
+    .banner-rule .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .banner-rule .line.r {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+    .banner-rule .gem {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    .banner-sub {
+      font-size: 9px;
+      color: rgba(201,168,76,.75);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-weight: 500;
+      position: relative;
+    }
+
+    /* ══════════════════════════════════════
+       LEFT SIDEBAR
+    ══════════════════════════════════════ */
+    .sidebar {
+      background: linear-gradient(180deg, var(--maroon) 0%, #450c0c 100%);
+      padding: 36px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      position: relative;
+    }
+
+    /* Subtle diagonal lines texture */
+    .sidebar::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(255,255,255,.018) 20px,
+        rgba(255,255,255,.018) 21px
+      );
+      pointer-events: none;
+    }
+
+    /* Photo */
+    .photo-wrap {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .photo-outer {
+      width: 170px; height: 170px;
+      border-radius: 50%;
+      padding: 4px;
+      background: conic-gradient(
+        var(--gold) 0deg,
+        var(--gold-lt) 60deg,
+        var(--gold) 120deg,
+        var(--gold-lt) 180deg,
+        var(--gold) 240deg,
+        var(--gold-lt) 300deg,
+        var(--gold) 360deg
+      );
+      box-shadow: 0 0 0 6px rgba(201,168,76,.15), 0 8px 32px rgba(0,0,0,.5);
+    }
+    .photo-inner {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--dark);
+    }
+    .photo-inner img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 8%;
+      display: block;
+    }
+
+    /* Auspicious dot beneath photo */
+    .photo-dot {
+      position: absolute;
+      bottom: -10px; left: 50%;
+      transform: translateX(-50%);
+      width: 20px; height: 20px;
+      background: var(--gold);
+      clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    }
+
+    .sidebar-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      margin-top: 18px;
+      line-height: 1.2;
+    }
+    .sidebar-title {
+      font-size: 9px;
+      color: var(--gold-lt);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    /* Sidebar divider */
+    .s-divider {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 20px 0;
+    }
+    .s-divider::before, .s-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(201,168,76,.4);
+    }
+    .s-divider span {
+      color: var(--gold);
+      font-size: 10px;
+    }
+
+    /* Quick stats pills */
+    .stats-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .stat-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 6px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+    .stat-card .s-val {
+      color: var(--gold-lt);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    .stat-card .s-key {
+      color: rgba(255,255,255,.45);
+      font-size: 8px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    /* Contact block in sidebar */
+    .contact-block {
+      width: 100%;
+      margin-top: 20px;
+      background: rgba(201,168,76,.1);
+      border: 1px solid rgba(201,168,76,.25);
+      border-radius: 6px;
+      padding: 14px 12px;
+    }
+    .contact-block .c-head {
+      font-size: 8px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.8);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-item .ci {
+      color: var(--gold);
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════
+       MAIN CONTENT
+    ══════════════════════════════════════ */
+    .main {
+      padding: 36px 36px 36px 32px;
+      background: var(--cream);
+      position: relative;
+    }
+
+    /* Faint watermark */
+    .main::before {
+      content: 'ॐ';
+      position: absolute;
+      font-size: 280px;
+      color: rgba(139,26,26,.03);
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      font-family: serif;
+      line-height: 1;
+    }
+
+    /* Section */
+    .section { margin-bottom: 28px; position: relative; }
+    .section:last-child { margin-bottom: 0; }
+
+    .sec-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1.5px solid var(--gold-pale);
+      position: relative;
+    }
+    .sec-header::after {
+      content: '';
+      position: absolute;
+      bottom: -1.5px; left: 0;
+      width: 60px; height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .sec-icon {
+      width: 30px; height: 30px;
+      background: var(--maroon);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(110,18,18,.3);
+    }
+
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--maroon);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Row */
+    .row {
+      display: grid;
+      grid-template-columns: 175px 16px 1fr;
+      align-items: baseline;
+      padding: 7px 0 7px 4px;
+      border-bottom: 1px solid rgba(245,233,200,.7);
+      transition: background .15s;
+      border-radius: 3px;
+    }
+    .row:last-child { border-bottom: none; }
+    .row:hover { background: rgba(201,168,76,.07); }
+
+    .row-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--mid);
+      letter-spacing: .3px;
+      line-height: 1.5;
+    }
+    .row-colon {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+    }
+    .row-value {
+      font-size: 12.5px;
+      color: #2a0e0e;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    .row-value strong { font-weight: 600; color: var(--maroon); }
+
+    /* Highlight pill for occupation */
+    .pill {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--maroon), var(--maroon-lt));
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 20px;
+      letter-spacing: .5px;
+      margin-top: 2px;
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER – full width
+    ══════════════════════════════════════ */
+    .footer {
+      grid-column: 1 / -1;
+      background: var(--dark);
+      background-image: linear-gradient(90deg, #1a0808, var(--maroon), #1a0808);
+      padding: 16px 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .footer .f-rule {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,168,76,.4));
+    }
+    .footer .f-rule.r {
+      background: linear-gradient(to left, transparent, rgba(201,168,76,.4));
+    }
+    .footer-text {
+      text-align: center;
+      color: rgba(201,168,76,.7);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .footer-text span { color: var(--gold); font-size: 14px; }
+
+    /* ══════════════════════════════════════
+       PRINT
+    ══════════════════════════════════════ */
+    @media print {
+      body { background: none; padding: 0; }
+      .wrapper { box-shadow: none; padding: 6px; }
+    }
+
+    @media (max-width: 650px) {
+      .page { grid-template-columns: 1fr; }
+      .banner h1 { font-size: 32px; letter-spacing: 8px; }
+      .sidebar { border-radius: 0; }
+      .main { padding: 24px 20px; }
+      .row { grid-template-columns: 140px 14px 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+<div class="page">
+
+  <!-- ── BANNER ── -->
+  <header class="banner">
+    <div class="banner-om">ॐ</div>
+    <div class="banner-rule">
+      <div class="line"></div>
+      <div class="gem"></div><div class="gem"></div><div class="gem"></div>
+      <div class="line r"></div>
+    </div>
+    <h1>Biodata</h1>
+    <div class="banner-rule">
+      <div class="line"></div>
+      <div class="gem"></div><div class="gem"></div><div class="gem"></div>
+      <div class="line r"></div>
+    </div>
+    <div class="banner-sub">Rishabh Kumar &nbsp;·&nbsp; 2025</div>
+  </header>
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="photo-wrap">
+      <div class="photo-outer">
+        <div class="photo-inner">
+          <img src="IMG-20251223-WA0000.jpg" alt="Rishabh Kumar"/>
+        </div>
+      </div>
+      <div class="photo-dot"></div>
+    </div>
+
+    <div class="sidebar-name">Rishabh Kumar</div>
+    <div class="sidebar-title">Senior Software Engineer</div>
+
+    <div class="s-divider"><span>✦</span></div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="s-val">23 Jan<br>1998</div>
+        <div class="s-key">Date of Birth</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-val">5′3″</div>
+        <div class="s-key">Height</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-val">B+</div>
+        <div class="s-key">Blood Group</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-val">Kashyap</div>
+        <div class="s-key">Gothram</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-val">Fair</div>
+        <div class="s-key">Complexion</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-val">Kanpur</div>
+        <div class="s-key">Birthplace</div>
+      </div>
+    </div>
+
+    <div class="contact-block">
+      <div class="c-head">Contact</div>
+      <div class="contact-item">
+        <span class="ci">📞</span>
+        <span>9453193076</span>
+      </div>
+      <div class="contact-item">
+        <span class="ci">📞</span>
+        <span>9569949774</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="main">
+
+    <!-- Personal Details -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-icon">👤</div>
+        <div class="sec-title">Personal Details</div>
+      </div>
+
+      <div class="row">
+        <div class="row-label">Full Name</div>
+        <div class="row-colon">:</div>
+        <div class="row-value"><strong>Rishabh Kumar</strong></div>
+      </div>
+      <div class="row">
+        <div class="row-label">Date of Birth</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">23 January 1998</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Place of Birth</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">Kanpur</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Gothram</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">Kashyap</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Complexion</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">Fair</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Height</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">5′3″</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Blood Group</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">B+</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Education</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">
+          B.Tech — Computer Science & Engineering<br>
+          Babu Banarasi Das Engineering College, Lucknow
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-label">Occupation</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">
+          Senior Software Engineer<br>
+          <span class="pill">Ultimate Kronos Group (UKG), Noida</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Family Details -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-icon">🏠</div>
+        <div class="sec-title">Family Details</div>
+      </div>
+
+      <div class="row">
+        <div class="row-label">Father's Name</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">Sanjay Prasad</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Father's Occupation</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">Businessman</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Mother's Name</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">Neeta Devi</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Mother's Occupation</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">Businesswoman</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Brother</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">Hrithik Kumar <em style="color:#7a4a4a;font-size:11px;">(Younger)</em></div>
+      </div>
+      <div class="row">
+        <div class="row-label">Brother's Education</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">B.Tech — Information Technology</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Brother's Occupation</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">
+          Software Engineer<br>
+          <span class="pill">Codiliar, Bengaluru</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Address Details -->
+    <div class="section">
+      <div class="sec-header">
+        <div class="sec-icon">📍</div>
+        <div class="sec-title">Address Details</div>
+      </div>
+
+      <div class="row">
+        <div class="row-label">Correspondence</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">5/675, Seemant Nagar, Kalyanpur, Lucknow</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Residential</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">156/8, Shastri Nagar, Kanpur</div>
+      </div>
+      <div class="row">
+        <div class="row-label">Permanent</div>
+        <div class="row-colon">:</div>
+        <div class="row-value">
+          Village: Balia Village,
+          Subdivision: Andar,<br>
+          District: Siwan, Bihar
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="f-rule"></div>
+    <div class="footer-text">
+      <span>ॐ</span> &nbsp; With Blessings of the Almighty &nbsp; <span>ॐ</span>
+    </div>
+    <div class="f-rule r"></div>
+  </footer>
+
+</div>
+</div>
+</body>
+</html>
