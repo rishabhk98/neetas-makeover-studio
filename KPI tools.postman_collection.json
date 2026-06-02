@@ -1,0 +1,272 @@
+{
+  "info": {
+    "_postman_id": "8ac0a27f-9181-4fd6-b69d-288a32582cd6",
+    "name": "KPI tools",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Get Parameters",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://kpi02-b-back-k8s.int.dev.mykronos.com/wfc/restcall/v1/platform/properties?context=com.kronos.kpif.kpiservice&tenantId=combined",
+          "protocol": "http",
+          "host": [
+            "kpi02-b-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "properties"
+          ],
+          "query": [
+            {
+              "key": "context",
+              "value": "com.kronos.kpif.kpiservice"
+            },
+            {
+              "key": "tenantId",
+              "value": "combined"
+            }
+          ]
+        },
+        "description": "getDatakpi"
+      },
+      "response": []
+    },
+    {
+      "name": "KPI tool login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "brgsuperuser",
+            "type": "text"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ath41-oam.int.dev.mykronos.com:80/authn/json/ia_wfc_ge14050861_nonprd_01/authenticate?authIndexType=service&authIndexValue=SystemUserAuthService",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath41-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "authn",
+            "json",
+            "ia_wfc_ge14050861_nonprd_01",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service"
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService"
+            }
+          ]
+        },
+        "description": "KPI tool login"
+      },
+      "response": []
+    },
+    {
+      "name": "property update KPI tools",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"tenantShortName\":\"manufacturing\",\r\n    \"key\":\"com.kronos.kpifrm.unifymetric.enabled\",\r\n    \"value\": \"true\"\r\n    \r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://abhishek-a-jain-back-k8s.int.dev.mykronos.com:80/wfc/restcall/v1/platform/kpi/config/update",
+          "protocol": "http",
+          "host": [
+            "abhishek-a-jain-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "kpi",
+            "config",
+            "update"
+          ]
+        },
+        "description": "property update KPI tools"
+      },
+      "response": []
+    },
+    {
+      "name": "TOOLS DATASEED",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"tenantShortNames\": [\r\n        \"ia_wfc_bjsws01_nonprd_01\"\r\n    ],\r\n    \"startDateTime\": \"2023-01-31T00:00:00\",\r\n    \"endDateTime\": \"2023-02-28T00:00:00\",\r\n    \"action\": \"DATASEED\",\r\n    \"reason\": {\r\n        \"name\": \"DEFECT\",\r\n        \"description\": \"dataseed is raised for WFD-142394\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-wfm10-bck-681283161-1.int.dev.mykronos.com:80/wfc/restcall/v1/platform/kpi/data_correction/apply_update/async",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-wfm10-bck-681283161-1",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "kpi",
+            "data_correction",
+            "apply_update",
+            "async"
+          ]
+        },
+        "description": "property update KPI tools"
+      },
+      "response": []
+    },
+    {
+      "name": "TOOLS DATASEED Copy",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\t\"tenantShortNames\": [\r\n\t\t\"ia_wfc_bjsws01_nonprd_01\"\r\n\t],\r\n\t\"startDateTime\": \"2023-01-31T00:00:00\",\r\n\t\"endDateTime\": \"2023-02-28T00:00:00\",\r\n\t\"action\": \"DATASEED\",\r\n\t\"reason\": {\r\n\t\t\"name\": \"DEFECT\",\r\n\t\t\"description\": \"dataseed is raised for WFD-142394\"\r\n\t},\r\n\t\"filter\": {\r\n\t\t\"criteria\": [\r\n\t\t\t{\r\n\t\t\t\t\"qualifier\": \"DOMAIN\",\r\n\t\t\t\t\"values\": [\r\n\t\t\t\t\t\"FORECASTING\"\r\n\t\t\t\t]\r\n\t\t\t}\r\n\t\t]\r\n\t}\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://sonakshi-gupta-k8s.int.dev.mykronos.com:80/wfc/restcall/v1/platform/kpi/data_correction/apply_update/async",
+          "protocol": "http",
+          "host": [
+            "sonakshi-gupta-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "kpi",
+            "data_correction",
+            "apply_update",
+            "async"
+          ]
+        },
+        "description": "property update KPI tools"
+      },
+      "response": []
+    },
+    {
+      "name": "TOOLS DATASEED Copy 2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"tenantShortNames\": [\r\n        \"ia_wfc_ir00330809_nonprd_01\"\r\n    ],\r\n    \"startDateTime\": \"2021-08-01T00:00:00\",\r\n    \"endDateTime\": \"2021-08-30T00:00:00\",\r\n    \"action\": \"DATASEED\",\r\n    \"reason\": {\r\n        \"name\": \"DEFECT\",\r\n        \"description\": \"dataseed is raised for WFD-142394\"\r\n    },\r\n    \"filter\": {\r\n        \"criteria\": [\r\n            {\r\n                \"qualifier\": \"EMP_ID\",\r\n                \"values\": [\r\n                    7488,\r\n                    4930,\r\n                    27478,\r\n                    27644,\r\n                    16582,\r\n                    9527,\r\n                    4769,\r\n                    3938,\r\n                    7156,\r\n                    4413,\r\n                    8192,\r\n                    17413,\r\n                    9342,\r\n                    7927,\r\n                    8975,\r\n                    27223,\r\n                    6236,\r\n                    9201,\r\n                    7205,\r\n                    1542,\r\n                    5575,\r\n                    1002,\r\n                    27502,\r\n                    22233,\r\n                    23367,\r\n                    5830,\r\n                    28592,\r\n                    26455,\r\n                    9508,\r\n                    27289,\r\n                    9186,\r\n                    23702,\r\n                    29457,\r\n                    26947,\r\n                    614,\r\n                    1562,\r\n                    9331,\r\n                    9056,\r\n                    27566,\r\n                    27571,\r\n                    1195,\r\n                    2938,\r\n                    6718,\r\n                    6889,\r\n                    6822,\r\n                    2854,\r\n                    26903,\r\n                    4579,\r\n                    1563,\r\n                    10768,\r\n                    6122,\r\n                    5987,\r\n                    5598,\r\n                    8462,\r\n                    7359,\r\n                    1515,\r\n                    3583,\r\n                    6049,\r\n                    30889,\r\n                    8499,\r\n                    995,\r\n                    3311,\r\n                    8009,\r\n                    2987,\r\n                    25560,\r\n                    6898,\r\n                    6667,\r\n                    9572,\r\n                    9523,\r\n                    15258,\r\n                    23962,\r\n                    8329,\r\n                    8039,\r\n                    24307,\r\n                    21044,\r\n                    30067,\r\n                    25664,\r\n                    5031,\r\n                    12576,\r\n                    5594,\r\n                    9005,\r\n                    31193,\r\n                    10668,\r\n                    17875,\r\n                    5103,\r\n                    16120,\r\n                    27475,\r\n                    16165,\r\n                    8512,\r\n                    4815,\r\n                    1543,\r\n                    16265,\r\n                    21269,\r\n                    21212,\r\n                    9551,\r\n                    8923,\r\n                    1443,\r\n                    5722,\r\n                    455,\r\n                    11053,\r\n                    9191,\r\n                    16640,\r\n                    8302,\r\n                    9336,\r\n                    30384,\r\n                    7387,\r\n                    582,\r\n                    26465,\r\n                    15901,\r\n                    401,\r\n                    23362,\r\n                    13375,\r\n                    29786,\r\n                    30019,\r\n                    1307,\r\n                    5723,\r\n                    5211,\r\n                    7535,\r\n                    18255,\r\n                    7383,\r\n                    3195,\r\n                    4710,\r\n                    3206,\r\n                    30893,\r\n                    27801,\r\n                    6011,\r\n                    4576,\r\n                    6639,\r\n                    25399,\r\n                    27162,\r\n                    16482,\r\n                    8114,\r\n                    12557,\r\n                    6551,\r\n                    19556,\r\n                    27556,\r\n                    9430,\r\n                    4152,\r\n                    5443,\r\n                    6641,\r\n                    13362,\r\n                    21300,\r\n                    19573,\r\n                    16489,\r\n                    8160,\r\n                    7309,\r\n                    3677,\r\n                    8287,\r\n                    11791,\r\n                    790,\r\n                    451,\r\n                    6250,\r\n                    5255,\r\n                    7480,\r\n                    14232,\r\n                    7614\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://kacd02-prf05-ins04-wfm62-api-687529381-1.int.acd.mykronos.com:80/wfc/restcall/v1/platform/kpi/data_correction/apply_update/async",
+          "protocol": "http",
+          "host": [
+            "kacd02-prf05-ins04-wfm62-api-687529381-1",
+            "int",
+            "acd",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "kpi",
+            "data_correction",
+            "apply_update",
+            "async"
+          ]
+        },
+        "description": "property update KPI tools"
+      },
+      "response": []
+    }
+  ]
+}

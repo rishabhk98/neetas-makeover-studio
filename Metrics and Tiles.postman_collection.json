@@ -1,0 +1,497 @@
+{
+  "info": {
+    "_postman_id": "00775f72-a78d-44b2-9e13-8e35649eab1e",
+    "name": "Metrics and Tiles",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Authenticate - HCA Service Copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "WFMUSER1",
+            "type": "text"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "OkDje56s2KwDaPXm",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ath40-oam.int.dev.mykronos.com/authn/json/hcatntr6int15_nonprd_01/authenticate?authIndexType=service&authIndexValue=SystemUserAuthService",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath40-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "authn",
+            "json",
+            "hcatntr6int15_nonprd_01",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service"
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Metric By Volume Label",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"dimensionRollUpCtx\": {\r\n    \"orgRollupDimension\": \"VOLUME_LABEL\"\r\n  },\r\n  \"dataElementCtx\": [\r\n    {\r\n      \"elementName\": \"RAW_VOLUME\",\r\n      \"elementType\": \"VOLMETRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"ALLOCATED_VOLUME\",\r\n      \"elementType\": \"VOLMETRIC\"\r\n    }\r\n  ],\r\n  \"workUnitLocationCtx\": [\r\n    {\r\n      \"workUnitId\": 10,\r\n      \"timeDimension\": [\r\n        {\r\n          \"timeRollupBy\" : \"DAY\",\r\n          \"symbolicTimePeriodName\": \"Vol_Period\",\r\n          \"rollupRequired\": true,\r\n          \"incrementTotalRequired\": false,\r\n          \"timeIncrements\": [\r\n            {\r\n               \"startDate\": \"2020-02-29\",\r\n             \"endDate\": \"2020-03-03\"\r\n            }\r\n          ]\r\n        },\r\n         {\r\n          \"timeRollupBy\" : \"DAY\",\r\n          \"symbolicTimePeriodName\": \"Pay_Period_Year_to_Date_Fiscal\",\r\n          \"rollupRequired\": true,\r\n          \"incrementTotalRequired\": false,\r\n          \"timeIncrements\": [\r\n            {\r\n              \"startDate\": \"2020-02-29\",\r\n             \"endDate\": \"2020-03-03\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca43-bck.int.dev.mykronos.com:80/hcaservice/restcall/business_analytics/v1/hca_kpi/multi_read",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca43-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "business_analytics",
+            "v1",
+            "hca_kpi",
+            "multi_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Data API",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"select\": [\n        {\n            \"key\": \"HCA_TGT_HCAFIXED_METRIC_PAID_AMT\",\n            \"alias\": \"Daily Fixed Paid Amount Target\"\n        },\n        {\n            \"key\": \"HCA_TGT_HCAFIXED_METRIC_PAID_HRS\",\n            \"alias\": \"Daily Fixed Paid Hours Target\"\n        },\n        {\n            \"key\": \"HCA_TGT_HCAFIXED_METRIC_PROD_AMT\",\n            \"alias\": \"Daily Fixed Productive Amount Target\"\n        },\n        {\n            \"key\": \"HCA_TGT_HCAFIXED_METRIC_PROD_HRS\",\n            \"alias\": \"Daily Fixed Productive Hours Target\"\n        },\n        {\n            \"key\": \"HCA_METRIC_OT_HRS\",\n            \"alias\": \"Daily Overtime Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PAID_AMT\",\n            \"alias\": \"Daily Paid Amount\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PAID_AMT_TGT\",\n            \"alias\": \"Daily Paid Amount Target\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PAID_AMT_VAR\",\n            \"alias\": \"Daily Paid Amount Variance\"\n        },\n        {\n            \"key\": \"HCA_METRIC_NP_HRS\",\n            \"alias\": \"Daily Non Productive Hours\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PAID_HRS_FTE\",\n            \"alias\": \"Daily Paid FTEs\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PAID_FT_AMT\",\n            \"alias\": \"Daily Paid Full Time Amount\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PAID_FT_HRS\",\n            \"alias\": \"Daily Paid Full Time Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PAID_HRS\",\n            \"alias\": \"Daily Paid Hours\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PAID_HRS_TGT\",\n            \"alias\": \"Daily Paid Hours Target\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PAID_HRS_TGT_PER_VOL_WEIGHTED\",\n            \"alias\": \"Daily Paid Hours Target/Unit Of Service\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PAID_HRS_VAR\",\n            \"alias\": \"Daily Paid Hours Variance\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PAID_PT_AMT\",\n            \"alias\": \"Daily Paid Part Time Amount\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PAID_PT_HRS\",\n            \"alias\": \"Daily Paid Part Time Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PAID_PDIEM_AMT\",\n            \"alias\": \"Daily Paid Per Diem Amount\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PAID_PDIEM_HRS\",\n            \"alias\": \"Daily Paid Per Diem Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PAID_POOL_AMT\",\n            \"alias\": \"Daily Paid Pool Amount\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PAID_POOL_HRS\",\n            \"alias\": \"Daily Paid Pool Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_AGNCY_HRS\",\n            \"alias\": \"Daily Productive Agency Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_AMT\",\n            \"alias\": \"Daily Productive Amount\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_AMT_TGT\",\n            \"alias\": \"Daily Productive Amount Target\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_AMT_TGT_PER_VOL_WEIGHTED\",\n            \"alias\": \"Daily Productive Amount Target/Unit Of Service\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_VAR\",\n            \"alias\": \"Daily Productive Hours Variance\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_INT_AGNCY_HRS\",\n            \"alias\": \"Daily Productive Internal Agency Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_PT_AMT\",\n            \"alias\": \"Daily Productive Part Time Amount\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_PT_HRS\",\n            \"alias\": \"Daily Productive Part Time Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_PDIEM_AMT\",\n            \"alias\": \"Daily Productive Per Diem Amount\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_PDIEM_HRS\",\n            \"alias\": \"Daily Productive Per Diem Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_POOL_AMT\",\n            \"alias\": \"Daily Productive Pool Amount\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_POOL_HRS\",\n            \"alias\": \"Daily Productive Pool Hours\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX\",\n            \"alias\": \"Daily Productivity Index\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_AMT_IDX\",\n            \"alias\": \"Daily Productivity Index % Cost\"\n        },\n        {\n            \"key\": \"HCA_TGT_HCAVARIABLE_METRIC_PAID_AMT\",\n            \"alias\": \"Daily Variable Paid Amount Target\"\n        },\n        {\n            \"key\": \"HCA_TGT_HCAVARIABLE_METRIC_PAID_HRS\",\n            \"alias\": \"Daily Variable Paid Hours Target\"\n        },\n        {\n            \"key\": \"HCA_TGT_HCAVARIABLE_METRIC_PROD_AMT\",\n            \"alias\": \"Daily Variable Productive Amount Target\"\n        },\n        {\n            \"key\": \"HCA_TGT_HCAVARIABLE_METRIC_PROD_HRS\",\n            \"alias\": \"Daily Variable Productive Hours Target\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_HCAVARIABLE_METRIC_PROD_HRS_PER_VOL_WEIGHTED_DAILY\",\n            \"alias\": \"Daily Variable Productive Hours Targets/Unit Of Service\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_REG_HRS\",\n            \"alias\": \"Regular\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_ADJUSTMENT\",\n            \"alias\": \"Recommended Adjustment\"\n        },\n        {\n            \"key\": \"HCA_METRIC_VOL_WEIGHTED\",\n            \"alias\": \"Weighted Volume Quantity\"\n        }\n    ],\n    \"options\": {\n        \"timeIncrementFormat\": \"LONG_DATE\"\n    },\n    \"from\": {\n        \"view\": \"WORKUNIT_TIME_SERIES\",\n        \"workUnitSet\": {\n            \"dateRange\": {\n                \"endDate\": \"2022-06-25\",\n                \"options\": {\n                    \"timeIncrement\": \"DAY\",\n                    \"referenceDate\": \"2022-06-25\"\n                },\n                \"startDate\": \"2022-06-25\"\n            },\n            \"hyperfind\": {\n                \"qualifier\": \"IA_API_HYPERFIND-20220707063413\"\n            }\n        }\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca55-bck.int.dev.mykronos.com:80/hcaservice/restcall/v1/hca/data/getData",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca55-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "data",
+            "getData"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "IA HCA Data API",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"dateRange\": {\n        \"endDate\": \"2021-07-25\",\n        \"startDate\": \"2021-07-11\"\n    },\n    \"columns\": [\n        {\n            \"name\": \"HCA_VOLMETRIC_RAW_VOLUME\",\n            \"alias\": \"HCA_VOLMETRIC_RAW_VOLUME\"\n        }\n    ],\n    \"additionalData\": {\n        \"hcaDataProvider\": {\n            \"rollupBy\": [\n                {\n                    \"qualifier\": \"VOLUME_LABEL_BY_POST_DATE\"\n                }\n            ],\n            \"workUnitLocations\": [\n                {\n                    \"workUnit\": {\n                        \"rollUpBy\": [\n                            {\n                                \"orgJobIds\": [\n                                    13806,\n                                    13807,\n                                    13808,\n                                    13809,\n                                    13810,\n                                    13811,\n                                    13784,\n                                    13785,\n                                    13786,\n                                    13787,\n                                    13788,\n                                    13789,\n                                    13790,\n                                    14302,\n                                    13791,\n                                    14303\n                                ]\n                            }\n                        ],\n                        \"serviceLine\": \"WU Service Line\",\n                        \"code\": \"Nursing-20210805100805\",\n                        \"unitOfService\": \"Adj Pat Days\",\n                        \"locationId\": 13544,\n                        \"fteHours\": 40.0,\n                        \"name\": \"WU-Nursing-20210805100805\",\n                        \"workUnitType\": {\n                            \"qualifier\": \"Facility\",\n                            \"id\": -1\n                        },\n                        \"id\": 95,\n                        \"careGiverSwitch\": 1\n                    },\n                    \"dateRanges\": [\n                        {\n                            \"dateSpans\": [\n                                {\n                                    \"daysOfOperation\": [\n                                        0,\n                                        1,\n                                        1,\n                                        1,\n                                        1,\n                                        1,\n                                        0,\n                                        0,\n                                        1,\n                                        1,\n                                        1,\n                                        1,\n                                        1,\n                                        0,\n                                        0,\n                                        1,\n                                        1,\n                                        1,\n                                        1,\n                                        1,\n                                        0\n                                    ],\n                                    \"endDate\": \"2021-07-25\",\n                                    \"startDate\": \"2021-07-11\"\n                                }\n                            ],\n                            \"timeIncrement\": \"DAY\"\n                        }\n                    ],\n                    \"targets\": [\n                        {\n                            \"qualifier\": \"HCAVARIABLE_METRIC_PROD_HRS_PP\",\n                            \"targetDefinition\": {\n                                \"functionId\": 152,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_VARIABLE_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"METRIC_VOL_WEIGHTED\",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                32.1234,\n                                                33.1234,\n                                                34.1234,\n                                                35.1234,\n                                                36.1234,\n                                                37.1234,\n                                                38.1234\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"payPeriodTarget\": {\n                                            \"default\": 7.77,\n                                            \"alternate\": 8.88\n                                        },\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAVARIABLE_METRIC_PROD_HRS\",\n                            \"targetDefinition\": {\n                                \"functionId\": 3,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_VARIABLE_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"METRIC_VOL_WEIGHTED\",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                32.1234,\n                                                33.1234,\n                                                34.1234,\n                                                35.1234,\n                                                36.1234,\n                                                37.1234,\n                                                38.1234\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"payPeriodTarget\": {\n                                            \"default\": 7.77,\n                                            \"alternate\": 8.88\n                                        },\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAFIXED_METRIC_PROD_HRS_PP\",\n                            \"targetDefinition\": {\n                                \"functionId\": 152,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_FIXED_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"METRIC_VOL_WEIGHTED,METRIC_NP_HRS,METRIC_NP_HRS_PP\",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                43,\n                                                45,\n                                                47,\n                                                49,\n                                                51,\n                                                52,\n                                                54\n                                            ],\n                                            \"alternate\": [\n                                                44,\n                                                46,\n                                                48,\n                                                50,\n                                                56,\n                                                53,\n                                                55\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAFIXED_METRIC_PROD_HRS\",\n                            \"targetDefinition\": {\n                                \"functionId\": 3,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_FIXED_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"METRIC_VOL_WEIGHTED,METRIC_NP_HRS,METRIC_NP_HRS_PP\",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                43,\n                                                45,\n                                                47,\n                                                49,\n                                                51,\n                                                52,\n                                                54\n                                            ],\n                                            \"alternate\": [\n                                                44,\n                                                46,\n                                                48,\n                                                50,\n                                                56,\n                                                53,\n                                                55\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAFIXED_METRIC_PAID_HRS\",\n                            \"targetDefinition\": {\n                                \"functionId\": 130,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_FIXED_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"\",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                43,\n                                                45,\n                                                47,\n                                                49,\n                                                51,\n                                                52,\n                                                54\n                                            ],\n                                            \"alternate\": [\n                                                44,\n                                                46,\n                                                48,\n                                                50,\n                                                56,\n                                                53,\n                                                55\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAVARIABLE_METRIC_PAID_HRS\",\n                            \"targetDefinition\": {\n                                \"functionId\": 130,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_VARIABLE_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"METRIC_VOL_WEIGHTED  \",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                32.1234,\n                                                33.1234,\n                                                34.1234,\n                                                35.1234,\n                                                36.1234,\n                                                37.1234,\n                                                38.1234\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"payPeriodTarget\": {\n                                            \"default\": 7.77,\n                                            \"alternate\": 8.88\n                                        },\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAFIXED_METRIC_PAID_HRS_PP\",\n                            \"targetDefinition\": {\n                                \"functionId\": 154,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_FIXED_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"\",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                43,\n                                                45,\n                                                47,\n                                                49,\n                                                51,\n                                                52,\n                                                54\n                                            ],\n                                            \"alternate\": [\n                                                44,\n                                                46,\n                                                48,\n                                                50,\n                                                56,\n                                                53,\n                                                55\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAVARIABLE_METRIC_PAID_HRS_PP\",\n                            \"targetDefinition\": {\n                                \"functionId\": 154,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_VARIABLE_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"METRIC_VOL_WEIGHTED  \",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                32.1234,\n                                                33.1234,\n                                                34.1234,\n                                                35.1234,\n                                                36.1234,\n                                                37.1234,\n                                                38.1234\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"payPeriodTarget\": {\n                                            \"default\": 7.77,\n                                            \"alternate\": 8.88\n                                        },\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAFIXED_METRIC_PROD_AMT\",\n                            \"targetDefinition\": {\n                                \"functionId\": 4,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_FIXED_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"\",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                43,\n                                                45,\n                                                47,\n                                                49,\n                                                51,\n                                                52,\n                                                54\n                                            ],\n                                            \"alternate\": [\n                                                44,\n                                                46,\n                                                48,\n                                                50,\n                                                56,\n                                                53,\n                                                55\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAVARIABLE_METRIC_PROD_AMT\",\n                            \"targetDefinition\": {\n                                \"functionId\": 4,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_VARIABLE_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"METRIC_VOL_WEIGHTED \",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                32.1234,\n                                                33.1234,\n                                                34.1234,\n                                                35.1234,\n                                                36.1234,\n                                                37.1234,\n                                                38.1234\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"payPeriodTarget\": {\n                                            \"default\": 7.77,\n                                            \"alternate\": 8.88\n                                        },\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAVARIABLE_METRIC_PROD_AMT_PP\",\n                            \"targetDefinition\": {\n                                \"functionId\": 153,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_VARIABLE_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"METRIC_VOL_WEIGHTED \",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                32.1234,\n                                                33.1234,\n                                                34.1234,\n                                                35.1234,\n                                                36.1234,\n                                                37.1234,\n                                                38.1234\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"payPeriodTarget\": {\n                                            \"default\": 7.77,\n                                            \"alternate\": 8.88\n                                        },\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAFIXED_METRIC_PROD_AMT_PP\",\n                            \"targetDefinition\": {\n                                \"functionId\": 153,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_FIXED_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"\",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                43,\n                                                45,\n                                                47,\n                                                49,\n                                                51,\n                                                52,\n                                                54\n                                            ],\n                                            \"alternate\": [\n                                                44,\n                                                46,\n                                                48,\n                                                50,\n                                                56,\n                                                53,\n                                                55\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAFIXED_METRIC_PAID_AMT\",\n                            \"targetDefinition\": {\n                                \"functionId\": 131,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_FIXED_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"\",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                43,\n                                                45,\n                                                47,\n                                                49,\n                                                51,\n                                                52,\n                                                54\n                                            ],\n                                            \"alternate\": [\n                                                44,\n                                                46,\n                                                48,\n                                                50,\n                                                56,\n                                                53,\n                                                55\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAVARIABLE_METRIC_PAID_AMT\",\n                            \"targetDefinition\": {\n                                \"functionId\": 131,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_VARIABLE_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"METRIC_VOL_WEIGHTED \",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                32.1234,\n                                                33.1234,\n                                                34.1234,\n                                                35.1234,\n                                                36.1234,\n                                                37.1234,\n                                                38.1234\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"payPeriodTarget\": {\n                                            \"default\": 7.77,\n                                            \"alternate\": 8.88\n                                        },\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAFIXED_METRIC_PAID_AMT_PP\",\n                            \"targetDefinition\": {\n                                \"functionId\": 155,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_FIXED_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"\",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                43,\n                                                45,\n                                                47,\n                                                49,\n                                                51,\n                                                52,\n                                                54\n                                            ],\n                                            \"alternate\": [\n                                                44,\n                                                46,\n                                                48,\n                                                50,\n                                                56,\n                                                53,\n                                                55\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        },\n                        {\n                            \"qualifier\": \"HCAVARIABLE_METRIC_PAID_AMT_PP\",\n                            \"targetDefinition\": {\n                                \"functionId\": 155,\n                                \"locRefType\": \"WORK_UNIT\",\n                                \"subType\": \"HCA_VARIABLE_TARGET\",\n                                \"functionType\": \"METRIC\",\n                                \"locRefId\": 95,\n                                \"type\": \"HCA\",\n                                \"refSourceSymbolicName\": \"METRIC_VOL_WEIGHTED \",\n                                \"target\": {\n                                    \"1900-01-01\": {\n                                        \"workDayTarget\": {\n                                            \"default\": [\n                                                32.1234,\n                                                33.1234,\n                                                34.1234,\n                                                35.1234,\n                                                36.1234,\n                                                37.1234,\n                                                38.1234\n                                            ]\n                                        },\n                                        \"effDate\": \"1900-01-01\",\n                                        \"payPeriodTarget\": {\n                                            \"default\": 7.77,\n                                            \"alternate\": 8.88\n                                        },\n                                        \"expDate\": \"3000-01-01\"\n                                    }\n                                }\n                            }\n                        }\n                    ]\n                }\n            ],\n            \"canViewAllWages\": \"true\"\n        }\n    },\n    \"workunits\": [\n        95\n    ],\n    \"timeframeOptions\": {\n        \"daysOfOperation\": true,\n        \"extendedDaysOfOperation\": true,\n        \"timeIncrement\": \"DAY\"\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca65-bck.int.dev.mykronos.com:80/hcaservice/restcall/v1/hca/data/multi_read",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca65-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "data",
+            "multi_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Data API ACD",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"select\": [\n        {\n            \"key\": \"HCA_ELMNT_WORKUNIT_NAME\"\n        },\n        {\n            \"key\": \"HCA_DRVDSPL_RAW_VOL_PERIOD\"\n        },\n        {\n            \"key\": \"HCA_DRVDSPL_LABEL_VOL\"\n        },\n        {\n            \"key\": \"HCA_DRVDSPL_ALLOCATED_VOL_PERIOD\"\n        }\n    ],\n    \"from\": {\n        \"dateRange\": {\n            \"endDate\" : \"2020-03-17\",\n            \"options\": {\n                \"timeIncrement\": \"DAY\"\n            },\n            \"startDate\" : \"2020-03-14\"\n        },\n        \"workUnits\": {\n            \"rollUpBy\": [\n                {\n                    \"qualifier\": \"VolumeLabel\"\n                }\n            ],\n            \"ids\":[ 1580, 1581, 1593 ]\n        }\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://kacd01-pip40-ins01-hca75-bck.int.acd.mykronos.com:80/hcaservice/restcall/v1/hca/data/getData",
+          "protocol": "http",
+          "host": [
+            "kacd01-pip40-ins01-hca75-bck",
+            "int",
+            "acd",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "data",
+            "getData"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Location API for IA API",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"where\": {\r\n        \"dateRanges\": [\r\n            {\r\n                \"symbolicPeriod\": {\r\n                    \"qualifier\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n                },\r\n                \"options\": {\r\n                    \"daysOfOperation\": false,\r\n                    \"extendedDaysOfOperation\": false,\r\n                    \"timeIncrement\": \"PAYPERIOD\",\r\n                    \"referenceDate\": \"2021-11-16\"\r\n                }\r\n            }\r\n        ],\r\n        \"workUnits\": {\r\n            \"ids\": [\r\n                851\r\n            ]\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/commons/work_units/locations/apply_read",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "commons",
+            "work_units",
+            "locations",
+            "apply_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "IA WFM Data API",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var template = `\r",
+              "    <style type=\"text/css\">\r",
+              "        .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+              "        .tftable th {font-size:10px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+              "        .tftable tr {background-color:#ffffff;}\r",
+              "        .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+              "        .tftable tr:hover {background-color:#e0ffff;}\r",
+              "    </style>\r",
+              "    \r",
+              "    <table class=\"tftable\" border=\"1\">\r",
+              "     <tr>\r",
+              "            <th>Metric Name</th>\r",
+              "            <th>Metric Value</th>\r",
+              "        </tr>\r",
+              "    {{#each response.data.children}}\r",
+              "            <tr>               \r",
+              "                <tr>\r",
+              "                {{#each attributes}}\r",
+              "                <td>\r",
+              "                <th>{{alias}}</th>\r",
+              "                </td>\r",
+              "                {{/each}}\r",
+              "                </tr>\r",
+              "                <tr>\r",
+              "                {{#each attributes}}           \r",
+              "                <td>\r",
+              "                <th>{{value}}</th> \r",
+              "                </td>\r",
+              "                {{/each}}\r",
+              "                </tr>                \r",
+              "            </tr>\r",
+              "        {{/each}}\r",
+              "    </table>\r",
+              "`;\r",
+              " \r",
+              "pm.visualizer.set(template, {response: pm.response.json()});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "kronos-tid",
+            "value": "AK29340-02",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"select\": [\r\n        {\r\n            \"alias\": \"Workunit code\",\r\n            \"key\": \"CORE_WORKUNIT_CODE\"\r\n        },\r\n        {\r\n            \"alias\": \"Workunit name\",\r\n            \"key\": \"CORE_WORKUNIT_NAME\"\r\n        },\r\n        {\r\n            \"alias\": \"Workunit location\",\r\n            \"key\": \"CORE_WORKUNIT_LOCATION\"\r\n        },\r\n        {\r\n            \"alias\": \"Workunit service line\",\r\n            \"key\": \"CORE_WORKUNIT_SVC_LINE\"\r\n        },\r\n        {\r\n            \"alias\": \"Workunit UOS\",\r\n            \"key\": \"CORE_WORKUNIT_UOS\"\r\n        },\r\n        {\r\n            \"alias\": \"Workunit Type\",\r\n            \"key\": \"CORE_WORKUNIT_TYPE\"\r\n        },\r\n        {\r\n            \"alias\": \"Workunit FTE hours\",\r\n            \"key\": \"CORE_WORKUNIT_FTE_HRS\"\r\n        },\r\n        {\r\n            \"alias\": \"Workunit Caregiver switch\",\r\n            \"key\": \"CORE_WORKUNIT_CAREGIVER_SWT\"\r\n        },\r\n        {\r\n            \"alias\": \"Time Increment\",\r\n            \"key\": \"CORE_TIMEINCREMENT\"\r\n        },\r\n        {\r\n            \"alias\": \"Weighted Volume Quantity\",\r\n            \"key\": \"HCA_METRIC_VOL_WEIGHTED\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_HCAVARIABLE_METRIC_PROD_HRS_PER_VOL_WEIGHTED_DAILY\",\r\n            \"alias\": \"Daily Variable Productive Hours Targets/Unit Of Service-Default\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:DEFAULT\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_TGT_HCAVARIABLE_METRIC_PROD_HRS\",\r\n            \"alias\": \"Daily Variable Productive Hours Target-Default\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:DEFAULT\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_TGT_HCAFIXED_METRIC_PROD_HRS\",\r\n            \"alias\": \"Daily Fixed Productive Hours Target-Default\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:DEFAULT\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"alias\": \"Daily Productive Hours\",\r\n            \"key\": \"HCA_METRIC_PROD_HRS\"\r\n        },\r\n        {\r\n            \"alias\": \"Daily Overtime Hours\",\r\n            \"key\": \"HCA_METRIC_OT_HRS\"\r\n        },\r\n        {\r\n            \"alias\": \"Daily Productive Internal Agency Hours\",\r\n            \"key\": \"HCA_METRIC_PROD_INT_AGNCY_HRS\"\r\n        },\r\n        {\r\n            \"alias\": \"Daily Productive Agency Hours\",\r\n            \"key\": \"HCA_METRIC_PROD_AGNCY_HRS\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_TGT\",\r\n            \"alias\": \"Daily Productive Hours Target-Default\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:DEFAULT\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"alias\": \"Regular\",\r\n            \"key\": \"HCA_DRVDKPI_PROD_REG_HRS\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_VAR\",\r\n            \"alias\": \"Daily Productive Hours Variance-Default\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:DEFAULT\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX\",\r\n            \"alias\": \"Daily Productivity Index-Default\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:DEFAULT\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_TGT_PER_VOL_WEIGHTED\",\r\n            \"alias\": \"Daily Productive Hours Target/Unit Of Service-Default\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:DEFAULT\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"alias\": \"Actual/Unit Of Service\",\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_PER_VOL_WEIGHTED\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_ADJUSTMENT\",\r\n            \"alias\": \"Recommended Adj.-Default\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:DEFAULT\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_HCAVARIABLE_METRIC_PROD_HRS_PER_VOL_WEIGHTED_DAILY\",\r\n            \"alias\": \"Daily Variable Productive Hours Targets/Unit Of Service-Alternate\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:ALTERNATE\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_TGT_HCAVARIABLE_METRIC_PROD_HRS\",\r\n            \"alias\": \"Daily Variable Productive Hours Target-Alternate\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:ALTERNATE\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_TGT_HCAFIXED_METRIC_PROD_HRS\",\r\n            \"alias\": \"Daily Fixed Productive Hours Target-Alternate\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:ALTERNATE\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_TGT\",\r\n            \"alias\": \"Daily Productive Hours Target-Alternate\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:ALTERNATE\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_VAR\",\r\n            \"alias\": \"Daily Productive Hours Variance-Alternate\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:ALTERNATE\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX\",\r\n            \"alias\": \"Daily Productivity Index-Alternate\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:ALTERNATE\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_TGT_PER_VOL_WEIGHTED\",\r\n            \"alias\": \"Daily Productive Hours Target/Unit Of Service-Alternate\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:ALTERNATE\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_ADJUSTMENT\",\r\n            \"alias\": \"Recommended Adj.-Alternate\",\r\n            \"properties\": [\r\n                {\r\n                    \"key\": \"target:ALTERNATE\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"alias\": \"CORE_TIMEINCREMENT_START\",\r\n            \"key\": \"CORE_TIMEINCREMENT_START\"\r\n        },\r\n        {\r\n            \"alias\": \"CORE_TIMEINCREMENT_END\",\r\n            \"key\": \"CORE_TIMEINCREMENT_END\"\r\n        },\r\n        {\r\n            \"alias\": \"FULLTIME_OVERTIME_HOURS\",\r\n            \"key\": \"HCA_METRIC_FT_OT_HOURS\"\r\n        },\r\n        {\r\n            \"alias\": \"PARTTIME_OVERTIME_HOURS\",\r\n            \"key\": \"HCA_METRIC_PT_OT_HOURS\"\r\n        },\r\n        {\r\n            \"alias\": \"INTERNALAGENCY_OVERTIME_HOURS\",\r\n            \"key\": \"HCA_METRIC_IA_OT_HOURS\"\r\n        },\r\n        {\r\n            \"alias\": \"POOLTIME_OVERTIME_HOURS\",\r\n            \"key\": \"HCA_METRIC_POOL_OT_HOURS\"\r\n        },\r\n        {\r\n            \"alias\": \"PERDIEM_OVERTIME_HOURS\",\r\n            \"key\": \"HCA_METRIC_PDIEM_OT_HOURS\"\r\n        },\r\n        {\r\n            \"alias\": \"AGENCY_OVERTIME_HOURS\",\r\n            \"key\": \"HCA_METRIC_AGENCY_OT_HOURS\"\r\n        }\r\n        ,\r\n        {\r\n            \"alias\": \"FULLTIME_OVERTIME_COSTS\",\r\n            \"key\": \"HCA_METRIC_FT_OT_COSTS\"\r\n        },\r\n        {\r\n            \"alias\": \"PARTTIME_OVERTIME_COSTS\",\r\n            \"key\": \"HCA_METRIC_PT_OT_COSTS\"\r\n        },\r\n        {\r\n            \"alias\": \"INTERNALAGENCY_OVERTIME_COSTS\",\r\n            \"key\": \"HCA_METRIC_IA_OT_COSTS\"\r\n        },\r\n        {\r\n            \"alias\": \"POOLTIME_OVERTIME_COSTS\",\r\n            \"key\": \"HCA_METRIC_POOL_OT_COSTS\"\r\n        },\r\n        {\r\n            \"alias\": \"PERDIEM_OVERTIME_COSTS\",\r\n            \"key\": \"HCA_METRIC_PDIEM_OT_COSTS\"\r\n        },\r\n        {\r\n            \"alias\": \"AGENCY_OVERTIME_COSTS\",\r\n            \"key\": \"HCA_METRIC_AGENCY_OT_COSTS\"\r\n        }\r\n    ],\r\n    \"options\": {\r\n        \"timeIncrementFormat\": \"LONG_DATE\"\r\n    },\r\n    \"from\": {\r\n        \"view\": \"WORKUNIT_TIME_SERIES\",\r\n        \"workUnitSet\": {\r\n            \"dateRange\": {\r\n                \"endDate\": \"2023-01-08\",\r\n                \"options\": {\r\n                    \"timeIncrement\": \"DAY\",\r\n                    \"referenceDate\": \"2023-01-08\"\r\n                },\r\n                \"startDate\": \"2022-12-25\"\r\n            },\r\n            \"workUnits\": {\r\n                \"ids\": [\r\n                    38,\r\n                    43\r\n                ]\r\n            }\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/commons/data/multi_read",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "commons",
+            "data",
+            "multi_read"
+          ],
+          "query": [
+            {
+              "key": "kronors-tid",
+              "value": "1623410600651",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Dynamic Chunking API",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"request_batches_pages\": {\r\n        \"data\": {\r\n            \"select\": [\r\n                {\r\n                    \"alias\": \"HCA_TGT_HCAFIXED_METRIC_PROD_HRS\",\r\n                    \"key\": \"HCA_TGT_HCAFIXED_METRIC_PROD_HRS\"\r\n                },\r\n                {\r\n                    \"alias\": \"HCA_TGT_HCAVARIABLE_METRIC_PROD_HRS\",\r\n                    \"key\": \"HCA_TGT_HCAVARIABLE_METRIC_PROD_HRS\"\r\n                }\r\n            ],\r\n            \"from\": {\r\n                \"view\": \"WORKUNIT_TIME_SERIES\",\r\n                \"workUnitSet\": {\r\n                    \"dateRange\": {\r\n                        \"endDate\": \"2021-08-11\",\r\n                        \"options\": {\r\n                            \"timeIncrement\": \"DAY\",\r\n                            \"referenceDate\": \"2022-08-07\"\r\n                        },\r\n                        \"startDate\": \"2021-08-08\"\r\n                    },\r\n                    \"workUnits\": {\r\n                        \"ids\": [\r\n                           1,2,3,4\r\n                        ]\r\n                    }\r\n                }\r\n            }\r\n        },\r\n        \"options\": {\r\n            \"pageIndex\": 0,\r\n            \"requestAgent\": \"API\"\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/commons/internal/data/composite",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "commons",
+            "internal",
+            "data",
+            "composite"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Smart Tiles Create",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Daily Productivity PROD 3\",\r\n    \"label\": \"Daily Productivity PRD OT\",\r\n    \"height\": {\r\n        \"id\": \"TALL\",\r\n        \"name\": \"Tall\"\r\n    },\r\n    \"url\": \"/wfd/component/card/\",\r\n    \"serviceId\": {},\r\n    \"navigation\": false,\r\n    \"cardType\": {\r\n        \"id\": \"MVHCANALYTIC\",\r\n        \"name\": \"Healthcare Productivity\"\r\n    },\r\n    \"components\": [\r\n        {\r\n            \"type\": \"CONTEXT\",\r\n            \"params\": {\r\n                \"timeframe\": true,\r\n                \"workUnitHyperfind\": true\r\n            }\r\n        },\r\n        {\r\n            \"type\": \"INFOMETRIC\",\r\n            \"params\": {\r\n                \"noWrap\": true,\r\n                \"interval\": false,\r\n                \"rawLabels\": true,\r\n                \"dataSource\": \"WORKUNIT\",\r\n                \"hyperfind\": {\r\n                    \"id\": -1,\r\n                    \"qualifier\": \"All My WorkUnits\"\r\n                },\r\n                \"dateRange\": {\r\n                    \"startDate\": \"2022-02-20\",\r\n                    \"endDate\": \"2022-03-25\",\r\n                    \"options\": {\r\n                        \"referenceDate\": \"2022-03-25\"\r\n                    }\r\n                },\r\n                \"columnDetails\": [\r\n                    {\r\n                        \"key\": \"CORE_WORKUNIT_NAME\",\r\n                        \"alias\": \"Work Unit Name\",\r\n                        \"isPrimary\": \"mm8\",\r\n                        \"hideOnTile\": true\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_DRVDKPI_PROD_HRS_ADJUSTMENT\",\r\n                        \"alias\": \"Recommended Adjustment\",\r\n                        \"properties\": [\r\n                            {\r\n                                \"key\": \"stp:Pay_Period_to_Date 2\"\r\n                            }\r\n                        ],\r\n                        \"isPrimary\": false,\r\n                        \"hideOnTile\": false\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_PROD_HRS\",\r\n                        \"alias\": \"Productivity Hours\"\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_OT_HRS\",\r\n                        \"alias\": \"Overtime Hours\"\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_PROD_HRS\",\r\n                        \"alias\": \"PTD Productive Hours\",\r\n                        \"properties\": [\r\n                            {\r\n                                \"key\": \"stp:Pay_Period_to_Date\"\r\n                            }\r\n                        ],\r\n                        \"isPrimary\": true,\r\n                        \"hideOnTile\": false\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX\",\r\n                        \"alias\": \"Productivity Index\",\r\n                        \"isPrimary\": false,\r\n                        \"hideOnTile\": true\r\n                    }\r\n                ],\r\n                \"itemsPerSlide\": 4,\r\n                \"startFromIndex\": 0,\r\n                \"singleSlideOffset\": true\r\n            }\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/commons/widget/custom_tiles/",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "commons",
+            "widget",
+            "custom_tiles",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Smart Tiles Update",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Daily Productivity PROD 2\",\r\n    \"label\": \"Daily Productivity PRD OT\",\r\n    \"height\": {\r\n        \"id\": \"TALL\",\r\n        \"name\": \"Tall\"\r\n    },\r\n    \"url\": \"/wfd/component/card/\",\r\n    \"serviceId\": {},\r\n    \"navigation\": false,\r\n    \"cardType\": {\r\n        \"id\": \"MVHCANALYTIC\",\r\n        \"name\": \"Healthcare Productivity\"\r\n    },\r\n    \"components\": [\r\n        {\r\n            \"type\": \"CONTEXT\",\r\n            \"params\": {\r\n                \"timeframe\": true,\r\n                \"workUnitHyperfind\": true\r\n            }\r\n        },\r\n        {\r\n            \"type\": \"INFOMETRIC\",\r\n            \"params\": {\r\n                \"noWrap\": true,\r\n                \"interval\": false,\r\n                \"rawLabels\": true,\r\n                \"dataSource\": \"WORKUNIT\",\r\n                \"hyperfind\": {\r\n                    \"id\": -1,\r\n                    \"qualifier\": \"All My WorkUnits\"\r\n                },\r\n                \"dateRange\": {\r\n                    \"startDate\": \"2022-02-20\",\r\n                    \"endDate\": \"2022-03-25\",\r\n                    \"options\": {\r\n                        \"referenceDate\": \"2022-03-25\"\r\n                    }\r\n                },\r\n                \"columnDetails\": [\r\n                    {\r\n                        \"key\": \"CORE_WORKUNIT_NAME\",\r\n                        \"alias\": \"Work Unit Name\",\r\n                        \"isPrimary\": \"mm8\",\r\n                        \"hideOnTile\": true\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_DRVDKPI_PROD_HRS_ADJUSTMENT\",\r\n                        \"alias\": \"Recommended Adjustment\",\r\n                        \"properties\": [\r\n                            {\r\n                                \"key\": \"stp:Pay_Period_to_Date 2\"\r\n                            }\r\n                        ],\r\n                        \"isPrimary\": false,\r\n                        \"hideOnTile\": false\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_PROD_HRS\",\r\n                        \"alias\": \"Productivity Hours\"\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_OT_HRS\",\r\n                        \"alias\": \"Overtime Hours\"\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_PROD_HRS\",\r\n                        \"alias\": \"PTD Productive Hours\",\r\n                        \"properties\": [\r\n                            {\r\n                                \"key\": \"stp:Pay_Period_to_Date\"\r\n                            }\r\n                        ],\r\n                        \"isPrimary\": true,\r\n                        \"hideOnTile\": false\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX\",\r\n                        \"alias\": \"Productivity Index\",\r\n                        \"isPrimary\": false,\r\n                        \"hideOnTile\": true\r\n                    }\r\n                ],\r\n                \"itemsPerSlide\": 4,\r\n                \"startFromIndex\": 0,\r\n                \"singleSlideOffset\": true\r\n            }\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/commons/widget/custom_tiles/67",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "commons",
+            "widget",
+            "custom_tiles",
+            "67"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Smart Tiles Get",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Daily Productivity With PROD and OT\",\r\n    \"label\": \"Daily Productivity PRD OT\",\r\n    \"height\": {\r\n        \"id\": \"TALL\",\r\n        \"name\": \"Tall\"\r\n    },\r\n    \"url\": \"/wfd/component/card/\",\r\n    \"serviceId\": {},\r\n    \"navigation\": false,\r\n    \"cardType\": {\r\n        \"id\": \"MVHCANALYTIC\",\r\n        \"name\": \"Healthcare Productivity\"\r\n    },\r\n    \"components\": [\r\n        {\r\n            \"type\": \"CONTEXT\",\r\n            \"params\": {\r\n                \"timeframe\": true,\r\n                \"workUnitHyperfind\": true\r\n            }\r\n        },\r\n        {\r\n            \"type\": \"INFOMETRIC\",\r\n            \"params\": {\r\n                \"noWrap\": true,\r\n                \"interval\": false,\r\n                \"rawLabels\": true,\r\n                \"dataSource\": \"WORKUNIT\",\r\n                \"hyperfind\": {\r\n                    \"id\": 10,\r\n                    \"qualifier\": \"IA_API_HYPERFIND_MEDSURG_AGENCY120220330043223\"\r\n                },\r\n                \"dateRange\": {\r\n                    \"startDate\": \"2022-02-20\",\r\n                    \"endDate\": \"2022-03-25\",\r\n                    \"options\": {\r\n                        \"referenceDate\": \"2022-03-25\"\r\n                    }\r\n                },\r\n                \"columnDetails\": [\r\n                    {\r\n                        \"key\": \"CORE_WORKUNIT_NAME\",\r\n                        \"alias\": \"Work Unit Name\",\r\n                        \"isPrimary\": false,\r\n                        \"hideOnTile\": true\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_DRVDKPI_PROD_HRS_ADJUSTMENT\",\r\n                        \"alias\": \"Recommended Adjustment\",\r\n                        \"properties\": [\r\n                            {\r\n                                \"key\": \"stp:Pay_Period_to_Date\"\r\n                            }\r\n                        ],\r\n                        \"isPrimary\": false,\r\n                        \"hideOnTile\": false\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_PROD_HRS\",\r\n                        \"alias\": \"Productivity Hours\"\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_OT_HRS\",\r\n                        \"alias\": \"Overtime Hours\"\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_PROD_HRS\",\r\n                        \"alias\": \"PTD Productive Hours\",\r\n                        \"properties\": [\r\n                            {\r\n                                \"key\": \"stp:Pay_Period_to_Date\"\r\n                            }\r\n                        ],\r\n                        \"isPrimary\": true,\r\n                        \"hideOnTile\": false\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX\",\r\n                        \"alias\": \"Productivity Index\",\r\n                        \"isPrimary\": false,\r\n                        \"hideOnTile\": true\r\n                    }\r\n                ],\r\n                \"itemsPerSlide\": 4,\r\n                \"startFromIndex\": 0,\r\n                \"singleSlideOffset\": true\r\n            }\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/commons/widget/custom_tiles/67",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "commons",
+            "widget",
+            "custom_tiles",
+            "67"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Smart Tiles Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Daily Productivity With PROD and OT\",\r\n    \"label\": \"Daily Productivity PRD OT\",\r\n    \"height\": {\r\n        \"id\": \"TALL\",\r\n        \"name\": \"Tall\"\r\n    },\r\n    \"url\": \"/wfd/component/card/\",\r\n    \"serviceId\": {},\r\n    \"navigation\": false,\r\n    \"cardType\": {\r\n        \"id\": \"MVHCANALYTIC\",\r\n        \"name\": \"Healthcare Productivity\"\r\n    },\r\n    \"components\": [\r\n        {\r\n            \"type\": \"CONTEXT\",\r\n            \"params\": {\r\n                \"timeframe\": true,\r\n                \"workUnitHyperfind\": true\r\n            }\r\n        },\r\n        {\r\n            \"type\": \"INFOMETRIC\",\r\n            \"params\": {\r\n                \"noWrap\": true,\r\n                \"interval\": false,\r\n                \"rawLabels\": true,\r\n                \"dataSource\": \"WORKUNIT\",\r\n                \"hyperfind\": {\r\n                    \"id\": 10,\r\n                    \"qualifier\": \"IA_API_HYPERFIND_MEDSURG_AGENCY120220330043223\"\r\n                },\r\n                \"dateRange\": {\r\n                    \"startDate\": \"2022-02-20\",\r\n                    \"endDate\": \"2022-03-25\",\r\n                    \"options\": {\r\n                        \"referenceDate\": \"2022-03-25\"\r\n                    }\r\n                },\r\n                \"columnDetails\": [\r\n                    {\r\n                        \"key\": \"CORE_WORKUNIT_NAME\",\r\n                        \"alias\": \"Work Unit Name\",\r\n                        \"isPrimary\": false,\r\n                        \"hideOnTile\": true\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_DRVDKPI_PROD_HRS_ADJUSTMENT\",\r\n                        \"alias\": \"Recommended Adjustment\",\r\n                        \"properties\": [\r\n                            {\r\n                                \"key\": \"stp:Pay_Period_to_Date\"\r\n                            }\r\n                        ],\r\n                        \"isPrimary\": false,\r\n                        \"hideOnTile\": false\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_PROD_HRS\",\r\n                        \"alias\": \"Productivity Hours\"\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_OT_HRS\",\r\n                        \"alias\": \"Overtime Hours\"\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_METRIC_PROD_HRS\",\r\n                        \"alias\": \"PTD Productive Hours\",\r\n                        \"properties\": [\r\n                            {\r\n                                \"key\": \"stp:Pay_Period_to_Date\"\r\n                            }\r\n                        ],\r\n                        \"isPrimary\": true,\r\n                        \"hideOnTile\": false\r\n                    },\r\n                    {\r\n                        \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX\",\r\n                        \"alias\": \"Productivity Index\",\r\n                        \"isPrimary\": false,\r\n                        \"hideOnTile\": true\r\n                    }\r\n                ],\r\n                \"itemsPerSlide\": 4,\r\n                \"startFromIndex\": 0,\r\n                \"singleSlideOffset\": true\r\n            }\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{URL}}/commons/widget/custom_tiles/123",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "commons",
+            "widget",
+            "custom_tiles",
+            "123"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "info": {
+    "_postman_id": "4b152304-712f-4c61-a188-3c73e0c05e87",
+    "name": "Report API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Report 14 Day",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJNMS1SZDJUcnFqZmQ0ZWh5QWRLYSJ9.eyJ0aWQiOiJvcmdfVnIxa0tyNmExeDNkYWRCbiIsInRhIjoiaGNhYXRoMTExX3VhdDA5IiwiZ2xvYmFsX3RlbmFudF9pZCI6ImY4ZThhN2JjLTQ4MjUtNGI0NC1iZDY5LWZlODgxYzFmODU1OSIsIm5hbWUiOiJDWFN5c0FkbWluIiwiZ2l2ZW5fbmFtZSI6IkNYU3lzQWRtaW4iLCJmYW1pbHlfbmFtZSI6IkNYU3lzQWRtaW4iLCJlbWFpbCI6ImN4c3lzYWRtaW5AdWtnLmNvbSIsInByZWZlcnJlZF91c2VybmFtZSI6ImN4c3lzYWRtaW4iLCJpc3MiOiJodHRwczovL3dlbGNvbWUtc3RhZ2luZy10ZXN0LnVrZy5kZXYvIiwic3ViIjoiYXV0aDB8YzZmYjdmODEtMDQ1Yy00ZGQwLTk3OWEtZTdlN2MyZWRlMDg2IiwiYXVkIjpbImh0dHBzOi8vd2ZtLnVrZy5uZXQvYXBpIiwiaHR0cHM6Ly93ZWxjb21lLXN0YWdpbmctdGVzdC51a2ctc3RhZ2luZy5hdXRoMGFwcC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjk5NTk4ODUwLCJleHAiOjE2OTk2ODUyNTAsImF6cCI6IjMxOGQ1NWUxLTJhMDAtNDc3ZS05MzQwLTA2NWFkYjVhZmFmOSIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIHJlYWQ6dXNlcmluZm8gcHJvZmlsZSBlbWFpbCBhY2Nlc3M6d2ZtIiwiZ3R5IjoicGFzc3dvcmQifQ.QtkAkAdSj2bGoepq3zPTKerJ8Qa9bDFopSrjEGPTvnOs3vEHBqCSyp_XI0u8wHyEcJMQSN0-1lYv1eeLT6xbhYv0iC-cYEZdcBgRiSXY7LUYpMaLv3x6deZk0ymrFEyDkU-IZllL4XQ4zMDMJ5lGKe9ZPzxhEFWNzI_3XzYTxuZkqtgHeMdAwRQfXHTIGjyMwhtM6roSPWcjsTaFNiWB6QEJvub4PdbJuN2qoGgmzlE-Xsgcl9o48ZBa_Zvd8_AiN25n4CWuShYWsnQe10X_vEJD1H-I7SnV3Y48ek1gbWLpxVwoMFucebq_gnpWxhLhfUKYXnKbvHKzCcIy8zSUWw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"select\": [\n        {\n            \"key\": \"HCA_ELMNT_WORKUNIT_NAME\",\n            \"alias\": \"Work Unit Name\"\n        },\n        {\n            \"key\": \"HCA_DRVDMTR_DATA_DATE\",\n            \"alias\": \"Dates\"\n        },\n        {\n            \"key\": \"HCA_METRIC_VOL_WEIGHTED\",\n            \"alias\": \"Weighted Volume Quantity\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_HCAVARIABLE_METRIC_PROD_HRS_PER_VOL_WEIGHTED_DAILY\",\n            \"alias\": \"Daily Variable Hour Targets / UoS\"\n        },\n        {\n            \"key\": \"HCA_TGT_HCAVARIABLE_METRIC_PROD_HRS\",\n            \"alias\": \"Daily Variable Productive Hours Target\"\n        },\n        {\n            \"key\": \"HCA_TGT_HCAFIXED_METRIC_PROD_HRS\",\n            \"alias\": \"Daily Fixed Productive Hours Target\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_HRS\",\n            \"alias\": \"Daily Productive Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_OT_HRS\",\n            \"alias\": \"Daily Overtime Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_INT_AGNCY_HRS\",\n            \"alias\": \"Daily Productive Internal Agency Hours\"\n        },\n        {\n            \"key\": \"HCA_METRIC_PROD_AGNCY_HRS\",\n            \"alias\": \"Daily Productive Agency Hours\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_TGT\",\n            \"alias\": \"Target Productive\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_REG_HRS\",\n            \"alias\": \"Regular\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_VAR\",\n            \"alias\": \"Productive Variance\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX\",\n            \"alias\": \"Productivity Index\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_TGT_PER_VOL_WEIGHTED\",\n            \"alias\": \"Target/ UOS\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_PER_VOL_WEIGHTED\",\n            \"alias\": \"Actual/ UOS\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_VAR_RSUM\",\n            \"alias\": \"Productive Variance - Cumulative\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX_RSUM\",\n            \"alias\": \"Productivity Index - Cumulative\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_TGT_PER_VOL_WEIGHTED_RSUM\",\n            \"alias\": \"Target/ UOS - Cumulative\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_PER_VOL_WEIGHTED_RSUM\",\n            \"alias\": \"Actual/ UOS - Cumulative\"\n        },\n        {\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_ADJUSTMENT\",\n            \"alias\": \"Recommended Adj\"\n        },\n        {\n            \"key\": \"HCA_ELMNT_WORKUNIT_UOS\",\n            \"alias\": \"Work Unit Unit of service\"\n        },\n        {\n            \"key\": \"HCA_ELMNT_DATA_FRESHNESS\",\n            \"alias\": \"Latest Date Available\"\n        },\n        {\n            \"key\": \"HCA_DRVDMTR_LATEST_DATE_AVAILABLE\",\n            \"alias\": \"HCA Latest Date Available\"\n        },\n        {\n            \"key\": \"HCA_DRVDMTR_LATEST_STATUS_AVAILABLE\",\n            \"alias\": \"HCA Latest Status Available\"\n        }\n    ],\n    \"options\": {\n        \"reportTypeIdentifier\": \"14Days\",\n        \"target\": {\n            \"qualifier\": \"DEFAULT\"\n        }\n    },\n    \"from\": {\n        \"dateRange\": {\n            \"symbolicPeriod\": {\n                \"qualifier\": \"Fourteen_Days_Pay_Period\"\n            },\n            \"options\": {\n                \"daysOfOperation\": true,\n                \"timeIncrement\": \"DAY\",\n                \"referenceDate\": \"2023-06-07\"\n            }\n        },\n        \"workUnits\": {\n            \"ids\": [\n                1\n            ]\n        }\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca72-bck.int.dev.mykronos.com:80/hcaservice/restcall/v1/hca/reports/0/apply_read",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca72-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "reports",
+            "0",
+            "apply_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6PP",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"from\": {\n        \"workUnits\": {\n            \"ids\": [\n                250\n            ]\n        },\n        \"dateRange\": {\n            \"symbolicPeriod\": {\n                \"qualifier\": \"Last_Six_Pay_Period\"\n            },\n            \"options\": {\n                \"timeIncrement\": \"PAYPERIOD\",\n                \"referenceDate\": \"2020-04-22\",\n                \"daysOfOperation\": true\n            }\n        }\n    },\n    \"options\": {\n        \"target\": {\n            \"qualifier\": \"Default\"\n        }\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca65-bck.int.dev.mykronos.com/hcaservice/restcall/v1/hca/reports/-5/apply_read",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca65-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "reports",
+            "-5",
+            "apply_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Weighted Volume Report",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"select\": [\r\n        {\r\n            \"key\": \"HCA_ELMNT_WORKUNIT_NAME\",\r\n            \"alias\": \"Work Unit Name\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_ELMNT_WORKUNIT_NAME\",\r\n            \"alias\": \"Work Unit Name - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_RAW_VOL_YTD_PP\",\r\n            \"alias\": \"Actual Volume - Year To Date\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_RAW_VOL_YTD_PP\",\r\n            \"alias\": \"Actual Volume - Year To Date - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_RAW_VOL_PERIOD\",\r\n            \"alias\": \"Actual Volume - Period\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_RAW_VOL_PERIOD\",\r\n            \"alias\": \"Actual Volume - Period - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_LABEL_VOL\",\r\n            \"alias\": \"Procedure Code\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_LABEL_VOL\",\r\n            \"alias\": \"Procedure Code - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_ALLOCATED_VOL_YTD_PP\",\r\n            \"alias\": \"UOS Total - Year To Date\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_ALLOCATED_VOL_YTD_PP\",\r\n            \"alias\": \"UOS Total - Year To Date - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_LABEL_VOL_DESC\",\r\n            \"alias\": \"Procedure Description\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_LABEL_VOL_DESC\",\r\n            \"alias\": \"Procedure Description - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_ALLOCATED_VOL_PERIOD\",\r\n            \"alias\": \"UOS Total - Period\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDSPL_ALLOCATED_VOL_PERIOD\",\r\n            \"alias\": \"UOS Total - Period - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_WEIGHT\",\r\n            \"alias\": \"Actual Volume - Weight\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_WEIGHT\",\r\n            \"alias\": \"Actual Volume - Weight - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_ELMNT_WORKUNIT_UOS\",\r\n            \"alias\": \"Work Unit Unit of service\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_ELMNT_WORKUNIT_UOS\",\r\n            \"alias\": \"Work Unit Unit of service - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_ELMNT_DATA_FRESHNESS\",\r\n            \"alias\": \"Latest Date Available\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_ELMNT_DATA_FRESHNESS\",\r\n            \"alias\": \"Latest Date Available - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_DATA_START_FYTD_PP\",\r\n            \"alias\": \"Fiscal Year To Date - Start\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_DATA_START_FYTD_PP\",\r\n            \"alias\": \"Fiscal Year To Date - Start - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_DATA_END_FYTD_PP\",\r\n            \"alias\": \"Fiscal Year To Date - End\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_DATA_END_FYTD_PP\",\r\n            \"alias\": \"Fiscal Year To Date - End - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_LATEST_DATE_AVAILABLE\",\r\n            \"alias\": \"HCA Latest Date Available\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_LATEST_STATUS_AVAILABLE\",\r\n            \"alias\": \"HCA Latest Status Available\"\r\n        }\r\n    ],\r\n    \"from\": {\r\n        \"workUnits\": {\r\n            \"ids\": [\r\n                8\r\n            ],\r\n            \"rollupBy\": [\r\n                {\r\n                    \"qualifier\": \"VolumeLabel\"\r\n                }\r\n            ]\r\n        },\r\n        \"dateRange\": {\r\n            \"startDate\": \"2021-10-13\",\r\n            \"endDate\": \"2021-10-13\",\r\n            \"options\": {\r\n                \"timeIncrement\": \"DAY\"\r\n            }\r\n        }\r\n    },\r\n    \"options\": {\r\n        \"reportTypeIdentifier\": \"Volume\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca70-bck.int.dev.mykronos.com:80/hcaservice/restcall/v1/hca/reports/0/apply_read",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca70-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "reports",
+            "0",
+            "apply_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PDHD Report",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"options\": {\r\n        \"target\": {\r\n            \"qualifier\": \"DEFAULT\"\r\n        }\r\n    },\r\n    \"from\": {\r\n        \"dateRange\": {\r\n            \"endDate\": \"2020-11-15\",\r\n            \"options\": {\r\n                \"daysOfOperation\": true,\r\n                \"timeIncrement\": \"DAY\"\r\n            },\r\n            \"startDate\": \"2020-06-01\"\r\n        },\r\n        \"workUnits\": {\r\n            \"rollupBy\": [\r\n                {\r\n                    \"qualifier\": \"TOTALS_ONLY\"\r\n                }\r\n            ],\r\n            \"qualifiers\": [\r\n                \"NH-Nursing-20201130112315\"\r\n            ]\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca66-bck.int.dev.mykronos.com:80/hcaservice/restcall/v1/hca/reports/-8/apply_read",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca66-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "reports",
+            "-8",
+            "apply_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Report Behaviour - only WFMUser1 authenticated",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"maxDurationThresholdLimit\": \"\",\r\n    \"sizeAlgo\": \"size\",\r\n    \"domain\": \"HCA\",\r\n    \"name\": \"WorkloadVolumeAndWeights\",\r\n    \"maxThresholdLimit\": \"1\",\r\n    \"dataPoints\": 1,\r\n    \"priority\": \"P0\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca05-b-back-k8s.int.dev.mykronos.com:80/wfc/restcall/v1/platform/internal/reports/reportBehavior",
+          "protocol": "http",
+          "host": [
+            "hca05-b-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "internal",
+            "reports",
+            "reportBehavior"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "info": {
+    "_postman_id": "d27b4ae9-8d46-4ed2-85d9-156e2083c1b8",
+    "name": "Node Refresher API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Node Refresh BCK",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "AUTHN_TOKEN=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjlEOGxWeUExY0lvN2REQVZXMXBVcXl4VEwyND0ifQ.eyJpc3MiOiJodHRwOi8va2FjZDAxLXBpcDIwLWF0aDUxLW9hbS5pbnQuYWNkLm15a3Jvbm9zLmNvbTo4MCIsImlhdCI6MTYxNzc3ODI3MiwiZXhwIjoxNjE3ODA3MDcyLCJzdWIiOiJDWFN5c0FkbWluIiwibm9uY2UiOiI8RG4tMFM2X1d6QTJNaiIsInJlYWxtIjoiL3BpaGNyMDMzMWNvbW5wMF9ub25wcmRfMDEiLCJpcHIiOmZhbHNlfQ.Qlw85nsKKsG1jF_yTHsxyMStTPNdOplfBsKNLl_lwPF_idqfcATStoP81zjWkKqgtW1geg3TO_Cuz-R-m5Jao0Af-nUTDgE1Ue4F2QIKnvx_nWhLLe-tqadJw6P9fGju9vMJzLajBOjb49B2B7f45xUspmoHSf8jkyKtZu5UK2KUUKX6vXE8WMgrNSLZFOwI2yWeTh2QjzsbXAvILDBXjJobHVmuychL3mevuUx2q441CMc75QognvA6nq9NDpqmbRKyJhHF3sVIf-_jVqek4b-XssHAjBrsVSWHYGX71FBlUYZklbxDQCeviLc23ONjEzVJJ9fRL0ghCl7ejnd9Mw|cGZRVlJBWXcrS0JaMjBld2lBTVVCRTJxaDAvYnZ4NFRXWTJIMkluRWZNUEFHT1ltVkg0d2xBdm9kaUU2VDI3dU03OC92K2ZycnU1UHdWa3BvVi91VUhiZGkwUERXTzFYM3R4OStkRW9GUWVzcnlTL2E3dldOc3k1SldJUWVyd1FRNW41MFZpa0swS0hZMm9wZ09NdXJ2OUQxZ2lKM1FpaUxSM3VHVHJGM0g5NXRNclpSa0x1TWdjR3pzUGVLVGZHY2pqYmZqdXF4TmlDcXgrVjlWejIvWDZ1UGY5aTZyeG9WdWhpZmwzaUJNQkZBTXdwam5LSWJxNjhRbUpJb2ZsK1l1R053Q1d0STNRQ0RwWWpmMnBySVdtUkdUNEg0eWJLOG56dGZIY25uQXJDb1VRMTUxWjlHenpzRURQUGl1TXplczRvakMxeTg4TDZkM2M3c08wUExUUzJaTXlJNGFFRHBCK2hYSW5Xd05nbVlOTWowZ3N1WTZyU0xraytmUDZQbS9VbWl1NU5MQ1FpYjNPN1BFWWUvYkp4azgrYTRWYlE0RS84YVlqRjNhdkZwazJoWEdKODhRWllVNlhTN0d4SEhCbXd4UTZRbGFrdVd2U0psbUY3UTlsRWo1NWQyZXVWeUJ0blhyT3Y5UzBWWGJYcXV5NllJcm5zQk1FTEx6aHRlaERkZ2ZOWitDUGM3bTNjSDNaYitIYWEweVdJcExPbTZiMmZISnk5WVJEd3FwNFRkS2tGdVZzcjVlWHNVUEdua3NObER5dnBRSWRQRVJwc3ZYMTFoZ1FwYTdtRmlXYmcwbXZoNzdFUWJ6RDJxV2R5czBxUGhwbHJ4dTJCekVBN3VmNVIwQ1gwM2x3SEM1Q1VPOXpPVlVhamVhQ3FiYmNibmxXeEtCdGtVRkhCekxZaUo1Q0NOUHQxeDRDcnVSNVVHZXZDUGNEekpPS0dXRllJRDJlRFpKWVNiaFROUGpsMDMzMm4zeHlESkJoVjc4OTJKSEFzbVRSdk0yYjZsdjla;authn_ssid=CEvOTo4IHfFdslco0wpTvxAkimQ.*AAJTSQACMDIAAlNLABxNWUhUNjJHbUt3SmVHdXBrdmxrVVFKYmV4Qjg9AAR0eXBlAANDVFMAAlMxAAIwMw..*; ",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://kacd01-pip40-ins01-wfm75-bck-617995618-1.int.acd.mykronos.com:80/wfc/restcall/organization/v1/node_helper/refresh",
+          "protocol": "http",
+          "host": [
+            "kacd01-pip40-ins01-wfm75-bck-617995618-1",
+            "int",
+            "acd",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "organization",
+            "v1",
+            "node_helper",
+            "refresh"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Node Refresh BGP",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "AUTHN_TOKEN=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjlEOGxWeUExY0lvN2REQVZXMXBVcXl4VEwyND0ifQ.eyJpc3MiOiJodHRwOi8va2FjZDAxLXBpcDIwLWF0aDUxLW9hbS5pbnQuYWNkLm15a3Jvbm9zLmNvbTo4MCIsImlhdCI6MTYxNzc3ODI3MiwiZXhwIjoxNjE3ODA3MDcyLCJzdWIiOiJDWFN5c0FkbWluIiwibm9uY2UiOiI8RG4tMFM2X1d6QTJNaiIsInJlYWxtIjoiL3BpaGNyMDMzMWNvbW5wMF9ub25wcmRfMDEiLCJpcHIiOmZhbHNlfQ.Qlw85nsKKsG1jF_yTHsxyMStTPNdOplfBsKNLl_lwPF_idqfcATStoP81zjWkKqgtW1geg3TO_Cuz-R-m5Jao0Af-nUTDgE1Ue4F2QIKnvx_nWhLLe-tqadJw6P9fGju9vMJzLajBOjb49B2B7f45xUspmoHSf8jkyKtZu5UK2KUUKX6vXE8WMgrNSLZFOwI2yWeTh2QjzsbXAvILDBXjJobHVmuychL3mevuUx2q441CMc75QognvA6nq9NDpqmbRKyJhHF3sVIf-_jVqek4b-XssHAjBrsVSWHYGX71FBlUYZklbxDQCeviLc23ONjEzVJJ9fRL0ghCl7ejnd9Mw|cGZRVlJBWXcrS0JaMjBld2lBTVVCRTJxaDAvYnZ4NFRXWTJIMkluRWZNUEFHT1ltVkg0d2xBdm9kaUU2VDI3dU03OC92K2ZycnU1UHdWa3BvVi91VUhiZGkwUERXTzFYM3R4OStkRW9GUWVzcnlTL2E3dldOc3k1SldJUWVyd1FRNW41MFZpa0swS0hZMm9wZ09NdXJ2OUQxZ2lKM1FpaUxSM3VHVHJGM0g5NXRNclpSa0x1TWdjR3pzUGVLVGZHY2pqYmZqdXF4TmlDcXgrVjlWejIvWDZ1UGY5aTZyeG9WdWhpZmwzaUJNQkZBTXdwam5LSWJxNjhRbUpJb2ZsK1l1R053Q1d0STNRQ0RwWWpmMnBySVdtUkdUNEg0eWJLOG56dGZIY25uQXJDb1VRMTUxWjlHenpzRURQUGl1TXplczRvakMxeTg4TDZkM2M3c08wUExUUzJaTXlJNGFFRHBCK2hYSW5Xd05nbVlOTWowZ3N1WTZyU0xraytmUDZQbS9VbWl1NU5MQ1FpYjNPN1BFWWUvYkp4azgrYTRWYlE0RS84YVlqRjNhdkZwazJoWEdKODhRWllVNlhTN0d4SEhCbXd4UTZRbGFrdVd2U0psbUY3UTlsRWo1NWQyZXVWeUJ0blhyT3Y5UzBWWGJYcXV5NllJcm5zQk1FTEx6aHRlaERkZ2ZOWitDUGM3bTNjSDNaYitIYWEweVdJcExPbTZiMmZISnk5WVJEd3FwNFRkS2tGdVZzcjVlWHNVUEdua3NObER5dnBRSWRQRVJwc3ZYMTFoZ1FwYTdtRmlXYmcwbXZoNzdFUWJ6RDJxV2R5czBxUGhwbHJ4dTJCekVBN3VmNVIwQ1gwM2x3SEM1Q1VPOXpPVlVhamVhQ3FiYmNibmxXeEtCdGtVRkhCekxZaUo1Q0NOUHQxeDRDcnVSNVVHZXZDUGNEekpPS0dXRllJRDJlRFpKWVNiaFROUGpsMDMzMm4zeHlESkJoVjc4OTJKSEFzbVRSdk0yYjZsdjla;authn_ssid=CEvOTo4IHfFdslco0wpTvxAkimQ.*AAJTSQACMDIAAlNLABxNWUhUNjJHbUt3SmVHdXBrdmxrVVFKYmV4Qjg9AAR0eXBlAANDVFMAAlMxAAIwMw..*; ",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://kacd01-pip40-ins01-wfm53-bgp-617624002-1.int.acd.mykronos.com:80/wfc/restcall/organization/v1/node_helper/refresh?=",
+          "protocol": "http",
+          "host": [
+            "kacd01-pip40-ins01-wfm53-bgp-617624002-1",
+            "int",
+            "acd",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "organization",
+            "v1",
+            "node_helper",
+            "refresh"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Node Refresh API",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "AUTHN_TOKEN=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjlEOGxWeUExY0lvN2REQVZXMXBVcXl4VEwyND0ifQ.eyJpc3MiOiJodHRwOi8va2FjZDAxLXBpcDIwLWF0aDUxLW9hbS5pbnQuYWNkLm15a3Jvbm9zLmNvbTo4MCIsImlhdCI6MTYxNzc3ODI3MiwiZXhwIjoxNjE3ODA3MDcyLCJzdWIiOiJDWFN5c0FkbWluIiwibm9uY2UiOiI8RG4tMFM2X1d6QTJNaiIsInJlYWxtIjoiL3BpaGNyMDMzMWNvbW5wMF9ub25wcmRfMDEiLCJpcHIiOmZhbHNlfQ.Qlw85nsKKsG1jF_yTHsxyMStTPNdOplfBsKNLl_lwPF_idqfcATStoP81zjWkKqgtW1geg3TO_Cuz-R-m5Jao0Af-nUTDgE1Ue4F2QIKnvx_nWhLLe-tqadJw6P9fGju9vMJzLajBOjb49B2B7f45xUspmoHSf8jkyKtZu5UK2KUUKX6vXE8WMgrNSLZFOwI2yWeTh2QjzsbXAvILDBXjJobHVmuychL3mevuUx2q441CMc75QognvA6nq9NDpqmbRKyJhHF3sVIf-_jVqek4b-XssHAjBrsVSWHYGX71FBlUYZklbxDQCeviLc23ONjEzVJJ9fRL0ghCl7ejnd9Mw|cGZRVlJBWXcrS0JaMjBld2lBTVVCRTJxaDAvYnZ4NFRXWTJIMkluRWZNUEFHT1ltVkg0d2xBdm9kaUU2VDI3dU03OC92K2ZycnU1UHdWa3BvVi91VUhiZGkwUERXTzFYM3R4OStkRW9GUWVzcnlTL2E3dldOc3k1SldJUWVyd1FRNW41MFZpa0swS0hZMm9wZ09NdXJ2OUQxZ2lKM1FpaUxSM3VHVHJGM0g5NXRNclpSa0x1TWdjR3pzUGVLVGZHY2pqYmZqdXF4TmlDcXgrVjlWejIvWDZ1UGY5aTZyeG9WdWhpZmwzaUJNQkZBTXdwam5LSWJxNjhRbUpJb2ZsK1l1R053Q1d0STNRQ0RwWWpmMnBySVdtUkdUNEg0eWJLOG56dGZIY25uQXJDb1VRMTUxWjlHenpzRURQUGl1TXplczRvakMxeTg4TDZkM2M3c08wUExUUzJaTXlJNGFFRHBCK2hYSW5Xd05nbVlOTWowZ3N1WTZyU0xraytmUDZQbS9VbWl1NU5MQ1FpYjNPN1BFWWUvYkp4azgrYTRWYlE0RS84YVlqRjNhdkZwazJoWEdKODhRWllVNlhTN0d4SEhCbXd4UTZRbGFrdVd2U0psbUY3UTlsRWo1NWQyZXVWeUJ0blhyT3Y5UzBWWGJYcXV5NllJcm5zQk1FTEx6aHRlaERkZ2ZOWitDUGM3bTNjSDNaYitIYWEweVdJcExPbTZiMmZISnk5WVJEd3FwNFRkS2tGdVZzcjVlWHNVUEdua3NObER5dnBRSWRQRVJwc3ZYMTFoZ1FwYTdtRmlXYmcwbXZoNzdFUWJ6RDJxV2R5czBxUGhwbHJ4dTJCekVBN3VmNVIwQ1gwM2x3SEM1Q1VPOXpPVlVhamVhQ3FiYmNibmxXeEtCdGtVRkhCekxZaUo1Q0NOUHQxeDRDcnVSNVVHZXZDUGNEekpPS0dXRllJRDJlRFpKWVNiaFROUGpsMDMzMm4zeHlESkJoVjc4OTJKSEFzbVRSdk0yYjZsdjla;authn_ssid=CEvOTo4IHfFdslco0wpTvxAkimQ.*AAJTSQACMDIAAlNLABxNWUhUNjJHbUt3SmVHdXBrdmxrVVFKYmV4Qjg9AAR0eXBlAANDVFMAAlMxAAIwMw..*; ",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://kacd01-pip40-ins01-wfm53-api-617624002-1.int.acd.mykronos.com:80/wfc/restcall/organization/v1/node_helper/refresh?=",
+          "protocol": "http",
+          "host": [
+            "kacd01-pip40-ins01-wfm53-api-617624002-1",
+            "int",
+            "acd",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "organization",
+            "v1",
+            "node_helper",
+            "refresh"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

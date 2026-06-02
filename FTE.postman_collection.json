@@ -1,0 +1,509 @@
+{
+  "info": {
+    "_postman_id": "09ba080e-dd45-4872-b94f-f1f653b0958b",
+    "name": "FTE",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "REPORTUSER1"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud"
+          },
+          {
+            "key": "Cookie",
+            "value": "IDP_URI=\"aHR0cHM6Ly9vYW0yMC5kZXYubXlrcm9ub3MuY29tL2F1dGhuL2hjYV93ZmNfY3IwOTA1MDYyMV9ub25wcmRfMDE=\"; AUTHN_TOKEN=\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjlEOGxWeUExY0lvN2REQVZXMXBVcXl4VEwyND0ifQ.eyJpc3MiOiJodHRwOi8va2VuZzAzLWRldjAxLWF0aDIwLW9hbS5pbnQuZGV2Lm15a3Jvbm9zLmNvbTo4MCIsImlhdCI6MTc2MDA5NDk1MSwiZXhwIjoxNzYwMTIzNzUxLCJzdWIiOiJYTUxVU0VSIiwibm9uY2UiOiI8RG4tMFM2X1d6QTJNaiIsInJlYWxtIjoiL2hjYV93ZmNfY3IwOTA1MDYyMV9ub25wcmRfMDEiLCJpcHIiOmZhbHNlLCJvaWRjU2Vzc2lvbiI6ZmFsc2V9.ZCXjmxV5_LDUdv1Bm_hqZ8aqcaL7VxHfBTh0g1aAreQH6ftEdgUQ9sCPBcN3_zreHVdeN4u7hEp5s9GTsbOh9xQTFYWJELyHODeOpPxVE-ruBqig8m6DBdolqtGw8BSFWY7A2qCQXPLZwb7mrrfruOlVixvy7m_GM8Nmtei2jR1z8bi06xnrP3dCQIRX2xcsvAI5hdidUU0wz5MJ2PqklUPZgsFsmNDSaCTGFcBDguOohxXtZq-9AFPzdT8MyNkPhzHwDIxmXUh7QTUAgSzvt4aR8MBKIEAZO19dZmvkLQ8AaBsPb16edeltKugi85G0yrm2B3XKF0kC23waSfl2aA|bkJOZnRyU1huS3VLYi9QRUcrdEt5dTlOSmRrb2d4N2UwTXl3c1lmS3NaeWIrWHJOa3BBQXZPeGsrNTA0LzVFTjNibnQ5Ti9yY01palVFenF6YmNITFE1VG1MS3QrdHJkZlFOSnlLTURzcVJiNzBmK1JBaUc2LzVZV2RYQ0VmTmwxeWlMaGd5YWdLRmZKRVhTTTVBc3NYZmR5ZjVLRy93L29Wd3UvMUc5enpvV1dzdHdUWk45SG5QTHVXVkNYTVIrcnMzWHRSejk4TGQyK3dIYUVGcmdCNXYwSmJENmFWZk5uSm85d2diTnNVaHRua0o5dWhtbHB3bVByRUk5ZEg2aWE0V1d4bTZNa01MRWZJaG9VUlVqQWVBaXdsK1hlaXlOeTl3SW9Eck1FY3hHd0xqNkwyR1FoT3VKUkVqMGZzMHQ0M0l5R1FhM3ZhRXVmYyt0MzU4K0FYVkdud0ZEZktkdHhMR1k0bzdsTEJaTmZ3R0p0cEVSQlVrQ3VRVVgyMWlDbGVHeGtBaEsvMVlhdXNyRUZ1QWhMVzRUOEVOcDFleGErVlFzQS9ZSEU0bHFJdUdqZzR5R01BTmRZdGhiNDQ1NmVHQlhVcDIrV1ZoUXp3ajhhdTV1eGNSZ2Nvai9HN1J3akNYR3VuRi9wdnc4ZENtOXN4U3RGQXRZWFNJb1Era29iWVdTU2EvQlphVFlqMEY2MHZoNWJWRUcwQ0kvWDQrbDlvdjVEbnRQOHpjQnJQUlljR1lCMVd5a3JLS29ENkk3OTVaZ1E3TEx6RVo3NmRZT1drcFpmSmh1NGQzUGt3SE5JRTIzZnYvc1p6a0lmd2VINldOY09SY2RoNE9qaE82UHd1TDBSWkpBTi8yZEI0T3I3TG9UamhRRnJYVUhnUVN1TlBFSkNwMmRrdHdxdVJPMWVGdlFBQjBMYmdScTNveEwwNkw3SGpwYXhvVkk4OHV4MWNDeDdyM3lZNU9rKzZMSVo0TnJncS9hZTNPVWFUREtrakxJTWZCeCtkZXFFRDFVS0NEd0lvMkVpL0lNRkZMcEViME5mTkY4UW5uL3J3PT1fdjI=\"; TENANT_AUTHORIZATION=\"NZk5MOws2UBm3Ck0YAIpdOwrR2EJwlpcD7Q/7J1bowE=\"; authn_ssid=qwF7DK8fxUZKNGOQFv1ckpubEcs.*AAJTSQACMDIAAlNLABxKaGJFdkVUN2I4MVZTRDNPNnFja3JHdGNIUXc9AAR0eXBlAANDVFMAAlMxAAIwMQ..*; authnamlbcookie=1"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ath20-oam.int.dev.mykronos.com/authn/json/hca_wfc_cr09050621_nonprd_01/authenticate?authIndexType=service&authIndexValue=SystemUserAuthService",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath20-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "authn",
+            "json",
+            "hca_wfc_cr09050621_nonprd_01",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service"
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Report Provisioning",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"volumeName\": \"hca_wfc_cr09050621_nonprd_01\",\n  \"volumeDescription\": \"This volume is for Google hca_wfc_cr09050621_nonprd_01\",\n  \"volumeAdminEmail\": \"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca01-a-back-k8s.int.dev.mykronos.com/wfc/restcall/v1/platform/tenant_provisionings?tenantId=hca_wfc_cr09050621_nonprd_01",
+          "protocol": "http",
+          "host": [
+            "hca01-a-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "tenant_provisionings"
+          ],
+          "query": [
+            {
+              "key": "tenantId",
+              "value": "hca_wfc_cr09050621_nonprd_01"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "HCA PROVISIONING",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"tenantProvision\": {\r\n        \"component\": {\r\n            \"id\": -32,\r\n            \"name\": \"hcaservice\",\r\n            \"provisionType\": \"create\"\r\n        },\r\n        \"callback\": {\r\n            \"dataSet\": [\r\n                {\r\n                    \"name\": \"provisionId\",\r\n                    \"value\": \"249563\"\r\n                },\r\n                {\r\n                    \"name\": \"url\",\r\n                    \"value\": \"http://keng03-dev01-tms21-app-2542509425-xfv3.int.gss-keng.mykronos.com/tenantmanager/restcall/callbackTenantProvision\"\r\n                },\r\n                {\r\n                    \"name\": \"tmsOpenAMURL\",\r\n                    \"value\": \"http://keng03-dev01-idp20-oam.int.gss-keng.mykronos.com:80/authn/json/tms/authenticate\"\r\n                },\r\n                {\r\n                    \"name\": \"tmsOpenAMLogoutURL\",\r\n                    \"value\": \"http://keng03-dev01-idp20-oam.int.gss-keng.mykronos.com:80/authn/json/sessions?_action=logout\"\r\n                },\r\n                {\r\n                    \"name\": \"authenticatedCallback\",\r\n                    \"value\": \"false\"\r\n                },\r\n                {\r\n                    \"name\": \"gcpCFCallbackURL\",\r\n                    \"value\": \"https://keng03-dev01-tms21-2542509425-gcptmscallback-uesahmidiq-ue.a.run.app\"\r\n                }\r\n            ]\r\n        },\r\n        \"tenant\": {\r\n            \"dataSet\": [\r\n                {\r\n                    \"name\": \"id\",\r\n                    \"value\": \"96567\"\r\n                },\r\n                {\r\n                    \"name\": \"tenantName\",\r\n                    \"value\": \"hca-wfc-cr09050621\"\r\n                },\r\n                {\r\n                    \"name\": \"shortName\",\r\n                    \"value\": \"hca_wfc_cr09050621_nonprd_01\"\r\n                },\r\n                {\r\n                    \"name\": \"description\",\r\n                    \"value\": \"Tenant Description\"\r\n                },\r\n                {\r\n                    \"name\": \"tenantUid\",\r\n                    \"value\": \"hca_wfc_cr09050621_nonprd_01_keng03\"\r\n                },\r\n                {\r\n                    \"name\": \"tenantCode\",\r\n                    \"value\": \"hca_wfc_cr09050621_nonprd_01_keng03\"\r\n                },\r\n                {\r\n                    \"name\": \"tenantUUID\",\r\n                    \"value\": \"c06bc241-0488-445c-8d93-a9000cd11e70\"\r\n                },\r\n                {\r\n                    \"name\": \"isActive\",\r\n                    \"value\": \"true\"\r\n                },\r\n                {\r\n                    \"name\": \"isDeleted\",\r\n                    \"value\": \"false\"\r\n                },\r\n                {\r\n                    \"name\": \"solutionId\",\r\n                    \"value\": \"SolutionId090600481\"\r\n                },\r\n                {\r\n                    \"name\": \"clientName\",\r\n                    \"value\": \"ClientName_090600481\"\r\n                },\r\n                {\r\n                    \"name\": \"clientShortName\",\r\n                    \"value\": \"SolutionId090600481clientShortName_090600481\"\r\n                },\r\n                {\r\n                    \"name\": \"projectedEmployeeCount\",\r\n                    \"value\": \"30000\"\r\n                },\r\n                {\r\n                    \"name\": \"tenantType\",\r\n                    \"value\": \"Customer Non-Production\"\r\n                },\r\n                {\r\n                    \"name\": \"isLargeClient\",\r\n                    \"value\": \"false\"\r\n                },\r\n                {\r\n                    \"name\": \"cloneSize\",\r\n                    \"value\": null\r\n                },\r\n                {\r\n                    \"name\": \"allowCloneRefreshForLargeTenant\",\r\n                    \"value\": \"false\"\r\n                },\r\n                {\r\n                    \"name\": \"deviceTenantId\",\r\n                    \"value\": \"98876\"\r\n                },\r\n                {\r\n                    \"name\": \"verticalMarket\",\r\n                    \"value\": \"Healthcare Sector\"\r\n                },\r\n                {\r\n                    \"name\": \"schemaName\",\r\n                    \"value\": \"hca_wfc_cr09050621_nonprd_01\"\r\n                },\r\n                {\r\n                    \"name\": \"seedUserEmail\",\r\n                    \"value\": \"api_email@kronos.com\"\r\n                },\r\n                {\r\n                    \"name\": \"vendorName\",\r\n                    \"value\": \"KRONOS\"\r\n                },\r\n                {\r\n                    \"name\": \"oAuthId\",\r\n                    \"value\": \"iyEpVKekLilD6nQGir8mDl7zI1DeFIPk\"\r\n                },\r\n                {\r\n                    \"name\": \"oAuthSecret\",\r\n                    \"value\": \"HYumahY5kQ7CeOvC\"\r\n                },\r\n                {\r\n                    \"name\": \"registrationType\",\r\n                    \"value\": \"create\"\r\n                },\r\n                {\r\n                    \"name\": \"selectedProvision\",\r\n                    \"value\": \"false\"\r\n                },\r\n                {\r\n                    \"name\": \"products\",\r\n                    \"value\": \"[DIM]\"\r\n                },\r\n                {\r\n                    \"name\": \"isUsingUKGAuthN\",\r\n                    \"value\": \"false\"\r\n                },\r\n                {\r\n                    \"name\": \"vanityUrl\",\r\n                    \"value\": \"hca-wfc-cr09050621-cr.dev.mykronos.com\"\r\n                },\r\n                {\r\n                    \"name\": \"localePolicyId\",\r\n                    \"value\": \"1\"\r\n                },\r\n                {\r\n                    \"name\": \"deviceUrl\",\r\n                    \"value\": \"98876keng03.dev.mykronos.com\"\r\n                }\r\n            ],\r\n            \"provisionInfo\": {\r\n                \"wfmCluster\": {\r\n                    \"dataSet\": [\r\n                        {\r\n                            \"name\": \"wfmClusterName\",\r\n                            \"value\": \"hca01-a-k8s.int.dev.mykronos.com\"\r\n                        },\r\n                        {\r\n                            \"name\": \"shortName\",\r\n                            \"value\": \"hca01_a_k8s_int_dev_mykronos_com\"\r\n                        },\r\n                        {\r\n                            \"name\": \"description\",\r\n                            \"value\": \"hca01-a-k8s.int.dev.mykronos.com\"\r\n                        },\r\n                        {\r\n                            \"name\": \"frontEndpoint\",\r\n                            \"value\": \"http://hca01-a-k8s.int.dev.mykronos.com\"\r\n                        },\r\n                        {\r\n                            \"name\": \"frontVersion\",\r\n                            \"value\": \"1.0\"\r\n                        },\r\n                        {\r\n                            \"name\": \"backEndCname\",\r\n                            \"value\": \"http://hca01-a-back-k8s.int.dev.mykronos.com/wfc\"\r\n                        },\r\n                        {\r\n                            \"name\": \"backEndpoint\",\r\n                            \"value\": \"http://hca01-a-back-k8s.int.dev.mykronos.com/wfc\"\r\n                        },\r\n                        {\r\n                            \"name\": \"backVersion\",\r\n                            \"value\": \"1.0\"\r\n                        },\r\n                        {\r\n                            \"name\": \"dbUrl\",\r\n                            \"value\": \"jdbc:edb://keng03-dev01-ins10-shd88-dbs-01.int.dev.mykronos.com:5444,keng03-dev01-ins10-shd88-dbs-02.int.dev.mykronos.com:5444,keng03-dev01-ins10-shd88-dbs-03.int.dev.mykronos.com:5444/ppas_tpa_hca01_a?targetServerType=master\"\r\n                        },\r\n                        {\r\n                            \"name\": \"dbVersion\",\r\n                            \"value\": \"1.0\"\r\n                        },\r\n                        {\r\n                            \"name\": \"version\",\r\n                            \"value\": \"02.06\"\r\n                        },\r\n                        {\r\n                            \"name\": \"skpiDBUrl\",\r\n                            \"value\": null\r\n                        },\r\n                        {\r\n                            \"name\": \"isICU\",\r\n                            \"value\": \"false\"\r\n                        }\r\n                    ]\r\n                },\r\n                \"instance\": {\r\n                    \"dataSet\": [\r\n                        {\r\n                            \"name\": \"instanceName\",\r\n                            \"value\": \"dev01_ins01\"\r\n                        },\r\n                        {\r\n                            \"name\": \"shortName\",\r\n                            \"value\": \"dev01_ins01\"\r\n                        },\r\n                        {\r\n                            \"name\": \"description\",\r\n                            \"value\": \"dev01_ins01\"\r\n                        },\r\n                        {\r\n                            \"name\": \"instanceType\",\r\n                            \"value\": \"NON-PRODUCTION\"\r\n                        }\r\n                    ],\r\n                    \"services\": {\r\n                        \"Workflow-designer\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl20-app.int.dev.mykronos.com/bpm-designer\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"Report-designer\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ins01-rpt20-web.int.dev.mykronos.com\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"WorkFlow\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl20-app.int.dev.mykronos.com\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"UDM\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ins01-udm20-app.int.dev.mykronos.com/udm\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"Reports\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ins01-rpt20-app.int.dev.mykronos.com\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"Workflow-admin\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl20-mgt.int.dev.mykronos.com/bpm-admin\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"fcs\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ins01-fcs20-nsq-1.int.dev.mykronos.com\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"hcaservice\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ins01-hca21-bck.int.dev.mykronos.com/hcaservice\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        }\r\n                    }\r\n                },\r\n                \"environment\": {\r\n                    \"dataSet\": [\r\n                        {\r\n                            \"name\": \"environmentName\",\r\n                            \"value\": \"dev01\"\r\n                        },\r\n                        {\r\n                            \"name\": \"shortName\",\r\n                            \"value\": \"dev01\"\r\n                        },\r\n                        {\r\n                            \"name\": \"description\",\r\n                            \"value\": \"dev01\"\r\n                        },\r\n                        {\r\n                            \"name\": \"environmentType\",\r\n                            \"value\": \"NON-PRODUCTION\"\r\n                        }\r\n                    ],\r\n                    \"services\": {\r\n                        \"KPI\": {\r\n                            \"serviceEndpoint\": \"http://hca01-a-back-k8s-kpi-dummy.int.dev.mykronos.com/wfc\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"Tenantrouter\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-trt20-app.int.dev.mykronos.com:8080/tr\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"IHub\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-hub20-app.int.dev.mykronos.com\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"SDM\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-sdm20-app.int.dev.mykronos.com/sdm\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"UMS\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ums20-app.int.dev.mykronos.com\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"pes\": {\r\n                            \"serviceEndpoint\": \"https://a-k8s.int.dev.mykronos.com_pes_$$IGNORE$$\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"wit\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-wit20-app.int.dev.mykronos.com/wit\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"API\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-api-gtw20-app.int.dev.mykronos.com\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"edwiservice\": {\r\n                            \"serviceEndpoint\": \"a-k8s.int.dev.mykronos.com_$$IGNORE$$\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"AuthN\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ath20-oam.int.dev.mykronos.com:80/authn\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        },\r\n                        \"ECS\": {\r\n                            \"serviceEndpoint\": \"http://keng03-dev01-ecs20-app.int.dev.mykronos.com/ecs\",\r\n                            \"endpointVersion\": \"1.0\"\r\n                        }\r\n                    }\r\n                }\r\n            },\r\n            \"vanityUrls\": [\r\n                {\r\n                    \"id\": 48774,\r\n                    \"name\": \"hca-wfc-cr09050621-cr.dev.mykronos.com\",\r\n                    \"authType\": {\r\n                        \"id\": -1,\r\n                        \"name\": \"Basic\"\r\n                    },\r\n                    \"authTag\": null,\r\n                    \"displayName\": null,\r\n                    \"federationConfType\": null,\r\n                    \"idpInitiatedURL\": null,\r\n                    \"logoutRedirectURL\": null,\r\n                    \"idpSAML2MetadataURL\": null,\r\n                    \"idpOAuthURL\": null,\r\n                    \"autoFederationEnabled\": null,\r\n                    \"autoFederationAttribute\": null,\r\n                    \"federationAttribute\": null,\r\n                    \"tenantId\": 96567,\r\n                    \"isOpenIdConfigurationActive\": null,\r\n                    \"oidcValidationType\": null,\r\n                    \"oidcConfigVal\": null,\r\n                    \"oidcIssuer\": null,\r\n                    \"jwtAttributeMappings\": null,\r\n                    \"oidcAudience\": null,\r\n                    \"oidcAuthorizedParties\": null,\r\n                    \"requestBindingData\": null,\r\n                    \"nameIdFormat\": null,\r\n                    \"requestAuthContext\": true,\r\n                    \"metadataURL\": null,\r\n                    \"updatedDate\": 1760087162938\r\n                }\r\n            ],\r\n            \"systemAccounts\": [\r\n                {\r\n                    \"service\": \"WFMCore\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"WFMUSER1\",\r\n                            \"password\": \"6kW_4cD@sj7iX-8qS=9d3hD_6pD{Tt\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"WFMUSER2\",\r\n                            \"password\": \"6kX#0tM=iX5xA#6nX~zr8wF=6gS@EU\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"wit\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"WITUser1\",\r\n                            \"password\": \"8vJ~7aY^MT7oM@8lH-#E1bU=3lI@Tn\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"WITUser2\",\r\n                            \"password\": \"8pY#7qJ??r0fO{7pT?*x2dU@3pT{gQ\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"Reports\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"REPORTUSER1\",\r\n                            \"password\": \"8wQ?3aH^1{5fD#5kR#g36iC^8hW{A_\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"REPORTUSER2\",\r\n                            \"password\": \"8gN{8dK=i27sJ#4cW=eC4pR#7iE-7j\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"UMS\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"UMSUSER1\",\r\n                            \"password\": \"5uZ-8mF{NJ9mU{3hC~QC8jW^9pM^_y\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"UMSUSER2\",\r\n                            \"password\": \"7bL?5vA@^06tU@8gX_2z8oD^2qQ~q^\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"Workflow-admin\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"WORKFLOWUSER1\",\r\n                            \"password\": \"2xM{0eH_y29oH_5xQ{950sE~1iK*Ni\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"WORKFLOWUSER2\",\r\n                            \"password\": \"4cP~0bS^qx5fI@5uD*-C1wO#9dI~~g\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"extproductprovisioning\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"HCMUser1\",\r\n                            \"password\": \"8eQ-3uW@H69cO*3wE{263bN~9kH-d*\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"HCMUser2\",\r\n                            \"password\": \"5cC#5wU*SI0qT*6cI?9z4eN-4wD?ei\"\r\n                        },\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"TSGUser1\",\r\n                            \"password\": \"9gG_8rX-rs6dB~5dS=vW5jJ?6eV?0{\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"TSGUser2\",\r\n                            \"password\": \"8dD@4kZ-K~3gR-5eT=0q6kM{8oJ?EC\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"TMS\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"TMSUser1\",\r\n                            \"password\": \"6nX@9jN@iz8cP#0oT=z=1bN#4sR=IP\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"TMSUser2\",\r\n                            \"password\": \"7sC=6cV{rC5wH~3tO^@T2kV=4zU?ig\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"Kiosk\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"KIOSKSysUser1\",\r\n                            \"password\": \"9lS=1tZ_Yt7dG*1sS@9q7kO@5wD@J?\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"KIOSKSysUser2\",\r\n                            \"password\": \"1rE~6nM#u18oE_7vZ?wm6qN{8tW{xt\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"SDM\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"SDMUSER1\",\r\n                            \"password\": \"2gP#4bE~3?7zD=4gJ*s08wA@8cI^d2\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"SDMUSER2\",\r\n                            \"password\": \"0eI@7vE_e{7uV^4aH{*v0vD^2nN-=*\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"hcaservice\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"HCAUser1\",\r\n                            \"password\": \"1hK{6rG_ao8nN=0kF^4j4jW#6sZ==u\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"HCAUser2\",\r\n                            \"password\": \"8vH?9sM~BF0nO{7rP==b2hJ-8sO~r?\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"IHub\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"IHUBUSER1\",\r\n                            \"password\": \"0nX~5bM~X22cT_2nM=7J3eD_3jG_h3\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"IHUBUSER2\",\r\n                            \"password\": \"8oM?0cP_WT8sH@3qY~I^4bS#1oJ-xc\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"service\": \"UDM\",\r\n                    \"systemAccountUsers\": [\r\n                        {\r\n                            \"status\": \"Active\",\r\n                            \"userName\": \"UDMUSER1\",\r\n                            \"password\": \"1qT^0qO^O?6qL-3tQ*@X1xQ-0aH*WE\"\r\n                        },\r\n                        {\r\n                            \"status\": \"InActive\",\r\n                            \"userName\": \"UDMUSER2\",\r\n                            \"password\": \"0iF^4yP~Bg4mK=3pJ@Zs3jJ*5bT*uq\"\r\n                        }\r\n                    ]\r\n                }\r\n            ],\r\n            \"entitlements\": {\r\n                \"entitlements\": [\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_0906006070\",\r\n                        \"packageCode\": \"hourly_timekeeping\",\r\n                        \"seats\": 10000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_0906006071\",\r\n                        \"packageCode\": \"advanced_scheduling\",\r\n                        \"seats\": 5000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_0906006072\",\r\n                        \"packageCode\": \"absence_management\",\r\n                        \"seats\": 10000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_0906006073\",\r\n                        \"packageCode\": \"salaried_timekeeping\",\r\n                        \"seats\": 5000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_0906006074\",\r\n                        \"packageCode\": \"Workforce_Scheduler_Employee\",\r\n                        \"seats\": 5000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_0906006075\",\r\n                        \"packageCode\": \"Accruals\",\r\n                        \"seats\": 5000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_0906006076\",\r\n                        \"packageCode\": \"accruals_and_leaves\",\r\n                        \"seats\": 5000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_0906006077\",\r\n                        \"packageCode\": \"core_analytics\",\r\n                        \"seats\": 5000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_0906006078\",\r\n                        \"packageCode\": \"Work\",\r\n                        \"seats\": 150000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_0906006079\",\r\n                        \"packageCode\": \"hc_analytics\",\r\n                        \"seats\": 10000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_09060060710\",\r\n                        \"packageCode\": \"Telestaff\",\r\n                        \"seats\": 1000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    },\r\n                    {\r\n                        \"id\": null,\r\n                        \"entitlementCode\": \"EntCode_09060060711\",\r\n                        \"packageCode\": \"Planner\",\r\n                        \"seats\": 1000,\r\n                        \"startDate\": \"2025-10-10 00:00:00.0\",\r\n                        \"endDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"contractEndDate\": \"2026-10-10 00:00:00.0\",\r\n                        \"creationDate\": \"2025-10-10 09:06:01\",\r\n                        \"solutionId\": \"SolutionId090600481\",\r\n                        \"orderNumber\": \"OrdrNumber_090600481\"\r\n                    }\r\n                ]\r\n            },\r\n            \"externalProductsConfigKeyValue\": {\r\n                \"externalProductConfig\": null,\r\n                \"externalProduct\": null,\r\n                \"unifiedVanityURL\": null\r\n            }\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca21-bck.int.dev.mykronos.com/hcaservice/restcall/tenantProvisioningRequest/create",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca21-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "tenantProvisioningRequest",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login Copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "XMLUSER",
+            "type": "default"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "default"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "default"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ath41-oam.int.dev.mykronos.com:80/authn/json/hc_sx24_nonprd_01/authenticate?authIndexType=service&authIndexValue=SystemUserAuthService",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath41-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "authn",
+            "json",
+            "hc_sx24_nonprd_01",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service"
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Volume",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://dyna-01-b-k8s.int.dev.mykronos.com/wfc/restcall/v1/platform/tenant_provisionings/hca_wfc_cr09050621_nonprd_01",
+          "protocol": "http",
+          "host": [
+            "dyna-01-b-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "tenant_provisionings",
+            "hca_wfc_cr09050621_nonprd_01"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payroll Cummulative Multiupsert",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"personNumber\": \"10004\",\r\n        \"payPeriodEndDate\": \"202212-02-20\",\r\n        \"rawPaidActuals\": [\r\n            {\r\n                \"facilityCode\": \"Max Hospital\",\r\n                \"employeeName\": \"Victoria Hudson\",\r\n                \"hireDate\": \"2019-01-30\",\r\n                \"payrollPayCode\": \"Regular\",\r\n                \"standardHours\": \"80\",\r\n                \"departmentCode\": \"Max Radiology\",\r\n                \"homeDepartmentCode\": \"Max Radiology\",\r\n                \"payrollJob\": \"RN\",\r\n                \"primaryPayrollJob\": \"RN\",\r\n                \"homeFacilityCode\": \"Max Hospital\",\r\n                \"terminationDate\": \"2035-09-30\",\r\n                \"payrollSource\": \"Source1\",\r\n                \"employmentStatusCode\": \"FT\",\r\n                \"payrollPayCodeHours\": \"20.5\",\r\n                \"payrollPayCodeAmount\": \"41\",\r\n                \"errors\": [\r\n                    {\r\n                        \"errorCode\": \"WCO-119826\",\r\n                        \"message\": \"The PPEND_DAT must be a valid date of the year and must use the format MM/DD/YYYY or MM-DD-YYYY\"\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca70-bck.int.dev.mykronos.com:80/hcaservice/restcall/v1/hca/payroll/raw_paid_actuals_errors/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca70-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "raw_paid_actuals_errors",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payroll Multi Upsert",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n  {\r\n    \"employee\": {\r\n      \"qualifier\": \"163852\",\r\n      \"attributes\": {\r\n        \"employeeName\": \"Ann Wahab\",\r\n       \r\n        \"hireDate\": \"2008-05-19\"\r\n      }\r\n    },\r\n    \"payPeriodEndDate\": \"2024-03-16\",\r\n    \"rawPaidActuals\": [\r\n      {\r\n        \"homeFacilityCode\": \"101\",\r\n        \"homeDepartmentCode\": \"9016\",\r\n        \"payrollJob\": \"201114\",\r\n        \"employmentStatusCode\": \"C\",\r\n        \"payRateAmount\": \"51.180000\",\r\n        \"facilityCode\": \"101\",\r\n        \"departmentCode\": \"9016\",\r\n        \"payrollPayCode\": \"001\",\r\n        \"payrollPayCodeHours\": \"37.750000\",\r\n        \"payrollPayCodeAmount\": \"1932.050000\",\r\n        \"assignedShift\": \"R\",\r\n        \"primaryPayrollJob\": \"201114\",\r\n        \"payrollSource\": \"PAYROLL\",\r\n        \"generatedId\": \"1\"\r\n      }\r\n    ]\r\n  }\r\n]\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca40-bck.int.dev.mykronos.com/hcaservice/restcall/v1/hca/payroll/raw_paid_actuals/multi_create",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca40-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "raw_paid_actuals",
+            "multi_create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Employee Roster Report",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"select\": [\r\n        {\r\n            \"alias\": \"CORE_WORKUNIT_NAME\",\r\n            \"key\": \"CORE_WORKUNIT_NAME\"\r\n        },\r\n        {\r\n            \"alias\": \"CORE_EMP\",\r\n            \"key\": \"CORE_EMP\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_WORKGROUP_CODE\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_WORKGROUP_CODE\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_WORKGROUP_DESC\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_WORKGROUP_DESC\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_MAPPED_EMP_STATUS\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_MAPPED_EMP_STATUS\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_STANDARD_HOURS\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_STANDARD_HOURS\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_PRIMARY_JOB_CODE\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_PRIMARY_JOB_CODE\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_PRIMARY_JOB_DESC\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_PRIMARY_JOB_DESC\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_HIRE_DATE\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_HIRE_DATE\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_TERMINATION_DATE\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_TERMINATION_DATE\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_PRIMARY_JOB_NAME\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_PRIMARY_JOB_NAME\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_EMP_STATUS_DESC\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_EMP_STATUS_DESC\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_AS_HOME_WORKUNIT\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_AS_HOME_WORKUNIT\"\r\n        }\r\n    ],\r\n    \"from\": {\r\n        \"view\": 4,\r\n        \"dataSource\": {\r\n            \"dateRange\": {\r\n                \"symbolicPeriod\": {\r\n                    \"id\": \"1007\"\r\n                },\r\n                \"options\": {\r\n                    \"referenceDate\": \"2020-01-01\"\r\n                }\r\n            },\r\n            \"workUnits\": {\r\n                \"ids\": [\r\n                    341\r\n                ]\r\n            }\r\n        },\r\n        \"workUnits\": {\r\n            \"dateRange\": {\r\n                \"symbolicPeriod\": {\r\n                    \"id\": \"1007\"\r\n                },\r\n                \"options\": {\r\n                    \"referenceDate\": \"2024-03-30\"\r\n                }\r\n            },\r\n            \"workUnits\": {\r\n                \"ids\": [\r\n                    341\r\n                ]\r\n            }\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca16-b-back-k8s.int.dev.mykronos.com/wfc/restcall/v1/platform/internal/reports/EmployeeRoster/execute",
+          "protocol": "http",
+          "host": [
+            "hca16-b-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "internal",
+            "reports",
+            "EmployeeRoster",
+            "execute"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payroll Recalc",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"where\": {\r\n        \"referenceDate\": \"2019-12-15\",\r\n        \"startDate\": \"2019-12-15\",\r\n        \"endDate\": \"2019-12-15\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca86-bck.int.dev.mykronos.com/hcaservice/restcall/v1/hca/payroll/recalculate/async",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca86-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "recalculate",
+            "async"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete target",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://akhil-a-srivastav-back-k8s.int.dev.mykronos.com:80/wfc/restcall/v1/platform/target_threshold/34",
+          "protocol": "http",
+          "host": [
+            "akhil-a-srivastav-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "target_threshold",
+            "34"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"select\": [\r\n        {\r\n            \"key\": \"HCA_ELMNT_WORKUNIT_NAME\",\r\n            \"alias\": \"Work Unit Name\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_DATA_DATE\",\r\n            \"alias\": \"Date Range\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_TGT\",\r\n            \"alias\": \"Target Productive\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_METRIC_PROD_HRS\",\r\n            \"alias\": \"Daily Productive Hours - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX\",\r\n            \"alias\": \"Productivity Index - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_DATA_END_FYTD_PP\",\r\n            \"alias\": \"Fiscal Year To Date - End\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_DATA_START_FYTD_PP\",\r\n            \"alias\": \"Fiscal Year To Date - Start\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_ELMNT_WORKUNIT_CODE\",\r\n            \"alias\": \"Work Unit Code\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_LATEST_DATE_AVAILABLE\",\r\n            \"alias\": \"Latest Available Date\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_LATEST_STATUS_AVAILABLE\",\r\n            \"alias\": \"Latest Available Status\"\r\n        }\r\n    ],\r\n    \"from\": {\r\n        \"dateRange\": {\r\n            \"endDate\": \"2024-12-28\",\r\n            \"options\": {\r\n                \"daysOfOperation\": true,\r\n                \"timeIncrement\": \"DAY\"\r\n            },\r\n            \"startDate\": \"2024-12-15\"\r\n        },\r\n        \"workUnits\": {\r\n            \"ids\": [\r\n                948\r\n            ],\r\n            \"rollupBy\": [\r\n                {\r\n                    \"qualifier\": \"TOTALS_ONLY\"\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca40-bck.int.dev.mykronos.com:80/hcaservice/restcall/v1/hca/reports/0/apply_read",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca40-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "reports",
+            "0",
+            "apply_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PDHD REPORT Metric Values",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"select\": [\r\n        {\r\n            \"key\": \"HCA_ELMNT_WORKUNIT_NAME\",\r\n            \"alias\": \"Work Unit Name\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_DATA_DATE\",\r\n            \"alias\": \"Date Range\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_TGT\",\r\n            \"alias\": \"Target Productive\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_METRIC_PROD_HRS\",\r\n            \"alias\": \"Daily Productive Hours - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDKPI_PROD_HRS_IDX\",\r\n            \"alias\": \"Productivity Index - YTD\",\r\n            \"properties\": {\r\n                \"key\": \"Pay_Period_Year_to_Date_Fiscal\"\r\n            }\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_DATA_END_FYTD_PP\",\r\n            \"alias\": \"Fiscal Year To Date - End\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_DATA_START_FYTD_PP\",\r\n            \"alias\": \"Fiscal Year To Date - Star\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_LATEST_DATE_AVAILABLE\",\r\n            \"alias\": \"Latest Available Date\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_DRVDMTR_LATEST_STATUS_AVAILABLE\",\r\n            \"alias\": \"Latest Available Status\"\r\n        }\r\n    ],\r\n    \"options\": {\r\n        \"reportTypeIdentifier\": \"ProductivityDetailedHourDailyReport\",\r\n        \"target\": {\r\n            \"qualifier\": \"DEFAULT\"\r\n        }\r\n    },\r\n    \"from\": {\r\n        \"dateRange\": {\r\n            \"endDate\": \"2024-12-31\",\r\n            \"options\": {\r\n                \"daysOfOperation\": true,\r\n                \"timeIncrement\": \"DAY\"\r\n            },\r\n            \"startDate\": \"2024-12-15\"\r\n        },\r\n        \"workUnits\": {\r\n            \"ids\": [\r\n                948\r\n            ],\r\n            \"rollupBy\": [\r\n                {\r\n                    \"qualifier\": \"TOTALS_ONLY\"\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca40-bck.int.dev.mykronos.com:80/hcaservice/restcall/v1/hca/reports/0/apply_read",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca40-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "reports",
+            "0",
+            "apply_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PDHD Symbolic PP",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"where\": {\r\n        \"payPeriodRequest\": {\r\n            \"symbolicPeriod\": {\r\n                \"qualifier\": \"Year_to_Date_Fiscal\"\r\n            },\r\n            \"refDate\": \"2024-12-28\"\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca15-a-back-k8s.int.dev.mykronos.com:80/wfc/restcall/v1/commons/symbolicperiod/analytics_payperiods/apply_read",
+          "protocol": "http",
+          "host": [
+            "hca15-a-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "commons",
+            "symbolicperiod",
+            "analytics_payperiods",
+            "apply_read"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,357 @@
+{
+  "info": {
+    "_postman_id": "640d925f-29a7-483a-8fd6-858c4d141ce7",
+    "name": "TROX WFM",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Authneticate",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-openam-username",
+            "value": "amcuser"
+          },
+          {
+            "key": "x-openam-password",
+            "value": "Kr0n0s@Cloud"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ath20-oam.int.dev.mykronos.com:80/authn/json/krIntUsr/authenticate?authIndexType=service&authIndexValue=SystemUserAuthService",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath20-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "authn",
+            "json",
+            "krIntUsr",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service"
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Property",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"propertyName\": \"trox_enabled\",\n    \"propertyValue\": \"true\",\n    \"context\": \"WFP.properties\",\n    \"swimLane\": \"container\",\n    \"locale\": \"en_US\",\n    \"category\": \"SYSTEMPROPERTIES\",\n    \"version\": \"1.0\",\n    \"accessType\": \"NONE\",\n    \"configurable\": false,\n    \"viewable\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca05-a-back-k8s.int.dev.mykronos.com/wfc/restcall/v1/platform/environment/properties",
+          "protocol": "http",
+          "host": [
+            "hca05-a-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "environment",
+            "properties"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TROX URL",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Service-Code",
+            "value": "w-pwfm-back",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://ffd38427-c58e-4657-91d0-48c073c31cc0.w-pwfm-back.int.trox.sbx.internal/wfc/restcall/v1/hca/monitoring/processes?tenantId=hca_trox03rish_nonprd_01",
+          "protocol": "http",
+          "host": [
+            "ffd38427-c58e-4657-91d0-48c073c31cc0",
+            "w-pwfm-back",
+            "int",
+            "trox",
+            "sbx",
+            "internal"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "monitoring",
+            "processes"
+          ],
+          "query": [
+            {
+              "key": "tenantId",
+              "value": "hca_trox03rish_nonprd_01"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Gateway URL",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://keng03-dev01-api-gtw20-app.int.dev.mykronos.com/api/v1/hca/monitoring/processes?tenantId=hca_trox03rish_nonprd_01",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-api-gtw20-app",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "hca",
+            "monitoring",
+            "processes"
+          ],
+          "query": [
+            {
+              "key": "tenantId",
+              "value": "hca_trox03rish_nonprd_01"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get deployment Id",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjdDdDZzYkx2QVYya1B1MVRicWVuSiJ9.eyJpc3MiOiJodHRwczovL3dlbGNvbWUtc3RhZ2luZy51a2cuZGV2LyIsInN1YiI6ImJkMGMxYzBlLWVmMDEtNGI1OC1hNTMwLWI1NzZjNWQ2ZTgxYUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly90ZW5hbmN5LWFwaXMudWtnLm5ldCIsImlhdCI6MTc3NzIzMTg3NywiZXhwIjoxNzc3MzE4Mjc3LCJzY29wZSI6IndyaXRlOnRyY3M6dGVuYW5jeSByZWFkOnRyY3M6dGVuYW5jeSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsImF6cCI6ImJkMGMxYzBlLWVmMDEtNGI1OC1hNTMwLWI1NzZjNWQ2ZTgxYSJ9.FS7lksdPT_GpkhZJqb_jkmjXPq6Nh50SONbdVanuHqT7gDMIyIiKc7obmmEBLjDGJqFXrruwtwbRyrwmzacYDa57kYSpuU-kPE0qnEuoDdCxP4H8AGuB73mtT-l207s5O7RUXamikpdxEpGZpdZdtyJDMLufkM-kSln4ulAAFNrpwUDst0sqmgGAKxT7lXkI1emSmuW8Fb0Pr2WupVA6_vWMeB98VwNWCuBPDEdV4DUl43zCM91GIaZsUHqirxFwPXA4wAmlb03KCLWLuCVGxqXaic0LKevrDFVJgJcxKYkxQn6aFckz89adwuKbFu6MExAaHRo8q0Df7NjcvD2WXw"
+          }
+        ],
+        "url": {
+          "raw": "https://trs.trs-sandbox.us-east4.dev.gcp.int/trs/api/v1/svcdeployment?serviceCode=w-pwfm-hcasvc",
+          "protocol": "https",
+          "host": [
+            "trs",
+            "trs-sandbox",
+            "us-east4",
+            "dev",
+            "gcp",
+            "int"
+          ],
+          "path": [
+            "trs",
+            "api",
+            "v1",
+            "svcdeployment"
+          ],
+          "query": [
+            {
+              "key": "serviceCode",
+              "value": "w-pwfm-hcasvc"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register GTID with service",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjdDdDZzYkx2QVYya1B1MVRicWVuSiJ9.eyJpc3MiOiJodHRwczovL3dlbGNvbWUtc3RhZ2luZy51a2cuZGV2LyIsInN1YiI6ImJkMGMxYzBlLWVmMDEtNGI1OC1hNTMwLWI1NzZjNWQ2ZTgxYUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly90ZW5hbmN5LWFwaXMudWtnLm5ldCIsImlhdCI6MTc3NzIzMTg3NywiZXhwIjoxNzc3MzE4Mjc3LCJzY29wZSI6IndyaXRlOnRyY3M6dGVuYW5jeSByZWFkOnRyY3M6dGVuYW5jeSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsImF6cCI6ImJkMGMxYzBlLWVmMDEtNGI1OC1hNTMwLWI1NzZjNWQ2ZTgxYSJ9.FS7lksdPT_GpkhZJqb_jkmjXPq6Nh50SONbdVanuHqT7gDMIyIiKc7obmmEBLjDGJqFXrruwtwbRyrwmzacYDa57kYSpuU-kPE0qnEuoDdCxP4H8AGuB73mtT-l207s5O7RUXamikpdxEpGZpdZdtyJDMLufkM-kSln4ulAAFNrpwUDst0sqmgGAKxT7lXkI1emSmuW8Fb0Pr2WupVA6_vWMeB98VwNWCuBPDEdV4DUl43zCM91GIaZsUHqirxFwPXA4wAmlb03KCLWLuCVGxqXaic0LKevrDFVJgJcxKYkxQn6aFckz89adwuKbFu6MExAaHRo8q0Df7NjcvD2WXw"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"serviceDeploymentDetailsId\": \"a9040b12-095a-4b13-b63f-061242516f7b\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https: //trs.trs-sandbox.us-east4.dev.gcp.int/trs/api/v2/tenants/0167af91-54e6-494f-9272-963bee0330ac/tenant-level-service-instances%27",
+          "host": [
+            "https"
+          ],
+          "port": " ",
+          "path": [
+            "",
+            "trs.trs-sandbox.us-east4.dev.gcp.int",
+            "trs",
+            "api",
+            "v2",
+            "tenants",
+            "0167af91-54e6-494f-9272-963bee0330ac",
+            "tenant-level-service-instances%27"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Process Monitoring",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Kronos-OnBehalfUser",
+            "value": "HerbertPeterson",
+            "type": "default",
+            "disabled": true
+          },
+          {
+            "key": "delegatorId",
+            "value": "5",
+            "type": "default",
+            "disabled": true
+          },
+          {
+            "key": "roleId",
+            "value": "3",
+            "type": "default",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca92-bck.int.dev.mykronos.com/hcaservice/restcall/v1/hca/monitoring/processes",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca92-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "monitoring",
+            "processes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "TRS AUTH",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Cookie",
+            "value": "did=s%3Av0%3A044d6c63-5f79-4615-9cbc-b9cb3b62ebed.EY8c1aViDp0k8ML7x5cJYgXH09KdVPUYT7QOQuCqjSc; did_compat=s%3Av0%3A044d6c63-5f79-4615-9cbc-b9cb3b62ebed.EY8c1aViDp0k8ML7x5cJYgXH09KdVPUYT7QOQuCqjSc"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "type": "text",
+              "key": "client_id",
+              "value": "12d63de4-33e4-43ed-a5f6-8efd978a52fd"
+            },
+            {
+              "type": "text",
+              "key": "client_secret",
+              "value": "m3x6Z2ZY9OwxtRBB7MeSmwIz52d0mXiST28buimNUZ60pOZbWd"
+            },
+            {
+              "type": "text",
+              "key": "grant_type",
+              "value": "client_credentials"
+            },
+            {
+              "type": "text",
+              "key": "audience",
+              "value": "https://tenancy-apis.ukg.net"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://welcome-staging.ukg.dev/oauth/token",
+          "protocol": "https",
+          "host": [
+            "welcome-staging",
+            "ukg",
+            "dev"
+          ],
+          "path": [
+            "oauth",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

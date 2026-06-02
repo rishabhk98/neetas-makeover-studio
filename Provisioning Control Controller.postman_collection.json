@@ -1,0 +1,549 @@
+{
+  "info": {
+    "_postman_id": "88958960-712f-4cf5-91ce-4b71c44047f2",
+    "name": "Provisioning Control Controller",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9997/actuator/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "actuator",
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Create Provisioning Request",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"requestId\": \"123e4567-e89b-12d3-a456-426614174001\",\r\n    \"tenantGtid\": \"123e4567-e89b-12d3-a456-426614174001\",\r\n    \"tenantName\": \"Tenant1\",\r\n    \"event\": \"CREATE\",\r\n    \"status\": \"REQUESTED\",\r\n    \"message\": {\r\n        \"schemaVersion\": \"1.0\",\r\n        \"specVersion\": \"2.1\",\r\n        \"id\": \"91afaadf-e09b-4daa-be70-88ec6975401e\",\r\n        \"timestamp\": \"2024-06-11T11:59:46.782493Z\",\r\n        \"effectiveDatetime\": \"2024-06-11T11:59:46.782299000Z\",\r\n        \"tenantId\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n        \"correlationId\": \"12a8c854-5a66-4d37-9e7b-81b62a615f2c\",\r\n        \"type\": \"tenancy.tenantAction.created\",\r\n        \"metadata\": {\r\n            \"appId\": \"utp-service\"\r\n        },\r\n        \"sequenceNumber\": 0,\r\n        \"validation\": \"VALID\",\r\n        \"cryptoKeyId\": null,\r\n        \"contentEncoding\": \"identity\",\r\n        \"contentType\": \"application/json\",\r\n        \"dataCenter\": \"US-EAST4\",\r\n        \"body\": {\r\n            \"requestId\": \"e64bf7ac-0609-4067-a393-7d846ed2d3d6\",\r\n            \"tenant\": {\r\n                \"globalTenantId\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n                \"customerId\": \"abb3688b-578f-4721-9814-0374d238ce7c\",\r\n                \"region\": \"US\",\r\n                \"environmentType\": \"UAT\",\r\n                \"name\": \"GTPS01_UAT\",\r\n                \"alias\": \"gtps01_uat\",\r\n                \"status\": \"Active\",\r\n                \"products\": [\r\n                    \"DIM\",\r\n                    \"PRO\"\r\n                ],\r\n                \"tenantLevelServiceInstances\": [\r\n                    {\r\n                        \"serviceDeploymentDetailsId\": \"4594a4e5-4997-4e12-a207-bfdd841b9652\",\r\n                        \"tenantLevelServiceInstanceId\": \"32c69661-e793-43c9-aa55-8d01d5252c34\",\r\n                        \"serviceCode\": \"IAM.UKGAuthN.Customer-Auth\",\r\n                        \"serviceName\": \"UKG AuthN Internal\",\r\n                        \"version\": \"1.0.0\",\r\n                        \"url\": \"https://welcome-staging-test.ukg.dev\",\r\n                        \"status\": \"Active\",\r\n                        \"extensions\": [\r\n                            {\r\n                                \"key\": \"WFM-PEOPLE\",\r\n                                \"value\": \"People\"\r\n                            },\r\n                            {\r\n                                \"key\": \"domain\",\r\n                                \"value\": \"welcome-staging-test.ukg.dev\"\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            \"metadata\": {\r\n                \"targetServices\": \"IAM.UKGAuthN.Customer-Auth,o-othr-codeiukzt,o-othr-ukgdevtesteventonly\"\r\n            }\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Provisionable Service",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_service",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_service"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Provisioning Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Get Provisioning Request Status",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request_status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request_status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Create Provisioning Request Status",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"provisioningRequestId\": 1,\r\n    \"provisionableService\": {\r\n            \"id\": 2\r\n        },\r\n    \"stage\": \"TENANT_PROVISIONING\",\r\n    \"status\": \" REQUESTED\",\r\n    \"request\": {},\r\n    \"created\": \"2024-08-01T06:02:29.281+00:00\",\r\n    \"updated\": \"2024-08-01T06:02:29.282+00:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request_status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request_status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Update Provisioning Request",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 1,\r\n    \"requestId\": \"e64bf7ac-0609-4067-a393-7d846ed2d3d6\",\r\n    \"tenantGtid\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n    \"tenantName\": \"clientname172930264_uat\",\r\n    \"event\": \"CREATE\",\r\n    \"status\": \"IN_PROGRESS\",\r\n    \"created\": \"2024-07-23T17:07:55.284+00:00\",\r\n    \"updated\": \"2024-07-23T17:07:55.284+00:00\",\r\n    \"message\": {\r\n        \"contentEncoding\": \"identity\",\r\n        \"contentType\": \"application/json\",\r\n        \"validation\": \"VALID\",\r\n        \"type\": \"tenancy.tenantAction.created\",\r\n        \"metadata\": {\r\n            \"appId\": \"utp-service\"\r\n        },\r\n        \"id\": \"91afaadf-e09b-4daa-be70-88ec6975401e\",\r\n        \"specVersion\": \"2.1\",\r\n        \"timestamp\": \"2024-06-11T11:59:46.782493Z\",\r\n        \"effectiveDatetime\": \"2024-06-11T11:59:46.782299000Z\",\r\n        \"sequenceNumber\": 0,\r\n        \"schemaVersion\": \"1.0\",\r\n        \"dataCenter\": \"US-EAST4\",\r\n        \"requestId\": \"e64bf7ac-0609-4067-a393-7d846ed2d3d6\",\r\n        \"tenant\": {\r\n            \"globalTenantId\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n            \"customerId\": \"abb3688b-578f-4721-9814-0374d238ce7c\",\r\n            \"region\": \"US\",\r\n            \"environmentType\": \"UAT\",\r\n            \"name\": \"ClientName_172930264 UAT\",\r\n            \"alias\": \"clientname172930264_uat\",\r\n            \"status\": \"Active\",\r\n            \"products\": [\r\n                \"DIM\"\r\n            ],\r\n            \"tenantLevelServiceInstances\": [\r\n                {\r\n                    \"tenantLevelServiceInstanceId\": \"32c69661-e793-43c9-aa55-8d01d5252c34\",\r\n                    \"serviceCode\": \"IAM.UKGAuthN.Customer-Auth\",\r\n                    \"serviceName\": \"UKG AuthN Internal\",\r\n                    \"version\": \"1.0.0\",\r\n                    \"status\": \"Active\",\r\n                    \"url\": \"https://welcome-staging-test.ukg.dev\",\r\n                    \"serviceDeploymentDetailsId\": \"4594a4e5-4997-4e12-a207-bfdd841b9652\"\r\n                }\r\n            ]\r\n        },\r\n        \"body\": {\r\n            \"requestId\": \"e64bf7ac-0609-4067-a393-7d846ed2d3d6\",\r\n            \"tenant\": {\r\n                \"globalTenantId\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n                \"customerId\": \"abb3688b-578f-4721-9814-0374d238ce7c\",\r\n                \"region\": \"US\",\r\n                \"environmentType\": \"UAT\",\r\n                \"name\": \"ClientName_172930264 UAT\",\r\n                \"alias\": \"clientname172930264_uat\",\r\n                \"status\": \"Active\",\r\n                \"products\": [\r\n                    \"DIM\"\r\n                ],\r\n                \"tenantLevelServiceInstances\": [\r\n                    {\r\n                        \"serviceDeploymentDetailsId\": \"4594a4e5-4997-4e12-a207-bfdd841b9652\",\r\n                        \"tenantLevelServiceInstanceId\": \"32c69661-e793-43c9-aa55-8d01d5252c34\",\r\n                        \"serviceCode\": \"IAM.UKGAuthN.Customer-Auth\",\r\n                        \"serviceName\": \"UKG AuthN Internal\",\r\n                        \"version\": \"1.0.0\",\r\n                        \"url\": \"https://welcome-staging-test.ukg.dev\",\r\n                        \"status\": \"Active\",\r\n                        \"extensions\": [\r\n                            {\r\n                                \"key\": \"WFM-PEOPLE\",\r\n                                \"value\": \"People\"\r\n                            },\r\n                            {\r\n                                \"key\": \"domain\",\r\n                                \"value\": \"welcome-staging-test.ukg.dev\"\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            \"metadata\": {\r\n                \"targetServices\": \"IAM.UKGAuthN.Customer-Auth,o-othr-codeiukzt,o-othr-ukgdevtesteventonly\"\r\n            }\r\n        },\r\n        \"ackRequired\": false\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Update Status by Tenant Name",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 1,\r\n    \"requestId\": \"e64bf7ac-0609-4067-a393-7d846ed2d3d6\",\r\n    \"tenantGtid\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n    \"tenantName\": \"clientname172930264_uat\",\r\n    \"event\": \"CREATE\",\r\n    \"status\": \"IN_PROGRESS\",\r\n    \"created\": \"2024-07-23T17:07:55.284+00:00\",\r\n    \"updated\": \"2024-07-23T17:07:55.284+00:00\",\r\n    \"message\": {\r\n        \"contentEncoding\": \"identity\",\r\n        \"contentType\": \"application/json\",\r\n        \"validation\": \"VALID\",\r\n        \"type\": \"tenancy.tenantAction.created\",\r\n        \"metadata\": {\r\n            \"appId\": \"utp-service\"\r\n        },\r\n        \"id\": \"91afaadf-e09b-4daa-be70-88ec6975401e\",\r\n        \"specVersion\": \"2.1\",\r\n        \"timestamp\": \"2024-06-11T11:59:46.782493Z\",\r\n        \"effectiveDatetime\": \"2024-06-11T11:59:46.782299000Z\",\r\n        \"sequenceNumber\": 0,\r\n        \"schemaVersion\": \"1.0\",\r\n        \"dataCenter\": \"US-EAST4\",\r\n        \"requestId\": \"e64bf7ac-0609-4067-a393-7d846ed2d3d6\",\r\n        \"tenant\": {\r\n            \"globalTenantId\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n            \"customerId\": \"abb3688b-578f-4721-9814-0374d238ce7c\",\r\n            \"region\": \"US\",\r\n            \"environmentType\": \"UAT\",\r\n            \"name\": \"ClientName_172930264 UAT\",\r\n            \"alias\": \"clientname172930264_uat\",\r\n            \"status\": \"Active\",\r\n            \"products\": [\r\n                \"DIM\"\r\n            ],\r\n            \"tenantLevelServiceInstances\": [\r\n                {\r\n                    \"tenantLevelServiceInstanceId\": \"32c69661-e793-43c9-aa55-8d01d5252c34\",\r\n                    \"serviceCode\": \"IAM.UKGAuthN.Customer-Auth\",\r\n                    \"serviceName\": \"UKG AuthN Internal\",\r\n                    \"version\": \"1.0.0\",\r\n                    \"status\": \"Active\",\r\n                    \"url\": \"https://welcome-staging-test.ukg.dev\",\r\n                    \"serviceDeploymentDetailsId\": \"4594a4e5-4997-4e12-a207-bfdd841b9652\"\r\n                }\r\n            ]\r\n        },\r\n        \"body\": {\r\n            \"requestId\": \"e64bf7ac-0609-4067-a393-7d846ed2d3d6\",\r\n            \"tenant\": {\r\n                \"globalTenantId\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n                \"customerId\": \"abb3688b-578f-4721-9814-0374d238ce7c\",\r\n                \"region\": \"US\",\r\n                \"environmentType\": \"UAT\",\r\n                \"name\": \"ClientName_172930264 UAT\",\r\n                \"alias\": \"clientname172930264_uat\",\r\n                \"status\": \"Active\",\r\n                \"products\": [\r\n                    \"DIM\"\r\n                ],\r\n                \"tenantLevelServiceInstances\": [\r\n                    {\r\n                        \"serviceDeploymentDetailsId\": \"4594a4e5-4997-4e12-a207-bfdd841b9652\",\r\n                        \"tenantLevelServiceInstanceId\": \"32c69661-e793-43c9-aa55-8d01d5252c34\",\r\n                        \"serviceCode\": \"IAM.UKGAuthN.Customer-Auth\",\r\n                        \"serviceName\": \"UKG AuthN Internal\",\r\n                        \"version\": \"1.0.0\",\r\n                        \"url\": \"https://welcome-staging-test.ukg.dev\",\r\n                        \"status\": \"Active\",\r\n                        \"extensions\": [\r\n                            {\r\n                                \"key\": \"WFM-PEOPLE\",\r\n                                \"value\": \"People\"\r\n                            },\r\n                            {\r\n                                \"key\": \"domain\",\r\n                                \"value\": \"welcome-staging-test.ukg.dev\"\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            \"metadata\": {\r\n                \"targetServices\": \"IAM.UKGAuthN.Customer-Auth,o-othr-codeiukzt,o-othr-ukgdevtesteventonly\"\r\n            }\r\n        },\r\n        \"ackRequired\": false\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request/updateTenantNameStatus?tenantName=clientname172930264_uat&status=IN_PROGRESS",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request",
+            "updateTenantNameStatus"
+          ],
+          "query": [
+            {
+              "key": "tenantName",
+              "value": "clientname172930264_uat",
+              "type": "text"
+            },
+            {
+              "key": "status",
+              "value": "IN_PROGRESS",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Update Status by Request ID GTID",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 1,\r\n    \"requestId\": \"e64bf7ac-0609-4067-a393-7d846ed2d3d6\",\r\n    \"tenantGtid\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n    \"tenantName\": \"clientname172930264_uat\",\r\n    \"event\": \"CREATE\",\r\n    \"status\": \"IN_PROGRESS\",\r\n    \"created\": \"2024-07-23T17:07:55.284+00:00\",\r\n    \"updated\": \"2024-07-23T17:07:55.284+00:00\",\r\n    \"message\": {\r\n        \"contentEncoding\": \"identity\",\r\n        \"contentType\": \"application/json\",\r\n        \"validation\": \"VALID\",\r\n        \"type\": \"tenancy.tenantAction.created\",\r\n        \"metadata\": {\r\n            \"appId\": \"utp-service\"\r\n        },\r\n        \"id\": \"91afaadf-e09b-4daa-be70-88ec6975401e\",\r\n        \"specVersion\": \"2.1\",\r\n        \"timestamp\": \"2024-06-11T11:59:46.782493Z\",\r\n        \"effectiveDatetime\": \"2024-06-11T11:59:46.782299000Z\",\r\n        \"sequenceNumber\": 0,\r\n        \"schemaVersion\": \"1.0\",\r\n        \"dataCenter\": \"US-EAST4\",\r\n        \"requestId\": \"e64bf7ac-0609-4067-a393-7d846ed2d3d6\",\r\n        \"tenant\": {\r\n            \"globalTenantId\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n            \"customerId\": \"abb3688b-578f-4721-9814-0374d238ce7c\",\r\n            \"region\": \"US\",\r\n            \"environmentType\": \"UAT\",\r\n            \"name\": \"ClientName_172930264 UAT\",\r\n            \"alias\": \"clientname172930264_uat\",\r\n            \"status\": \"Active\",\r\n            \"products\": [\r\n                \"DIM\"\r\n            ],\r\n            \"tenantLevelServiceInstances\": [\r\n                {\r\n                    \"tenantLevelServiceInstanceId\": \"32c69661-e793-43c9-aa55-8d01d5252c34\",\r\n                    \"serviceCode\": \"IAM.UKGAuthN.Customer-Auth\",\r\n                    \"serviceName\": \"UKG AuthN Internal\",\r\n                    \"version\": \"1.0.0\",\r\n                    \"status\": \"Active\",\r\n                    \"url\": \"https://welcome-staging-test.ukg.dev\",\r\n                    \"serviceDeploymentDetailsId\": \"4594a4e5-4997-4e12-a207-bfdd841b9652\"\r\n                }\r\n            ]\r\n        },\r\n        \"body\": {\r\n            \"requestId\": \"e64bf7ac-0609-4067-a393-7d846ed2d3d6\",\r\n            \"tenant\": {\r\n                \"globalTenantId\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n                \"customerId\": \"abb3688b-578f-4721-9814-0374d238ce7c\",\r\n                \"region\": \"US\",\r\n                \"environmentType\": \"UAT\",\r\n                \"name\": \"ClientName_172930264 UAT\",\r\n                \"alias\": \"clientname172930264_uat\",\r\n                \"status\": \"Active\",\r\n                \"products\": [\r\n                    \"DIM\"\r\n                ],\r\n                \"tenantLevelServiceInstances\": [\r\n                    {\r\n                        \"serviceDeploymentDetailsId\": \"4594a4e5-4997-4e12-a207-bfdd841b9652\",\r\n                        \"tenantLevelServiceInstanceId\": \"32c69661-e793-43c9-aa55-8d01d5252c34\",\r\n                        \"serviceCode\": \"IAM.UKGAuthN.Customer-Auth\",\r\n                        \"serviceName\": \"UKG AuthN Internal\",\r\n                        \"version\": \"1.0.0\",\r\n                        \"url\": \"https://welcome-staging-test.ukg.dev\",\r\n                        \"status\": \"Active\",\r\n                        \"extensions\": [\r\n                            {\r\n                                \"key\": \"WFM-PEOPLE\",\r\n                                \"value\": \"People\"\r\n                            },\r\n                            {\r\n                                \"key\": \"domain\",\r\n                                \"value\": \"welcome-staging-test.ukg.dev\"\r\n                            }\r\n                        ]\r\n                    }\r\n                ]\r\n            },\r\n            \"metadata\": {\r\n                \"targetServices\": \"IAM.UKGAuthN.Customer-Auth,o-othr-codeiukzt,o-othr-ukgdevtesteventonly\"\r\n            }\r\n        },\r\n        \"ackRequired\": false\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Update Provisioning Request Status",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 2,\r\n    \"rhub_provisioning_request_id\": 1,\r\n    \"rhub_provisioning_service_id\": 2,\r\n    \"stage\": \"CAPACITY\",\r\n    \"status\": \"IN_PROGRESS\",\r\n    \"request\": \"{}\",\r\n    \"created\": \"2024-07-23T12:25:21.278Z\",\r\n    \"updated\": \"2024-07-23T12:25:21.278Z\",\r\n    \"response\": null\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request_status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request_status"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get UKG Authn Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set(\"Auth_Token\", JSON.parse(responseBody).access_token);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "content-type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"client_id\": \"0205bfdc-9423-11ee-b9d1-0242ac120002\",\r\n    \"client_secret\": \"fub09AWYsvxAMalXU2ivINV_bhSnklB9QCpvAZu295zo9VjMSjFs5p-i0hnKsSdY\",\r\n    \"audience\": \"https://reportinghub.ukg.net/api\",\r\n    \"grant_type\": \"client_credentials\"\r\n}"
+        },
+        "url": {
+          "raw": "https://{{ukgauthn_url}}/oauth/token",
+          "protocol": "https",
+          "host": [
+            "{{ukgauthn_url}}"
+          ],
+          "path": [
+            "oauth",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Provisioning Request By Tenant Name and Gtid",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request/tenantName?tenantName&tenantGtid",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request",
+            "tenantName"
+          ],
+          "query": [
+            {
+              "key": "tenantName",
+              "value": null,
+              "type": "text"
+            },
+            {
+              "key": "tenantGtid",
+              "value": null,
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Provisioning Request By Request Id and Gtid",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request/requestId?tenantGtid=66101173-1857-4394-abcb-fbba7adbd4bb&requestId=e64bf7ac-0609-4067-a393-7d846ed2d3d6",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request",
+            "requestId"
+          ],
+          "query": [
+            {
+              "key": "tenantGtid",
+              "value": "66101173-1857-4394-abcb-fbba7adbd4bb"
+            },
+            {
+              "key": "requestId",
+              "value": "e64bf7ac-0609-4067-a393-7d846ed2d3d6"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Provisioning Request Status by Request Id Service Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request_status/requestServiceId?serviceId=2&requestId=1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request_status",
+            "requestServiceId"
+          ],
+          "query": [
+            {
+              "key": "serviceId",
+              "value": "2"
+            },
+            {
+              "key": "requestId",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Provisioning Request Status by Status and Stage",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request_status/requestServiceId?stage=CAPACITY&status=REQUESTED",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request_status",
+            "requestServiceId"
+          ],
+          "query": [
+            {
+              "key": "stage",
+              "value": "CAPACITY"
+            },
+            {
+              "key": "status",
+              "value": "REQUESTED"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Provisioning Request",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:9997/rhub-pcs/v1/provision_request/id/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9997",
+          "path": [
+            "rhub-pcs",
+            "v1",
+            "provision_request",
+            "id",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

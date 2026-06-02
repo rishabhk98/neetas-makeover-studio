@@ -1,0 +1,266 @@
+{
+  "info": {
+    "_postman_id": "ca2e53f4-b0d4-448c-bcc9-df089e433553",
+    "name": "Payroll : Insert transaction",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Create Workunits",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJNMS1SZDJUcnFqZmQ0ZWh5QWRLYSJ9.eyJ0aWQiOiJvcmdfVnIxa0tyNmExeDNkYWRCbiIsInRhIjoiaGNhYXRoMTExX3VhdDA5IiwiZ2xvYmFsX3RlbmFudF9pZCI6ImY4ZThhN2JjLTQ4MjUtNGI0NC1iZDY5LWZlODgxYzFmODU1OSIsIm5hbWUiOiJDWFN5c0FkbWluIiwiZ2l2ZW5fbmFtZSI6IkNYU3lzQWRtaW4iLCJmYW1pbHlfbmFtZSI6IkNYU3lzQWRtaW4iLCJlbWFpbCI6ImN4c3lzYWRtaW5AdWtnLmNvbSIsInByZWZlcnJlZF91c2VybmFtZSI6ImN4c3lzYWRtaW4iLCJpc3MiOiJodHRwczovL3dlbGNvbWUtc3RhZ2luZy10ZXN0LnVrZy5kZXYvIiwic3ViIjoiYXV0aDB8YzZmYjdmODEtMDQ1Yy00ZGQwLTk3OWEtZTdlN2MyZWRlMDg2IiwiYXVkIjpbImh0dHBzOi8vd2ZtLnVrZy5uZXQvYXBpIiwiaHR0cHM6Ly93ZWxjb21lLXN0YWdpbmctdGVzdC51a2ctc3RhZ2luZy5hdXRoMGFwcC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNzAwODE0NzQxLCJleHAiOjE3MDA4MTY1NDEsImF6cCI6IjMxOGQ1NWUxLTJhMDAtNDc3ZS05MzQwLTA2NWFkYjVhZmFmOSIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIHJlYWQ6dXNlcmluZm8gcHJvZmlsZSBlbWFpbCBhY2Nlc3M6d2ZtIiwiZ3R5IjoicGFzc3dvcmQifQ.NXU0GC-FbQMrx6iQ-e2JhezVyu28eMaK7PuIE7hgJZX8nudMK1SrxxfNzDp_uiO6yYO03Vr0olWwMWOz619ZK1_eRopJbLiNgumAdMAmsGL3FAFycXQ0qVD8s8zOgw-lsNp-JxS9i54EFnbDMU8uptmOQltZWOP1rPHk62v1ngAGYmSkMZRLohnSqi7ogiVFR0KGzP6JVUQk6oKZ87EU14OpB4uYPPudr14NzJ62YHgG9ihO-NfpGAV9enZERYPnEYQBgjJ91dme0x_mpafWVzwqc6lQIz8jnQquHXMcoHYws5fEclRtjtO6ejDQkAKsB-hbnIYp1RZJrFenhmQI8A",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[{\r\n            \"workUnitCode\": \"WU-PayrollInser1\",\r\n            \"name\": \"WU-PayrollInser1\",\r\n            \"serviceLine\": \"WU Service Line\",\r\n            \"unitOfService\": \"Adj Pat Days\",\r\n            \"workWeekFTEHours\": \"40.00\",\r\n            \"caregiverSwt\": 1,\r\n            \"workUnitType\": {\r\n                \"qualifier\": \"Department\"\r\n            },\r\n            \"locations\": {\r\n                \"qualifier\": \"Health System-100/Hospitals/East Hospital/Nursing/Agency 1\"\r\n            },\r\n            \"payRule\": {\r\n                \"id\": 69,\r\n                \"qualifier\": \"Manufacturing Bi-Weekly Project\"\r\n            }\r\n        },\r\n        {\r\n            \"workUnitCode\": \"WU-PayrollInser2\",\r\n            \"name\": \"WU-PayrollInser2\",\r\n            \"serviceLine\": \"WU Service Line\",\r\n            \"unitOfService\": \"Adj Pat Days\",\r\n            \"workWeekFTEHours\": \"40.00\",\r\n            \"caregiverSwt\": 1,\r\n            \"workUnitType\": {\r\n                \"qualifier\": \"Department\"\r\n            },\r\n            \"locations\": {\r\n                \"qualifier\": \"Health System-100/Hospitals/East Hospital/Nursing/Agency 2\"\r\n            },\r\n            \"payRule\": {\r\n                \"id\": 69,\r\n                \"qualifier\": \"Manufacturing Bi-Weekly Project\"\r\n            }\r\n        }]"
+        },
+        "url": {
+          "raw": "http://hca07-b-back.int.dev.mykronos.com:80/wfc/restcall/v1/commons/work_units/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "hca07-b-back",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "commons",
+            "work_units",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Employment Status Mapping",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJNMS1SZDJUcnFqZmQ0ZWh5QWRLYSJ9.eyJ0aWQiOiJvcmdfVnIxa0tyNmExeDNkYWRCbiIsInRhIjoiaGNhYXRoMTExX3VhdDA5IiwiZ2xvYmFsX3RlbmFudF9pZCI6ImY4ZThhN2JjLTQ4MjUtNGI0NC1iZDY5LWZlODgxYzFmODU1OSIsIm5hbWUiOiJDWFN5c0FkbWluIiwiZ2l2ZW5fbmFtZSI6IkNYU3lzQWRtaW4iLCJmYW1pbHlfbmFtZSI6IkNYU3lzQWRtaW4iLCJlbWFpbCI6ImN4c3lzYWRtaW5AdWtnLmNvbSIsInByZWZlcnJlZF91c2VybmFtZSI6ImN4c3lzYWRtaW4iLCJpc3MiOiJodHRwczovL3dlbGNvbWUtc3RhZ2luZy10ZXN0LnVrZy5kZXYvIiwic3ViIjoiYXV0aDB8YzZmYjdmODEtMDQ1Yy00ZGQwLTk3OWEtZTdlN2MyZWRlMDg2IiwiYXVkIjpbImh0dHBzOi8vd2ZtLnVrZy5uZXQvYXBpIiwiaHR0cHM6Ly93ZWxjb21lLXN0YWdpbmctdGVzdC51a2ctc3RhZ2luZy5hdXRoMGFwcC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNzAwODE0NzQxLCJleHAiOjE3MDA4MTY1NDEsImF6cCI6IjMxOGQ1NWUxLTJhMDAtNDc3ZS05MzQwLTA2NWFkYjVhZmFmOSIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIHJlYWQ6dXNlcmluZm8gcHJvZmlsZSBlbWFpbCBhY2Nlc3M6d2ZtIiwiZ3R5IjoicGFzc3dvcmQifQ.NXU0GC-FbQMrx6iQ-e2JhezVyu28eMaK7PuIE7hgJZX8nudMK1SrxxfNzDp_uiO6yYO03Vr0olWwMWOz619ZK1_eRopJbLiNgumAdMAmsGL3FAFycXQ0qVD8s8zOgw-lsNp-JxS9i54EFnbDMU8uptmOQltZWOP1rPHk62v1ngAGYmSkMZRLohnSqi7ogiVFR0KGzP6JVUQk6oKZ87EU14OpB4uYPPudr14NzJ62YHgG9ihO-NfpGAV9enZERYPnEYQBgjJ91dme0x_mpafWVzwqc6lQIz8jnQquHXMcoHYws5fEclRtjtO6ejDQkAKsB-hbnIYp1RZJrFenhmQI8A",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n  {\r\n    \"payrollStatus\": {\r\n      \"code\": \"FT\",\r\n      \"description\": \"FullTime\"\r\n    },\r\n    \"analyticsLaborType\": {\r\n     \r\n      \"qualifier\": \"FullTime\"\r\n    },\r\n    \"payrollSource\": {\r\n      \"name\": \"Source1\"\r\n    },\r\n    \"deleteSwitch\": \"0\"\r\n  },\r\n  {\r\n    \"payrollStatus\": {\r\n      \"code\": \"PT\",\r\n      \"description\": \"PartTime\"\r\n    },\r\n    \"analyticsLaborType\": {\r\n     \r\n      \"qualifier\": \"PartTime\"\r\n    },\r\n    \"payrollSource\": {\r\n      \"name\": \"Source1\"\r\n    },\r\n    \"deleteSwitch\": \"0\"\r\n  },\r\n  {\r\n    \"payrollStatus\": {\r\n      \"code\": \"PD\",\r\n      \"description\": \"PerDiem\"\r\n    },\r\n    \"analyticsLaborType\": {\r\n     \r\n      \"qualifier\": \"PerDiem\"\r\n    },\r\n    \"payrollSource\": {\r\n      \"name\": \"Source1\"\r\n    },\r\n    \"deleteSwitch\": \"0\"\r\n  },\r\n  {\r\n    \"payrollStatus\": {\r\n      \"code\": \"IA\",\r\n      \"description\": \"InternalAgency\"\r\n    },\r\n    \"analyticsLaborType\": {\r\n     \r\n      \"qualifier\": \"InternalAgency\"\r\n    },\r\n    \"payrollSource\": {\r\n      \"name\": \"Source1\"\r\n    },\r\n    \"deleteSwitch\": \"0\"\r\n  },\r\n  {\r\n    \"payrollStatus\": {\r\n      \"code\": \"PO\",\r\n      \"description\": \"Pool\"\r\n    },\r\n    \"analyticsLaborType\": {\r\n     \r\n      \"qualifier\": \"Pool\"\r\n    },\r\n    \"payrollSource\": {\r\n      \"name\": \"Source1\"\r\n    },\r\n    \"deleteSwitch\": \"0\"\r\n  }\r\n]\r\n"
+        },
+        "url": {
+          "raw": "http://hca07-b-back.int.dev.mykronos.com:80/wfc/restcall/v1/hca/payroll/employment_status_maps/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "hca07-b-back",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "employment_status_maps",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payroll Department Mapping",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJNMS1SZDJUcnFqZmQ0ZWh5QWRLYSJ9.eyJ0aWQiOiJvcmdfVnIxa0tyNmExeDNkYWRCbiIsInRhIjoiaGNhYXRoMTExX3VhdDA5IiwiZ2xvYmFsX3RlbmFudF9pZCI6ImY4ZThhN2JjLTQ4MjUtNGI0NC1iZDY5LWZlODgxYzFmODU1OSIsIm5hbWUiOiJDWFN5c0FkbWluIiwiZ2l2ZW5fbmFtZSI6IkNYU3lzQWRtaW4iLCJmYW1pbHlfbmFtZSI6IkNYU3lzQWRtaW4iLCJlbWFpbCI6ImN4c3lzYWRtaW5AdWtnLmNvbSIsInByZWZlcnJlZF91c2VybmFtZSI6ImN4c3lzYWRtaW4iLCJpc3MiOiJodHRwczovL3dlbGNvbWUtc3RhZ2luZy10ZXN0LnVrZy5kZXYvIiwic3ViIjoiYXV0aDB8YzZmYjdmODEtMDQ1Yy00ZGQwLTk3OWEtZTdlN2MyZWRlMDg2IiwiYXVkIjpbImh0dHBzOi8vd2ZtLnVrZy5uZXQvYXBpIiwiaHR0cHM6Ly93ZWxjb21lLXN0YWdpbmctdGVzdC51a2ctc3RhZ2luZy5hdXRoMGFwcC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNzAwODE0NzQxLCJleHAiOjE3MDA4MTY1NDEsImF6cCI6IjMxOGQ1NWUxLTJhMDAtNDc3ZS05MzQwLTA2NWFkYjVhZmFmOSIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIHJlYWQ6dXNlcmluZm8gcHJvZmlsZSBlbWFpbCBhY2Nlc3M6d2ZtIiwiZ3R5IjoicGFzc3dvcmQifQ.NXU0GC-FbQMrx6iQ-e2JhezVyu28eMaK7PuIE7hgJZX8nudMK1SrxxfNzDp_uiO6yYO03Vr0olWwMWOz619ZK1_eRopJbLiNgumAdMAmsGL3FAFycXQ0qVD8s8zOgw-lsNp-JxS9i54EFnbDMU8uptmOQltZWOP1rPHk62v1ngAGYmSkMZRLohnSqi7ogiVFR0KGzP6JVUQk6oKZ87EU14OpB4uYPPudr14NzJ62YHgG9ihO-NfpGAV9enZERYPnEYQBgjJ91dme0x_mpafWVzwqc6lQIz8jnQquHXMcoHYws5fEclRtjtO6ejDQkAKsB-hbnIYp1RZJrFenhmQI8A",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n\t{\r\n        \"workUnit\": {\r\n            \"qualifier\": \"WU-PayrollInser1\"\r\n        },\r\n        \"payrollDepartment\": {\r\n            \"facilityCode\": \"East Hospital\",\r\n            \"departmentCode\": \"Agency 1\"\r\n        },\r\n        \"payrollSource\": {\r\n            \"name\": \"Source1\"\r\n        },\r\n        \"deleteSwitch\": 0\r\n    },\r\n    {\r\n        \"workUnit\": {\r\n            \"qualifier\": \"WU-PayrollInser2\"\r\n        },\r\n        \"payrollDepartment\": {\r\n            \"facilityCode\": \"East Hospital\",\r\n            \"departmentCode\": \"Agency 2\"\r\n        },\r\n        \"payrollSource\": {\r\n            \"name\": \"Source1\"\r\n        },\r\n        \"deleteSwitch\": 0\r\n    }\r\n    ]"
+        },
+        "url": {
+          "raw": "http://hca07-b-back.int.dev.mykronos.com:80/wfc/restcall/v1/hca/payroll/department_maps/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "hca07-b-back",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "department_maps",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payroll Job Mapping",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJNMS1SZDJUcnFqZmQ0ZWh5QWRLYSJ9.eyJ0aWQiOiJvcmdfVnIxa0tyNmExeDNkYWRCbiIsInRhIjoiaGNhYXRoMTExX3VhdDA5IiwiZ2xvYmFsX3RlbmFudF9pZCI6ImY4ZThhN2JjLTQ4MjUtNGI0NC1iZDY5LWZlODgxYzFmODU1OSIsIm5hbWUiOiJDWFN5c0FkbWluIiwiZ2l2ZW5fbmFtZSI6IkNYU3lzQWRtaW4iLCJmYW1pbHlfbmFtZSI6IkNYU3lzQWRtaW4iLCJlbWFpbCI6ImN4c3lzYWRtaW5AdWtnLmNvbSIsInByZWZlcnJlZF91c2VybmFtZSI6ImN4c3lzYWRtaW4iLCJpc3MiOiJodHRwczovL3dlbGNvbWUtc3RhZ2luZy10ZXN0LnVrZy5kZXYvIiwic3ViIjoiYXV0aDB8YzZmYjdmODEtMDQ1Yy00ZGQwLTk3OWEtZTdlN2MyZWRlMDg2IiwiYXVkIjpbImh0dHBzOi8vd2ZtLnVrZy5uZXQvYXBpIiwiaHR0cHM6Ly93ZWxjb21lLXN0YWdpbmctdGVzdC51a2ctc3RhZ2luZy5hdXRoMGFwcC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNzAwODE0NzQxLCJleHAiOjE3MDA4MTY1NDEsImF6cCI6IjMxOGQ1NWUxLTJhMDAtNDc3ZS05MzQwLTA2NWFkYjVhZmFmOSIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIHJlYWQ6dXNlcmluZm8gcHJvZmlsZSBlbWFpbCBhY2Nlc3M6d2ZtIiwiZ3R5IjoicGFzc3dvcmQifQ.NXU0GC-FbQMrx6iQ-e2JhezVyu28eMaK7PuIE7hgJZX8nudMK1SrxxfNzDp_uiO6yYO03Vr0olWwMWOz619ZK1_eRopJbLiNgumAdMAmsGL3FAFycXQ0qVD8s8zOgw-lsNp-JxS9i54EFnbDMU8uptmOQltZWOP1rPHk62v1ngAGYmSkMZRLohnSqi7ogiVFR0KGzP6JVUQk6oKZ87EU14OpB4uYPPudr14NzJ62YHgG9ihO-NfpGAV9enZERYPnEYQBgjJ91dme0x_mpafWVzwqc6lQIz8jnQquHXMcoHYws5fEclRtjtO6ejDQkAKsB-hbnIYp1RZJrFenhmQI8A",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"payrollSource\": {\r\n            \"name\": \"Source1\"\r\n        },\r\n        \"laborCategoryEntry\": {\r\n            \"qualifier\": \"RedRN\"\r\n        },\r\n        \"genericJob\": {\r\n            \"qualifier\": \"CNA\"\r\n        },\r\n        \"deleteSwitch\": 0\r\n    }\r\n]"
+        },
+        "url": {
+          "raw": "http://hca07-b-back.int.dev.mykronos.com:80/wfc/restcall/v1/hca/payroll/job_maps/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "hca07-b-back",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "job_maps",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payroll Import",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImJNMS1SZDJUcnFqZmQ0ZWh5QWRLYSJ9.eyJ0aWQiOiJvcmdfVnIxa0tyNmExeDNkYWRCbiIsInRhIjoiaGNhYXRoMTExX3VhdDA5IiwiZ2xvYmFsX3RlbmFudF9pZCI6ImY4ZThhN2JjLTQ4MjUtNGI0NC1iZDY5LWZlODgxYzFmODU1OSIsIm5hbWUiOiJDWFN5c0FkbWluIiwiZ2l2ZW5fbmFtZSI6IkNYU3lzQWRtaW4iLCJmYW1pbHlfbmFtZSI6IkNYU3lzQWRtaW4iLCJlbWFpbCI6ImN4c3lzYWRtaW5AdWtnLmNvbSIsInByZWZlcnJlZF91c2VybmFtZSI6ImN4c3lzYWRtaW4iLCJpc3MiOiJodHRwczovL3dlbGNvbWUtc3RhZ2luZy10ZXN0LnVrZy5kZXYvIiwic3ViIjoiYXV0aDB8YzZmYjdmODEtMDQ1Yy00ZGQwLTk3OWEtZTdlN2MyZWRlMDg2IiwiYXVkIjpbImh0dHBzOi8vd2ZtLnVrZy5uZXQvYXBpIiwiaHR0cHM6Ly93ZWxjb21lLXN0YWdpbmctdGVzdC51a2ctc3RhZ2luZy5hdXRoMGFwcC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNzAwODE2NjUxLCJleHAiOjE3MDA4MTg0NTEsImF6cCI6IjMxOGQ1NWUxLTJhMDAtNDc3ZS05MzQwLTA2NWFkYjVhZmFmOSIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIHJlYWQ6dXNlcmluZm8gcHJvZmlsZSBlbWFpbCBhY2Nlc3M6d2ZtIiwiZ3R5IjoicGFzc3dvcmQifQ.Et1ZSymUn2maCKrb833TB5iE2OjTMypcUjr_ab0VF-RDqVJit-441diBS1PkA5kg2fZ6LuOUHnP5Puh62Q_iDrp9ja48Va1XzdMWvjcEANJKkw5eGIGTfepvaqWeDjQbwg447nV4dUnLF_2WUL1XPt4jcVHJuTTPjEGMtRnMBg_qJANGuaBgjYBygjruFLnowPbWjODmA8NofAJMP8gOSUCtnbuWcyZtwIhEygyz2URmzgXk1eMVxlCfkoI6Bcd0pgsY9LJdKzl1fifH9_ZHHLKP1URCvZjAsyogr6HSvdIxOesoBGeATalFV1GsNNUJ1rGaGaVWaonYqurkeRfPkQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "SeanIvan",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"employee\": {\r\n            \"qualifier\": \"10000\",\r\n            \"attributes\": {\r\n                \"terminationDate\": \"2025-09-30\",\r\n                \"employeeName\": \"Charles Princeton\",\r\n                \"hireDate\": \"2019-01-30\",\r\n                \"standardHours\": \"80\"\r\n            }\r\n        },\r\n        \"payPeriodEndDate\": \"2021-09-14\",\r\n        \"rawPaidActuals\": [\r\n            {\r\n                \"facilityCode\": \"East Hospital\",\r\n                \"payrollSource\": \"Source1\",\r\n                \"employmentStatusCode\": \"FT\",\r\n                \"payrollPayCode\": \"Hours Regular\",\r\n                \"payrollPayCodeHours\": \"74\",\r\n                \"departmentCode\": \"Agency 1\",\r\n                \"payrollPayCodeAmount\": \"174\",\r\n                \"homeDepartmentCode\": \"Agency 1\",\r\n                \"payrollJob\": \"RedRN\",\r\n                \"primaryPayrollJob\": \"RNPT\",\r\n                \"payRateAmount\": \"0\",\r\n                \"homeFacilityCode\": \"East Hospital\"\r\n            },\r\n            {\r\n                \"facilityCode\": \"East Hospital\",\r\n                \"payrollSource\": \"Source1\",\r\n                \"employmentStatusCode\": \"FT\",\r\n                \"payrollPayCode\": \"Hours Regular\",\r\n                \"payrollPayCodeHours\": \"8\",\r\n                \"departmentCode\": \"Agency 2\",\r\n                \"payrollPayCodeAmount\": \"18\",\r\n                \"homeDepartmentCode\": \"Agency 1\",\r\n                \"payrollJob\": \"RedRN\",\r\n                \"primaryPayrollJob\": \"RNPT\",\r\n                \"payRateAmount\": \"0\",\r\n                \"homeFacilityCode\": \"East Hospital\"\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"employee\": {\r\n            \"qualifier\": \"10001\",\r\n            \"attributes\": {\r\n                \"terminationDate\": \"2025-12-30\",\r\n                \"employeeName\": \"Grace Peterson\",\r\n                \"hireDate\": \"2017-08-17\",\r\n                \"standardHours\": \"75\"\r\n            }\r\n        },\r\n        \"payPeriodEndDate\": \"2021-09-14\",\r\n        \"rawPaidActuals\": [\r\n            {\r\n                \"facilityCode\": \"East Hospital\",\r\n                \"payrollSource\": \"Source1\",\r\n                \"employmentStatusCode\": \"PT\",\r\n                \"payrollPayCode\": \"Approved Day\",\r\n                \"payrollPayCodeHours\": \"67\",\r\n                \"departmentCode\": \"Agency 1\",\r\n                \"payrollPayCodeAmount\": \"167\",\r\n                \"homeDepartmentCode\": \"Agency 1\",\r\n                \"payrollJob\": \"RedRN\",\r\n                \"primaryPayrollJob\": \"TriageRN\",\r\n                \"payRateAmount\": \"0\",\r\n                \"homeFacilityCode\": \"East Hospital\"\r\n            },\r\n            {\r\n                \"facilityCode\": \"East Hospital\",\r\n                \"payrollSource\": \"Source1\",\r\n                \"employmentStatusCode\": \"PT\",\r\n                \"payrollPayCode\": \"6th Day OT\",\r\n                \"payrollPayCodeHours\": \"10\",\r\n                \"departmentCode\": \"Agency 1\",\r\n                \"payrollPayCodeAmount\": \"20\",\r\n                \"homeDepartmentCode\": \"Agency 1\",\r\n                \"payrollJob\": \"RedRN\",\r\n                \"primaryPayrollJob\": \"TriageRN\",\r\n                \"payRateAmount\": \"0\",\r\n                \"homeFacilityCode\": \"East Hospital\"\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"employee\": {\r\n            \"qualifier\": \"10002\",\r\n            \"attributes\": {\r\n                \"terminationDate\": \"2023-01-30\",\r\n                \"employeeName\": \"Herbett Peterson\",\r\n                \"hireDate\": \"2015-08-10\",\r\n                \"standardHours\": \"70\"\r\n            }\r\n        },\r\n        \"payPeriodEndDate\": \"2021-09-14\",\r\n        \"rawPaidActuals\": [\r\n            {\r\n                \"facilityCode\": \"East Hospital\",\r\n                \"payrollSource\": \"Source1\",\r\n                \"employmentStatusCode\": \"IA\",\r\n                \"payrollPayCode\": \"6th Day OT\",\r\n                \"payrollPayCodeHours\": \"64\",\r\n                \"departmentCode\": \"Agency 1\",\r\n                \"payrollPayCodeAmount\": \"164\",\r\n                \"homeDepartmentCode\": \"Agency 1\",\r\n                \"payrollJob\": \"RedRN\",\r\n                \"primaryPayrollJob\": \"RNSCRUB\",\r\n                \"payRateAmount\": \"0\",\r\n                \"homeFacilityCode\": \"East Hospital\"\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"employee\": {\r\n            \"qualifier\": \"10003\",\r\n            \"attributes\": {\r\n                \"terminationDate\": \"2024-08-15\",\r\n                \"employeeName\": \"Mitchell Peterson\",\r\n                \"hireDate\": \"2019-11-30\",\r\n                \"standardHours\": \"68\"\r\n            }\r\n        },\r\n        \"payPeriodEndDate\": \"2021-09-14\",\r\n        \"rawPaidActuals\": [\r\n            {\r\n                \"facilityCode\": \"East Hospital\",\r\n                \"payrollSource\": \"Source1\",\r\n                \"employmentStatusCode\": \"PO\",\r\n                \"payrollPayCode\": \"Hours Medical Leave\",\r\n                \"payrollPayCodeHours\": \"69\",\r\n                \"departmentCode\": \"Agency 2\",\r\n                \"payrollPayCodeAmount\": \"169\",\r\n                \"homeDepartmentCode\": \"Agency 2\",\r\n                \"payrollJob\": \"RedRN\",\r\n                \"primaryPayrollJob\": \"RNPT\",\r\n                \"payRateAmount\": \"0\",\r\n                \"homeFacilityCode\": \"East Hospital\"\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"employee\": {\r\n            \"qualifier\": \"10004\",\r\n            \"attributes\": {\r\n                \"terminationDate\": \"2025-09-30\",\r\n                \"employeeName\": \"Victoria Hudson\",\r\n                \"hireDate\": \"2019-01-30\",\r\n                \"standardHours\": \"60\"\r\n            }\r\n        },\r\n        \"payPeriodEndDate\": \"2021-09-14\",\r\n        \"rawPaidActuals\": [\r\n            {\r\n                \"facilityCode\": \"East Hospital\",\r\n                \"payrollSource\": \"Source1\",\r\n                \"employmentStatusCode\": \"PD\",\r\n                \"payrollPayCode\": \"Banked for Holiday Hours\",\r\n                \"payrollPayCodeHours\": \"60\",\r\n                \"departmentCode\": \"Agency 2\",\r\n                \"payrollPayCodeAmount\": \"160\",\r\n                \"homeDepartmentCode\": \"Agency 2\",\r\n                \"payrollJob\": \"RedRN\",\r\n                \"primaryPayrollJob\": \"RNPT\",\r\n                \"payRateAmount\": \"0\",\r\n                \"homeFacilityCode\": \"East Hospital\"\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"employee\": {\r\n            \"qualifier\": \"10005\",\r\n            \"attributes\": {\r\n                \"terminationDate\": \"2025-09-30\",\r\n                \"employeeName\": \"Hannah Hudson\",\r\n                \"hireDate\": \"2019-01-30\",\r\n                \"standardHours\": \"72\"\r\n            }\r\n        },\r\n        \"payPeriodEndDate\": \"2021-09-14\",\r\n        \"rawPaidActuals\": [\r\n            {\r\n                \"facilityCode\": \"East Hospital\",\r\n                \"payrollSource\": \"Source1\",\r\n                \"employmentStatusCode\": \"PT\",\r\n                \"payrollPayCode\": \"Hours Regular\",\r\n                \"payrollPayCodeHours\": \"71.5\",\r\n                \"departmentCode\": \"Agency 1\",\r\n                \"payrollPayCodeAmount\": \"171.5\",\r\n                \"homeDepartmentCode\": \"Agency 1\",\r\n                \"payrollJob\": \"RedRN\",\r\n                \"primaryPayrollJob\": \"TriageRN\",\r\n                \"payRateAmount\": \"0\",\r\n                \"homeFacilityCode\": \"East Hospital\"\r\n            }\r\n        ]\r\n    },\r\n    {\r\n        \"employee\": {\r\n            \"qualifier\": \"10006\",\r\n            \"attributes\": {\r\n                \"terminationDate\": \"2025-09-30\",\r\n                \"employeeName\": \"Helen Hudson\",\r\n                \"hireDate\": \"2019-01-30\",\r\n                \"standardHours\": \"70\"\r\n            }\r\n        },\r\n        \"payPeriodEndDate\": \"2021-09-14\",\r\n        \"rawPaidActuals\": [\r\n            {\r\n                \"facilityCode\": \"East Hospital\",\r\n                \"payrollSource\": \"Source1\",\r\n                \"employmentStatusCode\": \"FT\",\r\n                \"payrollPayCode\": \"Hours Regular\",\r\n                \"payrollPayCodeHours\": \"70\",\r\n                \"departmentCode\": \"Agency 1\",\r\n                \"payrollPayCodeAmount\": \"170\",\r\n                \"homeDepartmentCode\": \"Agency 1\",\r\n                \"payrollJob\": \"RedRN\",\r\n                \"primaryPayrollJob\": \"RNSCRUB\",\r\n                \"payRateAmount\": \"0\",\r\n                \"homeFacilityCode\": \"East Hospital\"\r\n            }\r\n        ]\r\n    }\r\n]"
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca72-bck.int.dev.mykronos.com:80/hcaservice/restcall/v1/hca/payroll/raw_paid_actuals/multi_create",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca72-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "raw_paid_actuals",
+            "multi_create"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

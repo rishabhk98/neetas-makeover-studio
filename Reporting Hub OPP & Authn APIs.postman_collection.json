@@ -1,0 +1,707 @@
+{
+  "info": {
+    "_postman_id": "35cda6cb-7bf3-41d7-86a0-644710ada101",
+    "name": "Reporting Hub OPP & Authn APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "1. Get Access Token From Opp",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set(\"opp_token\", JSON.parse(responseBody).access_token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          },
+          {
+            "key": "Authorization",
+            "value": "Basic MDM2Zjk3ODItYjZhOS00Y2FjLWIyMDYtMzg5NDk5Mjk1Mjk2OlBAc3NXMHJkMTIzIQ=="
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            },
+            {
+              "key": "scope",
+              "value": "read:reportinghub write:reportinghub admin:reportinghub",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{openam_url}}/signin/oauth2/us_internal/access_token?response_type=token",
+          "host": [
+            "{{openam_url}}"
+          ],
+          "path": [
+            "signin",
+            "oauth2",
+            "us_internal",
+            "access_token"
+          ],
+          "query": [
+            {
+              "key": "response_type",
+              "value": "token"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Tenant Agnostic Token Generate",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set(\"opp_ta_token\", JSON.parse(responseBody).access_token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{opp_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJraWQiOiJSLy9Qa0pkMVlKWlNyMkI3MTVpYkMrWDA5cGc9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwNzc2OGEwNi1iMDU2LTExZWUtYTUwNi0wMjQyYWMxMjAwMDMiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXVkaXRUcmFja2luZ0lkIjoiZWZkNTcyYjktODU3Yy00YmY2LWFmODItYTY0ZGE3NjNkOGFjLTM2MDciLCJpc3MiOiJodHRwczovL3dlbGNvbWUtZGV2LnVrZ3Byb3NlcnZpY2VzLmNvbS9zaWduaW4vb2F1dGgyL3VzX2ludGVybmFsIiwidG9rZW5OYW1lIjoiYWNjZXNzX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiTWxVa0twOHFJelljMzA3YXlkeEZBNVpOeUIwLk9rbEM2ZGI0bHZCdmQ2WGt4NjR6cURfT2l5SSIsImF1ZCI6IjA3NzY4YTA2LWIwNTYtMTFlZS1hNTA2LTAyNDJhYzEyMDAwMyIsIm5iZiI6MTcwOTcxNzQ5MCwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInNjb3BlIjpbInJlYWQ6cmVwb3J0aW5naHViIiwib3BlbmlkIiwicHJvZmlsZSJdLCJhdXRoX3RpbWUiOjE3MDk3MTc0OTAsInJlYWxtIjoiL3VzX2ludGVybmFsIiwiZXhwIjoxNzA5NzIxMDkwLCJpYXQiOjE3MDk3MTc0OTAsImV4cGlyZXNfaW4iOjM2MDAsImp0aSI6Ik1sVWtLcDhxSXpZYzMwN2F5ZHhGQTVaTnlCMC5TYUZLUnBzdmsxY0xnYjhIbjVpZWttZmUzZXciLCJ0YSI6InVzX2ludGVybmFsIn0.msCnVkEnAz44RyQh3utqSbtIZ_n7F7EW7HpdEHgpQ2OwiZfdajqF3nzolBv12GsDcJFqjV576_c5X_aXZzqBIr971C0ff-aG72n8bm_b1copqswLSpPJxZmdDMs0m3tHXxHfIMdsBS5Wc0TBw0amPDGM2Nj0jcqwoXwwtLWGW8vplHJeMVxR90-75QC3QyuLLEF9l3kEBLo9V8rmhdMJkIH8zdpxWUIuVozxbEJofrnPzCuJjpRBlpOxLZruhPQZsN0J3b-D1w0JCG0TB--4-TE1I1eJm4qlHWNOOw78VNsMmsrWsfzbj79_1c1OqpIFy5F3EP5oO5MlJpJCcyXIYzHGO4TDO8a3WP82B0YYc-X2B4jIrU4CI0gZizUZ1xJ5tmm0FYQoGjJ48c3ph8pMqv-5VOAfLwZmB7qS_U3-8ITjIcpRnMWb0v3_BdE-DdyywjJHLMjjC70OZqmMeUt9T4cnXC1v8xYOJSHhQVGd2iTyBYjN6maK_iUJO2SP-sXsbq6R1EsuU8cEBLUMV59grK3z3xPMrIfZK8c9l7Wvhe-3TEXgiXlG-4GkiADldOw9wdQnj-gWLFVGv-HicdxRj3NDWm8pTdOPs6LdHrUrlt-yA-FRpEaRVafS71PB5epePq08GnIdfhGOAZN0JiMGDG8FLKXne_ZZczq5hhPHWmY",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"grant_type\": \"client_credentials\",\n    \"client_secret\": \"/projects/d-ulti-ukg-reporting-hub-ce0f/secrets/staging-07768a06-b056-11ee-a506-0242ac120003\",\n    \"scopes\": \"read:reportinghub\",\n    \"client_id\": \"07768a06-b056-11ee-a506-0242ac120003\"\n}"
+        },
+        "url": {
+          "raw": "{{localhost}}/rhub/api/v1/auth/opp/access_token/generate/custom",
+          "host": [
+            "{{localhost}}"
+          ],
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "auth",
+            "opp",
+            "access_token",
+            "generate",
+            "custom"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Get Tenant API(Tenant Agnostic)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{opp_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJraWQiOiJhdk9RSWtpSVhheXZlaHhmYU1iRWIzWXg2cnM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXVkaXRUcmFja2luZ0lkIjoiM2M4MmUyMjQtZjI2Ny00MDliLWJlYjYtYTY3ZDk5ZGUxMDE5LTEwMDQ2NjUiLCJpc3MiOiJodHRwczovL3dlbGNvbWUtZGV2LnVsdGlwcm9zZXJ2aWNlcy5jb20vc2lnbmluL29hdXRoMi91c19pbnRlcm5hbCIsInRva2VuTmFtZSI6ImFjY2Vzc190b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5PYk40SzlKckY5N20ydW1aN3dmZ2hkOF9BSkkiLCJhdWQiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJuYmYiOjE3MDk4OTEyNTcsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJyZWFkOnJlcG9ydGluZ2h1YiIsImFkbWluOnJlcG9ydGluZ2h1YiIsIndyaXRlOnJlcG9ydGluZ2h1YiJdLCJhdXRoX3RpbWUiOjE3MDk4OTEyNTcsInJlYWxtIjoiL3VzX2ludGVybmFsIiwiZXhwIjoxNzA5ODk0ODU3LCJpYXQiOjE3MDk4OTEyNTcsImV4cGlyZXNfaW4iOjM2MDAsImp0aSI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5BQjN0aFpnQUpXV0t4Rzc5ZWJlNnNEc1daeUUiLCJ0YSI6InVzX2ludGVybmFsIn0.OglIwHac43_RIvfNCZY4K4aoJTrxY-dEuiHHkP5rSvEMpXk8iKoTE3E3exXdKr1z8l1W3Gz4fAa3pffoiUnWcK2s3CHidn5vmXlhaL1AFNrmrI69qJLHLWxfdfAV5XWK1mykj8dSd-1bYZdPFIacvvw9wHbfKatc1OKe-15iGR7gPCAgQHy_GtNDAKN223bHBIWo4p6KCOqUDmrGvMjcPRVEFBgyO9BRlZGXGcPxzfq4u2LMJTDy7bZ2aRHslnoJnF_4rRM1Hhe1abesdlIdlZhBeDrVfIex8VWEavuHTqZF_Piw5jwWuLc18aNWa6YRiMg6grobdbfT2Ejt6ZawUhakdCjLp1C2ypU3F6b1H8jbT5Ma7PFbPu_co9H-967p_h1dNipTfMFoZUHdbfxLuOJ7s9MBtug7nSDFfk9JlHiDs7xDo6WtIpDQgbEKJ6WEjUP9L9UnDnrsytwFWCp5AluWWPuaQ1_yWrm6Y1OPO5y7jbAIYeETpCrawYxghU9iEf6Z_KelUv-pOpdJRXvW52APVX98K6cSd6k9XrQ5o85bTbW6OuFmyk0D12j30wGt3LI2qduN52zu3TAFSBV_Cjo9ANRnoQA6HV-MuXHQKWjsOGy5DTBXodca_N-iwKCeALtXSqpX_RfMXWgfOkp1v5hCrsIaqLkzkDbk5i1OAL4",
+            "disabled": true
+          },
+          {
+            "key": "X-Correlation-Id",
+            "value": "11beae73-4180-4f25-b00e-3be20cfe7399",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{devurl}}/rhub/api/v1/tenants",
+          "host": [
+            "{{devurl}}"
+          ],
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "tenants"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Tenant Specific Token Generate",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set(\"opp_ts_token\", JSON.parse(responseBody).access_token);"
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{opp_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJraWQiOiJSLy9Qa0pkMVlKWlNyMkI3MTVpYkMrWDA5cGc9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwNzc2OGEwNi1iMDU2LTExZWUtYTUwNi0wMjQyYWMxMjAwMDMiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXVkaXRUcmFja2luZ0lkIjoiZWZkNTcyYjktODU3Yy00YmY2LWFmODItYTY0ZGE3NjNkOGFjLTM2MDciLCJpc3MiOiJodHRwczovL3dlbGNvbWUtZGV2LnVrZ3Byb3NlcnZpY2VzLmNvbS9zaWduaW4vb2F1dGgyL3VzX2ludGVybmFsIiwidG9rZW5OYW1lIjoiYWNjZXNzX3Rva2VuIiwidG9rZW5fdHlwZSI6IkJlYXJlciIsImF1dGhHcmFudElkIjoiTWxVa0twOHFJelljMzA3YXlkeEZBNVpOeUIwLk9rbEM2ZGI0bHZCdmQ2WGt4NjR6cURfT2l5SSIsImF1ZCI6IjA3NzY4YTA2LWIwNTYtMTFlZS1hNTA2LTAyNDJhYzEyMDAwMyIsIm5iZiI6MTcwOTcxNzQ5MCwiZ3JhbnRfdHlwZSI6ImNsaWVudF9jcmVkZW50aWFscyIsInNjb3BlIjpbInJlYWQ6cmVwb3J0aW5naHViIiwib3BlbmlkIiwicHJvZmlsZSJdLCJhdXRoX3RpbWUiOjE3MDk3MTc0OTAsInJlYWxtIjoiL3VzX2ludGVybmFsIiwiZXhwIjoxNzA5NzIxMDkwLCJpYXQiOjE3MDk3MTc0OTAsImV4cGlyZXNfaW4iOjM2MDAsImp0aSI6Ik1sVWtLcDhxSXpZYzMwN2F5ZHhGQTVaTnlCMC5TYUZLUnBzdmsxY0xnYjhIbjVpZWttZmUzZXciLCJ0YSI6InVzX2ludGVybmFsIn0.msCnVkEnAz44RyQh3utqSbtIZ_n7F7EW7HpdEHgpQ2OwiZfdajqF3nzolBv12GsDcJFqjV576_c5X_aXZzqBIr971C0ff-aG72n8bm_b1copqswLSpPJxZmdDMs0m3tHXxHfIMdsBS5Wc0TBw0amPDGM2Nj0jcqwoXwwtLWGW8vplHJeMVxR90-75QC3QyuLLEF9l3kEBLo9V8rmhdMJkIH8zdpxWUIuVozxbEJofrnPzCuJjpRBlpOxLZruhPQZsN0J3b-D1w0JCG0TB--4-TE1I1eJm4qlHWNOOw78VNsMmsrWsfzbj79_1c1OqpIFy5F3EP5oO5MlJpJCcyXIYzHGO4TDO8a3WP82B0YYc-X2B4jIrU4CI0gZizUZ1xJ5tmm0FYQoGjJ48c3ph8pMqv-5VOAfLwZmB7qS_U3-8ITjIcpRnMWb0v3_BdE-DdyywjJHLMjjC70OZqmMeUt9T4cnXC1v8xYOJSHhQVGd2iTyBYjN6maK_iUJO2SP-sXsbq6R1EsuU8cEBLUMV59grK3z3xPMrIfZK8c9l7Wvhe-3TEXgiXlG-4GkiADldOw9wdQnj-gWLFVGv-HicdxRj3NDWm8pTdOPs6LdHrUrlt-yA-FRpEaRVafS71PB5epePq08GnIdfhGOAZN0JiMGDG8FLKXne_ZZczq5hhPHWmY",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"grant_type\": \"client_credentials\",\n    \"client_secret\": \"/projects/d-ulti-ukg-reporting-hub-ce0f/secrets/staging-7df9bf1f-0d6e-4982-8712-d6d347f7ae83\",\n    \"scopes\": \"openid profile\",\n    \"client_id\": \"7df9bf1f-0d6e-4982-8712-d6d347f7ae83\",\n    \"realm\": \"rhplat1-calen\"\n}"
+        },
+        "url": {
+          "raw": "{{localhost}}/rhub/api/v1/auth/opp/access_token/generate/custom",
+          "host": [
+            "{{localhost}}"
+          ],
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "auth",
+            "opp",
+            "access_token",
+            "generate",
+            "custom"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Get Dashboards API(Tenant Specific) Opp",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{opp_ts_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJraWQiOiJhdk9RSWtpSVhheXZlaHhmYU1iRWIzWXg2cnM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXVkaXRUcmFja2luZ0lkIjoiM2M4MmUyMjQtZjI2Ny00MDliLWJlYjYtYTY3ZDk5ZGUxMDE5LTEwMDQ2NjUiLCJpc3MiOiJodHRwczovL3dlbGNvbWUtZGV2LnVsdGlwcm9zZXJ2aWNlcy5jb20vc2lnbmluL29hdXRoMi91c19pbnRlcm5hbCIsInRva2VuTmFtZSI6ImFjY2Vzc190b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5PYk40SzlKckY5N20ydW1aN3dmZ2hkOF9BSkkiLCJhdWQiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJuYmYiOjE3MDk4OTEyNTcsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJyZWFkOnJlcG9ydGluZ2h1YiIsImFkbWluOnJlcG9ydGluZ2h1YiIsIndyaXRlOnJlcG9ydGluZ2h1YiJdLCJhdXRoX3RpbWUiOjE3MDk4OTEyNTcsInJlYWxtIjoiL3VzX2ludGVybmFsIiwiZXhwIjoxNzA5ODk0ODU3LCJpYXQiOjE3MDk4OTEyNTcsImV4cGlyZXNfaW4iOjM2MDAsImp0aSI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5BQjN0aFpnQUpXV0t4Rzc5ZWJlNnNEc1daeUUiLCJ0YSI6InVzX2ludGVybmFsIn0.OglIwHac43_RIvfNCZY4K4aoJTrxY-dEuiHHkP5rSvEMpXk8iKoTE3E3exXdKr1z8l1W3Gz4fAa3pffoiUnWcK2s3CHidn5vmXlhaL1AFNrmrI69qJLHLWxfdfAV5XWK1mykj8dSd-1bYZdPFIacvvw9wHbfKatc1OKe-15iGR7gPCAgQHy_GtNDAKN223bHBIWo4p6KCOqUDmrGvMjcPRVEFBgyO9BRlZGXGcPxzfq4u2LMJTDy7bZ2aRHslnoJnF_4rRM1Hhe1abesdlIdlZhBeDrVfIex8VWEavuHTqZF_Piw5jwWuLc18aNWa6YRiMg6grobdbfT2Ejt6ZawUhakdCjLp1C2ypU3F6b1H8jbT5Ma7PFbPu_co9H-967p_h1dNipTfMFoZUHdbfxLuOJ7s9MBtug7nSDFfk9JlHiDs7xDo6WtIpDQgbEKJ6WEjUP9L9UnDnrsytwFWCp5AluWWPuaQ1_yWrm6Y1OPO5y7jbAIYeETpCrawYxghU9iEf6Z_KelUv-pOpdJRXvW52APVX98K6cSd6k9XrQ5o85bTbW6OuFmyk0D12j30wGt3LI2qduN52zu3TAFSBV_Cjo9ANRnoQA6HV-MuXHQKWjsOGy5DTBXodca_N-iwKCeALtXSqpX_RfMXWgfOkp1v5hCrsIaqLkzkDbk5i1OAL4",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "{{localhost}}/rhub/api/v1/dashboards",
+          "host": [
+            "{{localhost}}"
+          ],
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "dashboards"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "13. Create Tenant",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"gtid\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n    \"name\": \"customer_uat\",\r\n    \"trexEnable\": true\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9999/rhub/api/v1/tenants",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9999",
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "tenants"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "13. Create Tenant DevApi",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"gtid\": \"66101173-1857-4394-abcb-fbba7adbd4bb\",\r\n    \"name\": \"customer_uat\",\r\n    \"trexEnable\": true\r\n}\r\n\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9999/rhub/api/v1/tenants",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9999",
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "tenants"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "12. Delete Tenant by Id DevApi",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJraWQiOiJhdk9RSWtpSVhheXZlaHhmYU1iRWIzWXg2cnM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXVkaXRUcmFja2luZ0lkIjoiM2M4MmUyMjQtZjI2Ny00MDliLWJlYjYtYTY3ZDk5ZGUxMDE5LTEwMDQ2NjUiLCJpc3MiOiJodHRwczovL3dlbGNvbWUtZGV2LnVsdGlwcm9zZXJ2aWNlcy5jb20vc2lnbmluL29hdXRoMi91c19pbnRlcm5hbCIsInRva2VuTmFtZSI6ImFjY2Vzc190b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5PYk40SzlKckY5N20ydW1aN3dmZ2hkOF9BSkkiLCJhdWQiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJuYmYiOjE3MDk4OTEyNTcsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJyZWFkOnJlcG9ydGluZ2h1YiIsImFkbWluOnJlcG9ydGluZ2h1YiIsIndyaXRlOnJlcG9ydGluZ2h1YiJdLCJhdXRoX3RpbWUiOjE3MDk4OTEyNTcsInJlYWxtIjoiL3VzX2ludGVybmFsIiwiZXhwIjoxNzA5ODk0ODU3LCJpYXQiOjE3MDk4OTEyNTcsImV4cGlyZXNfaW4iOjM2MDAsImp0aSI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5BQjN0aFpnQUpXV0t4Rzc5ZWJlNnNEc1daeUUiLCJ0YSI6InVzX2ludGVybmFsIn0.OglIwHac43_RIvfNCZY4K4aoJTrxY-dEuiHHkP5rSvEMpXk8iKoTE3E3exXdKr1z8l1W3Gz4fAa3pffoiUnWcK2s3CHidn5vmXlhaL1AFNrmrI69qJLHLWxfdfAV5XWK1mykj8dSd-1bYZdPFIacvvw9wHbfKatc1OKe-15iGR7gPCAgQHy_GtNDAKN223bHBIWo4p6KCOqUDmrGvMjcPRVEFBgyO9BRlZGXGcPxzfq4u2LMJTDy7bZ2aRHslnoJnF_4rRM1Hhe1abesdlIdlZhBeDrVfIex8VWEavuHTqZF_Piw5jwWuLc18aNWa6YRiMg6grobdbfT2Ejt6ZawUhakdCjLp1C2ypU3F6b1H8jbT5Ma7PFbPu_co9H-967p_h1dNipTfMFoZUHdbfxLuOJ7s9MBtug7nSDFfk9JlHiDs7xDo6WtIpDQgbEKJ6WEjUP9L9UnDnrsytwFWCp5AluWWPuaQ1_yWrm6Y1OPO5y7jbAIYeETpCrawYxghU9iEf6Z_KelUv-pOpdJRXvW52APVX98K6cSd6k9XrQ5o85bTbW6OuFmyk0D12j30wGt3LI2qduN52zu3TAFSBV_Cjo9ANRnoQA6HV-MuXHQKWjsOGy5DTBXodca_N-iwKCeALtXSqpX_RfMXWgfOkp1v5hCrsIaqLkzkDbk5i1OAL4",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:9999/rhub/api/v1/tenants/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9999",
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "tenants",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "12. Delete Tenant by Id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Auth_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJraWQiOiJhdk9RSWtpSVhheXZlaHhmYU1iRWIzWXg2cnM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXVkaXRUcmFja2luZ0lkIjoiM2M4MmUyMjQtZjI2Ny00MDliLWJlYjYtYTY3ZDk5ZGUxMDE5LTEwMDQ2NjUiLCJpc3MiOiJodHRwczovL3dlbGNvbWUtZGV2LnVsdGlwcm9zZXJ2aWNlcy5jb20vc2lnbmluL29hdXRoMi91c19pbnRlcm5hbCIsInRva2VuTmFtZSI6ImFjY2Vzc190b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5PYk40SzlKckY5N20ydW1aN3dmZ2hkOF9BSkkiLCJhdWQiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJuYmYiOjE3MDk4OTEyNTcsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJyZWFkOnJlcG9ydGluZ2h1YiIsImFkbWluOnJlcG9ydGluZ2h1YiIsIndyaXRlOnJlcG9ydGluZ2h1YiJdLCJhdXRoX3RpbWUiOjE3MDk4OTEyNTcsInJlYWxtIjoiL3VzX2ludGVybmFsIiwiZXhwIjoxNzA5ODk0ODU3LCJpYXQiOjE3MDk4OTEyNTcsImV4cGlyZXNfaW4iOjM2MDAsImp0aSI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5BQjN0aFpnQUpXV0t4Rzc5ZWJlNnNEc1daeUUiLCJ0YSI6InVzX2ludGVybmFsIn0.OglIwHac43_RIvfNCZY4K4aoJTrxY-dEuiHHkP5rSvEMpXk8iKoTE3E3exXdKr1z8l1W3Gz4fAa3pffoiUnWcK2s3CHidn5vmXlhaL1AFNrmrI69qJLHLWxfdfAV5XWK1mykj8dSd-1bYZdPFIacvvw9wHbfKatc1OKe-15iGR7gPCAgQHy_GtNDAKN223bHBIWo4p6KCOqUDmrGvMjcPRVEFBgyO9BRlZGXGcPxzfq4u2LMJTDy7bZ2aRHslnoJnF_4rRM1Hhe1abesdlIdlZhBeDrVfIex8VWEavuHTqZF_Piw5jwWuLc18aNWa6YRiMg6grobdbfT2Ejt6ZawUhakdCjLp1C2ypU3F6b1H8jbT5Ma7PFbPu_co9H-967p_h1dNipTfMFoZUHdbfxLuOJ7s9MBtug7nSDFfk9JlHiDs7xDo6WtIpDQgbEKJ6WEjUP9L9UnDnrsytwFWCp5AluWWPuaQ1_yWrm6Y1OPO5y7jbAIYeETpCrawYxghU9iEf6Z_KelUv-pOpdJRXvW52APVX98K6cSd6k9XrQ5o85bTbW6OuFmyk0D12j30wGt3LI2qduN52zu3TAFSBV_Cjo9ANRnoQA6HV-MuXHQKWjsOGy5DTBXodca_N-iwKCeALtXSqpX_RfMXWgfOkp1v5hCrsIaqLkzkDbk5i1OAL4",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:9999/rhub/api/v1/tenants/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9999",
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "tenants",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. Get UKG Authn Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.environment.set(\"ukgauthn_token\", JSON.parse(responseBody).access_token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "content-type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"client_id\": \"0205bfdc-9423-11ee-b9d1-0242ac120002\",\r\n    \"client_secret\": \"fub09AWYsvxAMalXU2ivINV_bhSnklB9QCpvAZu295zo9VjMSjFs5p-i0hnKsSdY\",\r\n    \"audience\": \"https://reportinghub.ukg.net/api\",\r\n    \"grant_type\": \"client_credentials\"\r\n}"
+        },
+        "url": {
+          "raw": "https://{{ukgauthn_url}}/oauth/token",
+          "protocol": "https",
+          "host": [
+            "{{ukgauthn_url}}"
+          ],
+          "path": [
+            "oauth",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "7. Get Tenant API(Tenant Agnostic) With UKG Authn",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{ukgauthn_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJraWQiOiJhdk9RSWtpSVhheXZlaHhmYU1iRWIzWXg2cnM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXVkaXRUcmFja2luZ0lkIjoiM2M4MmUyMjQtZjI2Ny00MDliLWJlYjYtYTY3ZDk5ZGUxMDE5LTEwMDQ2NjUiLCJpc3MiOiJodHRwczovL3dlbGNvbWUtZGV2LnVsdGlwcm9zZXJ2aWNlcy5jb20vc2lnbmluL29hdXRoMi91c19pbnRlcm5hbCIsInRva2VuTmFtZSI6ImFjY2Vzc190b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5PYk40SzlKckY5N20ydW1aN3dmZ2hkOF9BSkkiLCJhdWQiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJuYmYiOjE3MDk4OTEyNTcsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJyZWFkOnJlcG9ydGluZ2h1YiIsImFkbWluOnJlcG9ydGluZ2h1YiIsIndyaXRlOnJlcG9ydGluZ2h1YiJdLCJhdXRoX3RpbWUiOjE3MDk4OTEyNTcsInJlYWxtIjoiL3VzX2ludGVybmFsIiwiZXhwIjoxNzA5ODk0ODU3LCJpYXQiOjE3MDk4OTEyNTcsImV4cGlyZXNfaW4iOjM2MDAsImp0aSI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5BQjN0aFpnQUpXV0t4Rzc5ZWJlNnNEc1daeUUiLCJ0YSI6InVzX2ludGVybmFsIn0.OglIwHac43_RIvfNCZY4K4aoJTrxY-dEuiHHkP5rSvEMpXk8iKoTE3E3exXdKr1z8l1W3Gz4fAa3pffoiUnWcK2s3CHidn5vmXlhaL1AFNrmrI69qJLHLWxfdfAV5XWK1mykj8dSd-1bYZdPFIacvvw9wHbfKatc1OKe-15iGR7gPCAgQHy_GtNDAKN223bHBIWo4p6KCOqUDmrGvMjcPRVEFBgyO9BRlZGXGcPxzfq4u2LMJTDy7bZ2aRHslnoJnF_4rRM1Hhe1abesdlIdlZhBeDrVfIex8VWEavuHTqZF_Piw5jwWuLc18aNWa6YRiMg6grobdbfT2Ejt6ZawUhakdCjLp1C2ypU3F6b1H8jbT5Ma7PFbPu_co9H-967p_h1dNipTfMFoZUHdbfxLuOJ7s9MBtug7nSDFfk9JlHiDs7xDo6WtIpDQgbEKJ6WEjUP9L9UnDnrsytwFWCp5AluWWPuaQ1_yWrm6Y1OPO5y7jbAIYeETpCrawYxghU9iEf6Z_KelUv-pOpdJRXvW52APVX98K6cSd6k9XrQ5o85bTbW6OuFmyk0D12j30wGt3LI2qduN52zu3TAFSBV_Cjo9ANRnoQA6HV-MuXHQKWjsOGy5DTBXodca_N-iwKCeALtXSqpX_RfMXWgfOkp1v5hCrsIaqLkzkDbk5i1OAL4",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "{{localhost}}/rhub/api/v1/tenants",
+          "host": [
+            "{{localhost}}"
+          ],
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "tenants"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "7. Get Tenant DEV API",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{ukgauthn_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJraWQiOiJhdk9RSWtpSVhheXZlaHhmYU1iRWIzWXg2cnM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXVkaXRUcmFja2luZ0lkIjoiM2M4MmUyMjQtZjI2Ny00MDliLWJlYjYtYTY3ZDk5ZGUxMDE5LTEwMDQ2NjUiLCJpc3MiOiJodHRwczovL3dlbGNvbWUtZGV2LnVsdGlwcm9zZXJ2aWNlcy5jb20vc2lnbmluL29hdXRoMi91c19pbnRlcm5hbCIsInRva2VuTmFtZSI6ImFjY2Vzc190b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5PYk40SzlKckY5N20ydW1aN3dmZ2hkOF9BSkkiLCJhdWQiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJuYmYiOjE3MDk4OTEyNTcsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJyZWFkOnJlcG9ydGluZ2h1YiIsImFkbWluOnJlcG9ydGluZ2h1YiIsIndyaXRlOnJlcG9ydGluZ2h1YiJdLCJhdXRoX3RpbWUiOjE3MDk4OTEyNTcsInJlYWxtIjoiL3VzX2ludGVybmFsIiwiZXhwIjoxNzA5ODk0ODU3LCJpYXQiOjE3MDk4OTEyNTcsImV4cGlyZXNfaW4iOjM2MDAsImp0aSI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5BQjN0aFpnQUpXV0t4Rzc5ZWJlNnNEc1daeUUiLCJ0YSI6InVzX2ludGVybmFsIn0.OglIwHac43_RIvfNCZY4K4aoJTrxY-dEuiHHkP5rSvEMpXk8iKoTE3E3exXdKr1z8l1W3Gz4fAa3pffoiUnWcK2s3CHidn5vmXlhaL1AFNrmrI69qJLHLWxfdfAV5XWK1mykj8dSd-1bYZdPFIacvvw9wHbfKatc1OKe-15iGR7gPCAgQHy_GtNDAKN223bHBIWo4p6KCOqUDmrGvMjcPRVEFBgyO9BRlZGXGcPxzfq4u2LMJTDy7bZ2aRHslnoJnF_4rRM1Hhe1abesdlIdlZhBeDrVfIex8VWEavuHTqZF_Piw5jwWuLc18aNWa6YRiMg6grobdbfT2Ejt6ZawUhakdCjLp1C2ypU3F6b1H8jbT5Ma7PFbPu_co9H-967p_h1dNipTfMFoZUHdbfxLuOJ7s9MBtug7nSDFfk9JlHiDs7xDo6WtIpDQgbEKJ6WEjUP9L9UnDnrsytwFWCp5AluWWPuaQ1_yWrm6Y1OPO5y7jbAIYeETpCrawYxghU9iEf6Z_KelUv-pOpdJRXvW52APVX98K6cSd6k9XrQ5o85bTbW6OuFmyk0D12j30wGt3LI2qduN52zu3TAFSBV_Cjo9ANRnoQA6HV-MuXHQKWjsOGy5DTBXodca_N-iwKCeALtXSqpX_RfMXWgfOkp1v5hCrsIaqLkzkDbk5i1OAL4",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "{{localhost}}/rhub/api/v1/tenants",
+          "host": [
+            "{{localhost}}"
+          ],
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "tenants"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "8. Tenant Specific Token Generate with UKG Authn",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "content-type",
+            "value": "application/json"
+          },
+          {
+            "key": "Cookie",
+            "value": "did=s%3Av0%3Ae72cc970-8456-11ee-b26b-8f73fad2abf6.RTkMMk37%2FdUqAtSS7KjEd52nzQk2Wci51rvnrRpKBSY; did_compat=s%3Av0%3Ae72cc970-8456-11ee-b26b-8f73fad2abf6.RTkMMk37%2FdUqAtSS7KjEd52nzQk2Wci51rvnrRpKBSY"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"client_id\": \"c97dc1e8-7954-11ee-b962-0242ac120004\",\r\n    \"client_secret\": \"RZBJYKG1hRDT8fs22WYB3F9SzYqwI_4qQkyJPl-6-7Y6AULYD_BMzyPZ4Tlh7Hy-\",\r\n    \"audience\": \"https://reportinghub.ukg.net/api\",\r\n    \"scopes\": \"read:reportinghub\",\r\n    \"grant_type\": \"http://auth0.com/oauth/grant-type/password-realm\",\r\n    \"realm\": \"IFrXebiyJY1QVaBI-directlogin\",\r\n    \"username\": \"Svishnoi\",\r\n    \"password\": \"Pr0mensi0ns@UKG\"\r\n}"
+        },
+        "url": {
+          "raw": "https://welcome-staging.ukg.dev/oauth/token",
+          "protocol": "https",
+          "host": [
+            "welcome-staging",
+            "ukg",
+            "dev"
+          ],
+          "path": [
+            "oauth",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "9. Get Dashboards API(Tenant Specific) with UKG Authn",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjdDdDZzYkx2QVYya1B1MVRicWVuSiJ9.eyJ1a2dfcHJlZmVycmVkX2xhbmd1YWdlIjoiZW4tVVMiLCJ0aWQiOiJvcmdfSUZyWGViaXlKWTFRVmFCSSIsInRhIjoiYWJoYXkyNTA5MV91YXQiLCJnbG9iYWxfdGVuYW50X2lkIjoiMDFjYTkxZDEtODEwYS00MGFlLWE1ZjYtZTg3M2VlY2YwYzQwIiwiaXNzIjoiaHR0cHM6Ly93ZWxjb21lLXN0YWdpbmcudWtnLmRldi8iLCJzdWIiOiJhdXRoMHwzYWVhNmMxNS03YWVmLTRhZTUtODVjNS1kNTg3NDUxYjJmODQiLCJhdWQiOiJodHRwczovL3JlcG9ydGluZ2h1Yi51a2cubmV0L2FwaSIsImlhdCI6MTcxMzMzNzAyMSwiZXhwIjoxNzEzNDIzNDIxLCJzY29wZSI6InJlYWQ6cmVwb3J0aW5naHViIHdyaXRlOnJlcG9ydGluZ2h1YiIsImd0eSI6InBhc3N3b3JkIiwiYXpwIjoiYzk3ZGMxZTgtNzk1NC0xMWVlLWI5NjItMDI0MmFjMTIwMDA0In0.XzQm-d5B4lrrLw5axH5KK6xpg0naQ38Ki870YG2N7hZK7XYHisBwBS9rP1gax5VYsbesJffHb0YToqlIjE4zPYLhmLvbGHNiZHBdbTifo4l3-c6Vqmb2fP94ynXLob7WyCa6kQlNqcBbJ1XTFUdvJJS_b8HSGqJaj4XkRirrKtWbfA8j-QM7WP8iIAh_CqB-or-CJOAuyJhmT-CSYr-Y4BPyGU4y0-Ar8HfC43pD_3VQvcbWx2mD2NCLJhRMz5osa6Uw1oJ-WEot-acvNT0X1NP27l6AYsuMgQg7H8iyOseZsvKRzN0VZKFKVtS_C7KlWiNHRiQdXYOeRQO4F6ZE6A"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"HCA\"\r\n}"
+        },
+        "url": {
+          "raw": "http://localhost:9999/rhub/api/v1/dashboards",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9999",
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "dashboards"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "10. Get Dashboards by Id API(Tenant Specific) with UKG Authn",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjdDdDZzYkx2QVYya1B1MVRicWVuSiJ9.eyJ1a2dfcHJlZmVycmVkX2xhbmd1YWdlIjoiZW4tVVMiLCJ0aWQiOiJvcmdfSUZyWGViaXlKWTFRVmFCSSIsInRhIjoiYWJoYXkyNTA5MV91YXQiLCJnbG9iYWxfdGVuYW50X2lkIjoiMDFjYTkxZDEtODEwYS00MGFlLWE1ZjYtZTg3M2VlY2YwYzQwIiwiaXNzIjoiaHR0cHM6Ly93ZWxjb21lLXN0YWdpbmcudWtnLmRldi8iLCJzdWIiOiJhdXRoMHwzYWVhNmMxNS03YWVmLTRhZTUtODVjNS1kNTg3NDUxYjJmODQiLCJhdWQiOiJodHRwczovL3JlcG9ydGluZ2h1Yi51a2cubmV0L2FwaSIsImlhdCI6MTcxNDAyNjUwMywiZXhwIjoxNzE0MTEyOTAzLCJzY29wZSI6InJlYWQ6cmVwb3J0aW5naHViIHdyaXRlOnJlcG9ydGluZ2h1YiIsImd0eSI6InBhc3N3b3JkIiwiYXpwIjoiYzk3ZGMxZTgtNzk1NC0xMWVlLWI5NjItMDI0MmFjMTIwMDA0In0.ATUxh2IWidLEHDIr4hLBDRFUkGhtCakCPlVtajx9h0bFw4cbZtl3EJGBKnRBhiVpAG_7S7HHi9TQspadyR2pDqc3CWK8sPy8ixgBpupDbmbFLI5vscnXtohM3wEKJmET3JKX3RrlvrsqrDRPr2KKDAn-ceRVwmwSkfbrkToLLVUiK7dbUZ1NCLv5BjehumgoUUy8qqal1YlDrdtQw15gakD1qRwPKDJUiSlPBMaLkLSd69TSr9yzC6w10mFwbMaaxgp-dYSJlvvoH3ZIPVIXTbTDH3aOtvdvyzu5kK-vZAGbZb4ij6rzWJeIyj7UFKEujTppEVR8Hvli2_n-S3_eyQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjdDdDZzYkx2QVYya1B1MVRicWVuSiJ9.eyJ1a2dfcHJlZmVycmVkX2xhbmd1YWdlIjoiZW4tVVMiLCJ0aWQiOiJvcmdfSUZyWGViaXlKWTFRVmFCSSIsInRhIjoiYWJoYXkyNTA5MV91YXQiLCJnbG9iYWxfdGVuYW50X2lkIjoiMDFjYTkxZDEtODEwYS00MGFlLWE1ZjYtZTg3M2VlY2YwYzQwIiwiaXNzIjoiaHR0cHM6Ly93ZWxjb21lLXN0YWdpbmcudWtnLmRldi8iLCJzdWIiOiJhdXRoMHwzYWVhNmMxNS03YWVmLTRhZTUtODVjNS1kNTg3NDUxYjJmODQiLCJhdWQiOiJodHRwczovL3JlcG9ydGluZ2h1Yi51a2cubmV0L2FwaSIsImlhdCI6MTcxMzMzNzAyMSwiZXhwIjoxNzEzNDIzNDIxLCJzY29wZSI6InJlYWQ6cmVwb3J0aW5naHViIHdyaXRlOnJlcG9ydGluZ2h1YiIsImd0eSI6InBhc3N3b3JkIiwiYXpwIjoiYzk3ZGMxZTgtNzk1NC0xMWVlLWI5NjItMDI0MmFjMTIwMDA0In0.XzQm-d5B4lrrLw5axH5KK6xpg0naQ38Ki870YG2N7hZK7XYHisBwBS9rP1gax5VYsbesJffHb0YToqlIjE4zPYLhmLvbGHNiZHBdbTifo4l3-c6Vqmb2fP94ynXLob7WyCa6kQlNqcBbJ1XTFUdvJJS_b8HSGqJaj4XkRirrKtWbfA8j-QM7WP8iIAh_CqB-or-CJOAuyJhmT-CSYr-Y4BPyGU4y0-Ar8HfC43pD_3VQvcbWx2mD2NCLJhRMz5osa6Uw1oJ-WEot-acvNT0X1NP27l6AYsuMgQg7H8iyOseZsvKRzN0VZKFKVtS_C7KlWiNHRiQdXYOeRQO4F6ZE6A"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:9999/rhub/api/v1/dashboards/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9999",
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "dashboards",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "11. Get Tenant by id API(Tenant Agnostic) With UKG Authn",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjdDdDZzYkx2QVYya1B1MVRicWVuSiJ9.eyJpc3MiOiJodHRwczovL3dlbGNvbWUtc3RhZ2luZy51a2cuZGV2LyIsInN1YiI6IjAyMDViZmRjLTk0MjMtMTFlZS1iOWQxLTAyNDJhYzEyMDAwMkBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9yZXBvcnRpbmdodWIudWtnLm5ldC9hcGkiLCJpYXQiOjE3MTQwMjQzMjIsImV4cCI6MTcxNDExMDcyMiwic2NvcGUiOiJyZWFkOnJlcG9ydGluZ2h1YiBhZG1pbjpyZXBvcnRpbmdodWIgd3JpdGU6cmVwb3J0aW5naHViIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoiMDIwNWJmZGMtOTQyMy0xMWVlLWI5ZDEtMDI0MmFjMTIwMDAyIn0.gY3EOaqAqWPthEL3FMAHMVOPuacxz-r_kV5mnLfLUpDCMfzF4OYPF5dwsmHWBKQJJ1vhhRnHX0RER9rYWAJXZgk7nUe0fIi7KF19XgBFn7XvYtAc3UhO9ITPgapDDBbVvM2gS9UFAeGKZvP7Sm6KCbGMkrejdC6t9aSfRUlKylmLVudGC46qsQFH_BQCJmEkR-dO0PGHK6Bghp0kuQIJ0ie7zGpqDULLxeVbL-E1g9pUy6U_bXvXJP0KQ2ocZsvcwGbRnLMNhoxgfE3ctkr5pSRZofO5N1_PmpGpWzj3B9YYy5hBWHaJS6R1UHfXpOIMKuak7xYBJ3nF93hrkOS-Ig",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJ0eXAiOiJKV1QiLCJraWQiOiJhdk9RSWtpSVhheXZlaHhmYU1iRWIzWXg2cnM9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJjdHMiOiJPQVVUSDJfR1JBTlRfU0VUIiwiYXVkaXRUcmFja2luZ0lkIjoiM2M4MmUyMjQtZjI2Ny00MDliLWJlYjYtYTY3ZDk5ZGUxMDE5LTEwMDQ2NjUiLCJpc3MiOiJodHRwczovL3dlbGNvbWUtZGV2LnVsdGlwcm9zZXJ2aWNlcy5jb20vc2lnbmluL29hdXRoMi91c19pbnRlcm5hbCIsInRva2VuTmFtZSI6ImFjY2Vzc190b2tlbiIsInRva2VuX3R5cGUiOiJCZWFyZXIiLCJhdXRoR3JhbnRJZCI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5PYk40SzlKckY5N20ydW1aN3dmZ2hkOF9BSkkiLCJhdWQiOiIwMzZmOTc4Mi1iNmE5LTRjYWMtYjIwNi0zODk0OTkyOTUyOTYiLCJuYmYiOjE3MDk4OTEyNTcsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJzY29wZSI6WyJyZWFkOnJlcG9ydGluZ2h1YiIsImFkbWluOnJlcG9ydGluZ2h1YiIsIndyaXRlOnJlcG9ydGluZ2h1YiJdLCJhdXRoX3RpbWUiOjE3MDk4OTEyNTcsInJlYWxtIjoiL3VzX2ludGVybmFsIiwiZXhwIjoxNzA5ODk0ODU3LCJpYXQiOjE3MDk4OTEyNTcsImV4cGlyZXNfaW4iOjM2MDAsImp0aSI6InhRdHViUzNhVU5EZDFQNkxyalhDLXloenE4QS5BQjN0aFpnQUpXV0t4Rzc5ZWJlNnNEc1daeUUiLCJ0YSI6InVzX2ludGVybmFsIn0.OglIwHac43_RIvfNCZY4K4aoJTrxY-dEuiHHkP5rSvEMpXk8iKoTE3E3exXdKr1z8l1W3Gz4fAa3pffoiUnWcK2s3CHidn5vmXlhaL1AFNrmrI69qJLHLWxfdfAV5XWK1mykj8dSd-1bYZdPFIacvvw9wHbfKatc1OKe-15iGR7gPCAgQHy_GtNDAKN223bHBIWo4p6KCOqUDmrGvMjcPRVEFBgyO9BRlZGXGcPxzfq4u2LMJTDy7bZ2aRHslnoJnF_4rRM1Hhe1abesdlIdlZhBeDrVfIex8VWEavuHTqZF_Piw5jwWuLc18aNWa6YRiMg6grobdbfT2Ejt6ZawUhakdCjLp1C2ypU3F6b1H8jbT5Ma7PFbPu_co9H-967p_h1dNipTfMFoZUHdbfxLuOJ7s9MBtug7nSDFfk9JlHiDs7xDo6WtIpDQgbEKJ6WEjUP9L9UnDnrsytwFWCp5AluWWPuaQ1_yWrm6Y1OPO5y7jbAIYeETpCrawYxghU9iEf6Z_KelUv-pOpdJRXvW52APVX98K6cSd6k9XrQ5o85bTbW6OuFmyk0D12j30wGt3LI2qduN52zu3TAFSBV_Cjo9ANRnoQA6HV-MuXHQKWjsOGy5DTBXodca_N-iwKCeALtXSqpX_RfMXWgfOkp1v5hCrsIaqLkzkDbk5i1OAL4",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:9999/rhub/api/v1/tenants/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "9999",
+          "path": [
+            "rhub",
+            "api",
+            "v1",
+            "tenants",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

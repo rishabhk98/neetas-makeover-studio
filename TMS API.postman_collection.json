@@ -1,0 +1,335 @@
+{
+  "info": {
+    "_postman_id": "d3f4d35b-8639-41a8-b4c9-350fa9af99bc",
+    "name": "TMS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Authentication API",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "TMSIntegrationUser",
+            "type": "text"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "text"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-idp40-oam.int.gss-keng.mykronos.com:80/authn/json/tms/authenticate",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-idp40-oam",
+            "int",
+            "gss-keng",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "authn",
+            "json",
+            "tms",
+            "authenticate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Authentication API ACD",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "TMSIntegrationUser",
+            "type": "text"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "text"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "no-cache",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://kacd01-gss15-idp15-oam.int.gss-kacd.mykronos.com:80/authn/json/tms/authenticate",
+          "protocol": "http",
+          "host": [
+            "kacd01-gss15-idp15-oam",
+            "int",
+            "gss-kacd",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "authn",
+            "json",
+            "tms",
+            "authenticate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Prod WFM Cluster",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"frontEndpoint\": \"http://platform04-b.int.dev.mykronos.com\",\n  \"backVersion\": \"1.1\",\n  \"instance\": {\n    \"environment\": {\n      \"isDeleted\": false,\n      \"environmentType\": {\n        \"id\": -1\n      },\n      \"name\": \"ENV - Prod - NA\",\n      \"description\": \"Engineering Prod Environement\",\n      \"services\": [\n        {\n          \"serviceShortName\": \"IHub\",\n          \"endpointVersion\": \"4.1\",\n          \"serviceEndpoint\": \"http://keng03-dev01-hub15-app.int.dev.mykronos.com\",\n          \"shortName\": \"ihub_prod_na\"\n        },\n        {\n          \"serviceShortName\": \"AuthN\",\n          \"endpointVersion\": \"4.2\",\n          \"serviceEndpoint\": \"http://keng03-dev01-ath15-oam.int.dev.mykronos.com:80/authn\",\n          \"shortName\": \"auth_prod_na\"\n        },\n        {\n          \"serviceShortName\": \"KPI\",\n          \"endpointVersion\": \"1.0\",\n          \"serviceEndpoint\": \"http://keng03-dev01-scc91-dbs-1592394670.int.dev.mykronos.com\",\n          \"shortName\": \"kpi_prod_na\"\n        },\n        {\n          \"serviceShortName\": \"API\",\n          \"endpointVersion\": \"4.4\",\n          \"serviceEndpoint\": \"http://keng03-dev01-api-gtw15-app.int.dev.mykronos.com\",\n          \"shortName\": \"api_prod_na\"\n        },\n        {\n          \"serviceShortName\": \"SDM\",\n          \"endpointVersion\": \"4.5\",\n          \"serviceEndpoint\": \"http://keng03-dev01-sdm15-app.int.dev.mykronos.com/sdm\",\n          \"shortName\": \"sdm_prod_na\"\n        },\n        {\n          \"serviceShortName\": \"Tenantrouter\",\n          \"endpointVersion\": \"4.6\",\n          \"serviceEndpoint\": \"http://keng03-dev01-trt15-app.int.dev.mykronos.com:8080/tr\",\n          \"shortName\": \"trouter_prod_na\"\n        },\n        {\n          \"serviceShortName\": \"UMS\",\n          \"endpointVersion\": \"4.7\",\n          \"serviceEndpoint\": \"http://keng03-dev01-ums15-app.int.dev.mykronos.com\",\n          \"shortName\": \"ums_prod_na\"\n        },\n         {\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-fcs15-nsq-1.int.dev.mykronos.com\",\n          \"endpointVersion\": \"4.7\",\n          \"serviceName\": \"fcs\",\n          \"shortName\": \"fcs_prod_na\"\n        },\n        {\n          \"serviceShortName\": \"ECS\",\n          \"endpointVersion\": \"4.7\",\n          \"serviceEndpoint\": \"http://keng03-dev01-ecs15-app.int.dev.mykronos.com/ecs\",\n          \"shortName\": \"ecs_prod_na\"\n        }\n      ],\n      \"shortName\": \"en_prod_na\",\n      \"isActive\": true\n    },\n    \"isDeleted\": false,\n    \"instanceType\": \"PRODUCTION\",\n    \"name\": \"INST - Prod - NA\",\n    \"description\": \"Instance - Production - NA Location\",\n    \"services\": [\n      {\n        \"serviceShortName\": \"Reports\",\n        \"endpointVersion\": \"4.1\",\n        \"serviceEndpoint\": \"http://keng03-dev01-ins01-rpt15-app.int.dev.mykronos.com\",\n        \"shortName\": \"report_prod_na\"\n      },\n      {\n        \"serviceShortName\": \"Report-designer\",\n        \"endpointVersion\": \"4.1\",\n        \"serviceEndpoint\": \"http://keng03-dev01-ins01-rpt15-app.int.dev.mykronos.com:8700\",\n        \"shortName\": \"rptdsgnr_prod_na\"\n      },\n      {\n        \"serviceShortName\": \"UDM\",\n        \"endpointVersion\": \"4.3\",\n        \"serviceEndpoint\": \"http://keng03-dev01-ins01-udm15-app.int.dev.mykronos.com/udm\",\n        \"shortName\": \"udm_prod_na\"\n      },\n      {\n        \"serviceShortName\": \"WorkFlow\",\n        \"endpointVersion\": \"4.4\",\n        \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl15-app.int.dev.mykronos.com\",\n        \"shortName\": \"workflow_prod_na\"\n      },\n      {\n        \"serviceShortName\": \"Workflow-admin\",\n        \"endpointVersion\": \"4.6\",\n        \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl15-mgt.int.dev.mykronos.com/bpm-admin\",\n        \"shortName\": \"wfiadmin_prod_na\"\n      },\n      {\n        \"serviceShortName\": \"Workflow-designer\",\n        \"endpointVersion\": \"4.7\",\n        \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl15-app.int.dev.mykronos.com/bpm-designer\",\n        \"shortName\": \"wfidesigner_prod_na\"\n      },\n      {\n        \"serviceShortName\": \"Caching\",\n        \"endpointVersion\": \"4.8\",\n        \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfm15-dmc-1.int.dev.mykronos.com\",\n        \"shortName\": \"caching_prod_na\"\n      },\n      {\n        \"serviceShortName\": \"Messaging\",\n        \"endpointVersion\": \"4.9\",\n        \"serviceEndpoint\": \"http://keng03-dev01-ins01-dmq15-app.int.dev.mykronos.com\",\n        \"shortName\": \"messaging_prod_na\"\n      },\n      {\n        \"serviceShortName\": \"hcaservice\",\n        \"endpointVersion\": \"4.9\",\n        \"serviceEndpoint\": \"http://keng03-dev01-ins01-hca47-bck.int.dev.mykronos.com/hcaservice\",\n        \"shortName\": \"hcaservice_prod_na\"\n      }\n    ],\n    \"shortName\": \"in_prod_na\"\n  },\n  \"isDeleted\": false,\n  \"dbVersion\": \"4.1\",\n  \"backEndpoint\": \"http://platform04-b-back.int.dev.mykronos.com/wfc\",\n  \"name\": \"WFM - Prod - NA\",\n  \"description\": \"WFMCluster - Production - NA Location\",\n  \"frontVersion\": \"1.1\",\n  \"isActive\": true,\n  \"shortName\": \"wfmCluster_prod_na\",\n  \"dbUrl\": \"jdb:edb://keng03-dev01-ins01-wfm14-dbs-01.int.dev.mykronos.com:5444/ppas_wfmr6int14\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-tms29-app.int.gss-keng.mykronos.com:80/tenantmanager/restcall/wfmcluster",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-tms29-app",
+            "int",
+            "gss-keng",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "tenantmanager",
+            "restcall",
+            "wfmcluster"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SKIP Service at tenant provisioning",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"tenantProvisionStatus\": {\n        \"provisionId\": 20397,\n        \"componentId\": -10,\n        \"componentName\": \"Ihub\",\n        \"dataSet\": [\n            {\n                \"name\": \"status\",\n                \"value\": \"Success\"\n            },\n            {\n                \"name\": \"description\",\n                \"value\": \"Bypassed\"\n            }\n        ]\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-tms41-app.int.gss-keng.mykronos.com:80/tenantmanager/restcall/callbackTenantProvision",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-tms41-app",
+            "int",
+            "gss-keng",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "tenantmanager",
+            "restcall",
+            "callbackTenantProvision"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "SKIP Service at tenant provisioning ACD",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"tenantProvisionStatus\": {\n        \"provisionId\": 1114,\n        \"componentId\": -26,\n        \"componentName\": \"OtherSdm\",\n        \"dataSet\": [\n            {\n                \"name\": \"status\",\n                \"value\": \"Success\"\n            },\n            {\n                \"name\": \"description\",\n                \"value\": \"Bypassed\"\n            }\n        ]\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://kacd01-gss15-tms15-app.int.gss-kacd.mykronos.com:80/tenantmanager/restcall/callbackTenantProvision",
+          "protocol": "http",
+          "host": [
+            "kacd01-gss15-tms15-app",
+            "int",
+            "gss-kacd",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "tenantmanager",
+            "restcall",
+            "callbackTenantProvision"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cluster Info Register",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"wfmCluster\": {\r\n    \"dataSet\": [\r\n      {\r\n        \"name\": \"backEndpoint\",\r\n        \"value\": \"http://hca08-b-back.int.dev.mykronos.com/wfc\"\r\n      },\r\n      {\r\n        \"name\": \"frontEndpoint\",\r\n        \"value\": \"http://hca08-b.int.dev.mykronos.com\"\r\n      },\r\n      {\r\n        \"name\": \"dbServer\",\r\n        \"value\": \"keng03-dev01-ins08-wfm22-dbs-01.int.dev.mykronos.com:5444,keng03-dev01-ins08-wfm22-dbs-02.int.dev.mykronos.com:5444,keng03-dev01-ins08-wfm22-dbs-03.int.dev.mykronos.com:5444\"\r\n      },\r\n      {\r\n        \"name\": \"dbPort\",\r\n        \"value\": \"5444\"\r\n      },\r\n      {\r\n        \"name\": \"dbName\",\r\n        \"value\": \"ppas_wfm_hca08b\"\r\n      }\r\n    ],\r\n    \"instance\": {\r\n      \"environment\": {\r\n        \"name\": \"b\",\r\n        \"services\": [\r\n          {\r\n            \"serviceEndpoint\": \"http://keng03-dev01-ums41-app.int.dev.mykronos.com\",\r\n            \"serviceName\": \"ums\"\r\n          },\r\n          {\r\n            \"serviceEndpoint\": \"http://keng03-dev01-sdm41-app.int.dev.mykronos.com/sdm\",\r\n            \"serviceName\": \"sdm\"\r\n          },\r\n          {\r\n            \"serviceEndpoint\": \"http://keng03-dev01-api-gtw41-app.int.dev.mykronos.com\",\r\n            \"serviceName\": \"api\"\r\n          },\r\n          {\r\n            \"serviceEndpoint\": \"http://keng03-dev01-ath41-oam.int.dev.mykronos.com:80/authn\",\r\n            \"serviceName\": \"authn\"\r\n          },\r\n          {\r\n            \"serviceEndpoint\": \"http://keng03-dev01-hub41-app.int.dev.mykronos.com\",\r\n            \"serviceName\": \"iHub\"\r\n          },\r\n          {\r\n            \"serviceEndpoint\": \"http://keng03-dev01-trt41-app.int.dev.mykronos.com:8080/tr\",\r\n            \"serviceName\": \"tenantrouter\"\r\n          },\r\n          {\r\n            \"serviceEndpoint\": \"http://keng03-dev01-wit41-app.int.dev.mykronos.com/wit\",\r\n            \"serviceName\": \"wit\"\r\n          },\r\n          {\r\n            \"serviceEndpoint\": \"http://keng03-dev01-ecs41-app.int.dev.mykronos.com/ecs\",\r\n            \"serviceName\": \"ECS\"\r\n          },\r\n          {\r\n            \"serviceEndpoint\": \"b_$$IGNORE$$\",\r\n            \"serviceName\": \"edwiservice\"\r\n          },\r\n          {\r\n            \"serviceEndpoint\": \"b_ciselb_$$IGNORE$$\",\r\n            \"serviceName\": \"ciselb\"\r\n          },\r\n          {\r\n            \"serviceEndpoint\": \"https://b_pes_$$IGNORE$$\",\r\n            \"serviceName\": \"pes\"\r\n          }\r\n        ]\r\n      },\r\n      \"name\": \"ins01\",\r\n      \"services\": [\r\n        {\r\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-rpt41-app.int.dev.mykronos.com\",\r\n          \"serviceName\": \"reports\"\r\n        },\r\n        {\r\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl41-app.int.dev.mykronos.com\",\r\n          \"serviceName\": \"workflow\"\r\n        },\r\n        {\r\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl41-mgt.int.dev.mykronos.com/bpm-admin\",\r\n          \"serviceName\": \"workflowAdmin\"\r\n        },\r\n        {\r\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl41-app.int.dev.mykronos.com/bpm-designer\",\r\n          \"serviceName\": \"workflowDesigner\"\r\n        },\r\n        {\r\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-rpt41-web.int.dev.mykronos.com\",\r\n          \"serviceName\": \"Report-designer\"\r\n        },\r\n        {\r\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-udm41-app.int.dev.mykronos.com/udm\",\r\n          \"serviceName\": \"udm\"\r\n        },\r\n        {\r\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfm41-dmc-1.int.dev.mykronos.com\",\r\n          \"serviceName\": \"Caching\"\r\n        },\r\n        {\r\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-dmq41-app.int.dev.mykronos.com\",\r\n          \"serviceName\": \"Messaging\"\r\n        },\r\n        {\r\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-fcs40-nsq-1.int.dev.mykronos.com\",\r\n          \"serviceName\": \"fcs\"\r\n        },\r\n        {\r\n          \"serviceEndpoint\": \"http://keng03-dev01-ins01-hca70-bck.int.dev.mykronos.com/hcaservice\",\r\n          \"serviceName\": \"hcaservice\"\r\n        }\r\n      ]\r\n    },\r\n    \"name\": \"hca08-b.int.dev.mykronos.com\"\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-tms41-app.int.gss-keng.mykronos.com/tenantmanager/restcall/commoninfra",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-tms41-app",
+            "int",
+            "gss-keng",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "tenantmanager",
+            "restcall",
+            "commoninfra"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cluster Info Register ACD",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Cookie",
+            "value": "TMS_AUTHN_TOKEN=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjlEOGxWeUExY0lvN2REQVZXMXBVcXl4VEwyND0ifQ.eyJpc3MiOiJodHRwOi8va2FjZDAxLWdzczIwLWlkcDUxLW9hbS5pbnQuZ3NzLWthY2QubXlrcm9ub3MuY29tOjgwIiwiaWF0IjoxNjQ0MzkyNTM0LCJleHAiOjE2NDQ0MjEzMzQsInN1YiI6IlRNU0ludGVncmF0aW9uVXNlciIsIm5vbmNlIjoiPERuLTBTNl9XekEyTWoiLCJyZWFsbSI6Ii90bXMiLCJpcHIiOmZhbHNlLCJvaWRjU2Vzc2lvbiI6ZmFsc2V9.QZ1aIyC8Dddv8hsrUBUgUqfGG9aCiOieEiQnJGULyayV2DfrXiCzOkKEJ2YgojYLs4d_D5lrl1VBKHRcQQIFMblB5-ylwSZ9z8hRcMWj6kIoWaB8GNk-wZLNTNL3dRNaeBEhM7O1rKPGTuu5dg7l4ZxNdAZzD1O8zinZxedskQHcHodQYds2KxDCgMA_vQQTezcvgz77_4rAMtxfR7hcQv96jjEKgv7akdnD-7zBjyKif6g0qz5HmRjY5OkH92AN2RN-IKcUFmWe6En0Yx9VLztJ0y7ZlnjUEyDxvNZGzs9XgSA4_APye8sp-5pg2DZ7VGSBulIrWmsdwN247F0tew|bmlQR1ViNndwQWU3N2RDeURoS2hxNXlpYXgzY3dGR0tyczdWYy84aTdrVEJ3Y1NsS043WEZqQnRHSzRqazZmMm9SYldrOWdHY3dqRzJvK2x0K0V6bTJ4NnNFbkllTVE5MzB1RDcwc1ZKWHJvaG8xZHNURUVOWDlUbVBNclpLQ0x3RndUdkpmK0hVa05ZWmIzSXg0S1graUdqVjJ4TVFRMWYxT1k4eXRrb0lzMkE1aDMvdmhzRU1aMFFpWnBPUm5nNklhTlhiRXhCRFYvVTVqeksyU2dpMVR0eGJxWThRMGJyOE5FRjBFZjF1Z0dkWUJoMlRyMTlWOXI2ZFRYRmdWdGllUkdZWi9zZEUvc1F5U0tLc1JRelZBYUYrQ1RrbTk2WVRvNkNJQXhRNTdLTUZUSTh3YWtMdlRTcXRoeGdFZHcraDRKUUVvNFpZa3pVaWVaamtYY3FNbjdDdGs2MDRGUzZIejNQSVNEc09iS01GVEk4d2FrTHZUU3F0aHhnRWR3NFFRLy8ycGUwdHpjbmUyNndSaXJzbWR6QS9GMHRUWE5rak8xRlFPZW5Yc1ZwWXc3NU9JV1RKeVhsbHY3WGE3N3Raayt2Rm5TM1ovWCt3SkFCQXNXUUhRdmplS0Y2ME9hcmttWGVDYTlYam1mR2NZbGdWV1NZUHJ0U1lKa2RQS0lYZE44UkVUeEg4dEtwb3JIdFRFZzF1aWpUYlc5Z2ZCKzNFemtHdEFWZm1DNHcydG1HM2lmNCtLNjMwNUJGY09XeHVqdkROWFVDNzFQaDI5T1ZEdWZZUS0t;",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"wfmCluster\": {\r\n        \"dataSet\": [\r\n            {\r\n                \"name\": \"backEndpoint\",\r\n                \"value\": \"http://kacd01-pip20-ins01-wfm29-bck.int.acd.mykronos.com/wfc\"\r\n            },\r\n            {\r\n                \"name\": \"frontEndpoint\",\r\n                \"value\": \"http://kacd01-pip20-ins01-wfm29-fnt.int.acd.mykronos.com\"\r\n            },\r\n            {\r\n                \"name\": \"dbServer\",\r\n                \"value\": \"kacd01-pip40-ins01-wfm99-dbs-01.int.acd.mykronos.com:5444,kacd01-pip40-ins01-wfm99-dbs-02.int.acd.mykronos.com:5444,kacd01-pip40-ins01-wfm99-dbs-03.int.acd.mykronos.com:5444\"\r\n            },\r\n            {\r\n                \"name\": \"dbPort\",\r\n                \"value\": \"5444\"\r\n            },\r\n            {\r\n                \"name\": \"dbName\",\r\n                \"value\": \"ppas_kcd8d5_0902\"\r\n            },\r\n            {\r\n                \"name\": \"skpiDBServer\",\r\n                \"value\": \"kacd01-pip40-ins01-wfm99-dbs-01.int.acd.mykronos.com:5444,kacd01-pip40-ins01-wfm99-dbs-02.int.acd.mykronos.com:5444,kacd01-pip40-ins01-wfm99-dbs-03.int.acd.mykronos.com:5444\"\r\n            },\r\n            {\r\n                \"name\": \"skpiDBPort\",\r\n                \"value\": \"5444\"\r\n            },\r\n            {\r\n                \"name\": \"skpiDBName\",\r\n                \"value\": \"ppas_kcd8d5_0902\"\r\n            }\r\n        ],\r\n        \"instance\": {\r\n            \"environment\": {\r\n                \"name\": \"pip20\",\r\n                \"services\": [\r\n                    {\r\n                        \"serviceEndpoint\": \"http://kacd01-pip20-ums51-app.int.acd.mykronos.com\",\r\n                        \"serviceName\": \"ums\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://kacd01-pip20-sdm52-app.int.acd.mykronos.com/sdm\",\r\n                        \"serviceName\": \"sdm\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://kacd01-pip20-api-gtw51-app.int.acd.mykronos.com\",\r\n                        \"serviceName\": \"api\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://kacd01-pip20-ath51-oam.int.acd.mykronos.com:80/authn\",\r\n                        \"serviceName\": \"authn\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://kacd01-pip20-hub51-app.int.acd.mykronos.com\",\r\n                        \"serviceName\": \"iHub\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://kacd01-pip20-trt51-app.int.acd.mykronos.com:8080/tr\",\r\n                        \"serviceName\": \"tenantrouter\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://kacd01-pip20-scc51-nsq-1.int.acd.mykronos.com\",\r\n                        \"serviceName\": \"kpi\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://kacd01-pip20-ecs51-app.int.acd.mykronos.com/ecs\",\r\n                        \"serviceName\": \"ECS\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"https://pip20_$$IGNORE$$\",\r\n                        \"serviceName\": \"edwiservice\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"https://pip20_pes_$$IGNORE$$\",\r\n                        \"serviceName\": \"pes\"\r\n                    }\r\n                ]\r\n            },\r\n            \"name\": \"ins01\",\r\n            \"services\": [\r\n                {\r\n                    \"serviceEndpoint\": \"http://kacd01-pip20-ins01-rpt51-app.int.acd.mykronos.com\",\r\n                    \"serviceName\": \"reports\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://kacd01-pip20-ins01-wfl52-app.int.acd.mykronos.com\",\r\n                    \"serviceName\": \"workflow\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://kacd01-pip20-ins01-wfl52-mgt.int.acd.mykronos.com/bpm-admin\",\r\n                    \"serviceName\": \"workflowAdmin\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://kacd01-pip20-ins01-wfl52-app.int.acd.mykronos.com/bpm-designer\",\r\n                    \"serviceName\": \"workflowDesigner\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://kacd01-pip20-ins01-rpt51-web.int.acd.mykronos.com\",\r\n                    \"serviceName\": \"Report-designer\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://kacd01-pip20-ins01-udm54-app.int.acd.mykronos.com/udm\",\r\n                    \"serviceName\": \"udm\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://kacd01-pip20-ins01-fcs51-nsq-1.int.acd.mykronos.com\",\r\n                    \"serviceName\": \"fcs\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://kacd01-pip20-ins01-hca51-bck.int.acd.mykronos.com/hcaservice\",\r\n                    \"serviceName\": \"hcaservice\"\r\n                }\r\n            ]\r\n        },\r\n        \"isICU\": false,\r\n        \"isSchemaVersioned\": true,\r\n        \"name\": \"kacd01-pip20-ins01-wfm29-fnt.int.acd.mykronos.com\",\r\n        \"version\": \"08.05\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://kacd01-gss20-tms51-app.int.gss-kacd.mykronos.com/tenantmanager/restcall/commoninfra?=",
+          "protocol": "http",
+          "host": [
+            "kacd01-gss20-tms51-app",
+            "int",
+            "gss-kacd",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "tenantmanager",
+            "restcall",
+            "commoninfra"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Hydrate API for Auth0",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"sv3113\",\r\n    \"region\": \"US\",\r\n    \"status\": \"Active\",\r\n    \"products\": [\r\n        \"DIM\",\r\n        \"PRO\"\r\n    ],\r\n    \"customerId\": \"1\",\r\n    \"solutionId\": \"Internal\",\r\n    \"globalTenantId\": \"8ebeda5b-6a90-48a3-ad41-0f80ec2b82f7\",\r\n    \"environmentType\": \"PRD\",\r\n    \"productInstances\": [\r\n        {\r\n            \"id\": \"438bebb0-f429-11ed-a05b-0242ac120019\",\r\n            \"region\": \"US\",\r\n            \"status\": \"Active\",\r\n            \"version\": \"9.0.2\",\r\n            \"UKGAuthN\": true,\r\n            \"tenantId\": \"c5786d61-f1d6-4e44-b35a-d31042123528\",\r\n            \"partnerId\": \"ADP\",\r\n            \"tenantName\": \"neilpateldigital_prd_01\",\r\n            \"vanityURLs\": [\r\n                \"https://neilpateldigital.prd.mykronos.com\"\r\n            ],\r\n            \"productCode\": \"DIM\",\r\n            \"environmentType\": \"PROD\",\r\n            \"productServiceInstances\": [\r\n                {\r\n                    \"id\": \"1\",\r\n                    \"url\": \"http://dcus21-prd11-ins01-udm10-app.int.prd.mykronos.com/udm\",\r\n                    \"serviceCode\": \"UDM\",\r\n                    \"serviceName\": \"UDM\"\r\n                },\r\n                {\r\n                    \"id\": \"2\",\r\n                    \"url\": \"http://dcus21-prd11-ins01-hca10-bck.int.prd.mykronos.com/hcaservice\",\r\n                    \"serviceCode\": \"HCA\",\r\n                    \"serviceName\": \"HCA Service\"\r\n                },\r\n                {\r\n                    \"id\": \"3\",\r\n                    \"url\": \"http://dcus21-prd11-sdm10-app.int.npr.mykronos.com/sdm\",\r\n                    \"serviceCode\": \"SDM\",\r\n                    \"serviceName\": \"Setup Data Manager\"\r\n                },\r\n                {\r\n                    \"id\": \"4\",\r\n                    \"url\": \"http://dcus21-prd11-api-gtw10-app.int.prd.mykronos.com\",\r\n                    \"serviceCode\": \"API\",\r\n                    \"serviceName\": \"API\"\r\n                },\r\n                {\r\n                    \"id\": \"5\",\r\n                    \"url\": \"http://dcus21-prd11-ins01-wfl10-app.int.prd.mykronos.com\",\r\n                    \"serviceCode\": \"WORKFLOW\",\r\n                    \"serviceName\": \"Workflow\"\r\n                }\r\n            ],\r\n            \"vanityURLAuthNMapping\": [\r\n                {\r\n                    \"vanityURL\": \"https://neilpateldigital.prd.mykronos.com\",\r\n                    \"ukgAuthNSerivceInstance\": \"SSO_LOGIN\"\r\n                },\r\n                {\r\n                    \"vanityURL\": \"https://neilpateldigital.dim.mykronos.com\",\r\n                    \"ukgAuthNSerivceInstance\": \"API_GATEWAY\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"region\": \"US\",\r\n            \"status\": \"Active\",\r\n            \"version\": \"3.0.4\",\r\n            \"UKGAuthN\": true,\r\n            \"tenantId\": \"930f8955-a7a3-41ae-ace5-ec94ec5e5a53\",\r\n            \"extensions\": [\r\n                {\r\n                    \"key\": \"activationCode\",\r\n                    \"value\": \"npdigital\"\r\n                },\r\n                {\r\n                    \"key\": \"environmentId\",\r\n                    \"value\": \"6519b7e8-6996-4b5b-83c4-d031e8b3be9b\"\r\n                },\r\n                {\r\n                    \"key\": \"companyCode\",\r\n                    \"value\": \"NPDL\"\r\n                },\r\n                {\r\n                    \"key\": \"clientAccessKey\",\r\n                    \"value\": \"1OM3E\"\r\n                },\r\n                {\r\n                    \"key\": \"siteKey\",\r\n                    \"value\": \"ded35191-ac0c-46a5-88f4-8325c0e44a9d\"\r\n                },\r\n                {\r\n                    \"key\": \"coId\",\r\n                    \"value\": \"1EZ8N\"\r\n                },\r\n                {\r\n                    \"key\": \"preferredLocale\",\r\n                    \"value\": \"en-US\"\r\n                },\r\n                {\r\n                    \"key\": \"alias\",\r\n                    \"value\": \"NPD1000NPDL\"\r\n                },\r\n                {\r\n                    \"key\": \"preferredLocale\",\r\n                    \"value\": \"en-US\"\r\n                }\r\n            ],\r\n            \"tenantName\": \"neilpateldigital_pro_prd\",\r\n            \"vanityURLs\": [\r\n                \"https://neilpateldigital-sso.prd.pro.com\",\r\n                \"https://neilpateldigital.prd.pro.com\"\r\n            ],\r\n            \"productCode\": \"PRO\",\r\n            \"environmentType\": \"PROD\",\r\n            \"serviceInstances\": [\r\n                {\r\n                    \"id\": \"c78b098d-0cff-4ebe-9eea-25e27c757c41\",\r\n                    \"url\": \"https://service5.ultipro.com\",\r\n                    \"serviceCode\": \"Ultipro.Api.External\",\r\n                    \"serviceName\": \"Ultipro External Services API endpoint (External)\"\r\n                },\r\n                {\r\n                    \"id\": \"08d90d6c-8b2b-4732-b024-9187835768b7\",\r\n                    \"url\": \"https://mobile-gw-plas.ultipro.com\",\r\n                    \"serviceCode\": \"Mobile.App.Gateway\",\r\n                    \"serviceName\": \"Mobile App Gateway Service\"\r\n                },\r\n                {\r\n                    \"id\": \"9448fa8f-4e52-429e-8512-f8167913edae\",\r\n                    \"url\": \"https://service5.ultipro.com/services/unified/v1/authn/mfa\",\r\n                    \"serviceCode\": \"Ultipro.MFA\",\r\n                    \"serviceName\": \"Ultipro UltiFactor Integration\"\r\n                },\r\n                {\r\n                    \"id\": \"335a4d87-38c0-47cc-ac25-0f95bc4dc511\",\r\n                    \"url\": \"https://service5.ultipro.com/services/unified/v1/branding/loginlogo\",\r\n                    \"serviceCode\": \"Ultipro.Logo\",\r\n                    \"serviceName\": \"Ultipro Logo Service\"\r\n                },\r\n                {\r\n                    \"id\": \"962933d7-7ab2-4fb7-8f5b-121c89e9016d\",\r\n                    \"url\": \"https://service5.ultipro.com/services/unified/v1/client/.well-known/webfinger\",\r\n                    \"serviceCode\": \"Ultipro.Client.Service\",\r\n                    \"serviceName\": \"Ultipro Client Webfinger Service\"\r\n                },\r\n                {\r\n                    \"id\": \"8178c9f4-95af-401d-8dca-2c1e82987697\",\r\n                    \"url\": \"https://mobile-push-api.mobile-prod.plas1.ucloud.int\",\r\n                    \"serviceCode\": \"Mobile.App.Push\",\r\n                    \"serviceName\": \"Mobile.App.Push\"\r\n                },\r\n                {\r\n                    \"id\": \"f2b9b7d1-c678-4329-847e-a4450c20478f\",\r\n                    \"url\": \"https://service5.ultipro.com/services/unified/v1/authn/.well-known/webfinger\",\r\n                    \"serviceCode\": \"Ultipro.Webfinger\",\r\n                    \"serviceName\": \"ULTIPRO-WEBFINGER\"\r\n                }\r\n            ],\r\n            \"vanityURLAuthNMapping\": [\r\n                {\r\n                    \"vanityURL\": \"https://neilpateldigital.prd.pro.com\",\r\n                    \"ukgAuthNSerivceInstance\": \"DIRECT_LOGIN\"\r\n                },\r\n                {\r\n                    \"vanityURL\": \"https://neilpateldigital-sso.prd.pro.com\",\r\n                    \"ukgAuthNSerivceInstance\": \"SSO_LOGIN\"\r\n                }\r\n            ]\r\n        }\r\n    ],\r\n    \"tenantLevelServiceInstances\": [\r\n        {\r\n            \"id\": \"8ebeda5b-6a90-48a3-ad41-0f80ec2b82f7\",\r\n            \"tenantLevelServiceId\": \"test-tenantLevelServiceId\",\r\n            \"serviceCode\": \"IAM.UKGAuthN.Customer-Authentication\",\r\n            \"serviceName\": \"UKGAuthN Customer Authentication Url\",\r\n            \"remoteServiceTenantId\": \"remoteServiceTenantIdcl\",\r\n            \"url\": \"https://welcome-staging.ukg.dev\",\r\n            \"region\": \"US\",\r\n            \"status\": \"Active\",\r\n            \"version\": \"1.0.1\",\r\n            \"environmentType\": \"PROD\",\r\n            \"extensions\": [\r\n                {\r\n                    \"key\": \"dataCenter\",\r\n                    \"value\": \"US-EAST4\"\r\n                },\r\n                {\r\n                    \"key\": \"domain\",\r\n                    \"value\": \"welcome-staging.ukg.dev\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"id\": \"8ebeda5b-6a90-48a3-ad41-0f80ec2b82f7\",\r\n            \"tenantLevelServiceId\": \"test-tenantLevelServiceId\",\r\n            \"serviceCode\": \"IAM.UKGAuthN.AMS\",\r\n            \"serviceName\": \"UKGAuthN Customer AMS Url\",\r\n            \"remoteServiceTenantId\": \"remoteServiceTenantIdcl\",\r\n            \"url\": \"https://welcome-staging.ukg.dev\",\r\n            \"region\": \"US\",\r\n            \"status\": \"Active\",\r\n            \"version\": \"1.0.1\",\r\n            \"environmentType\": \"PROD\",\r\n            \"extensions\": [\r\n                {\r\n                    \"key\": \"dataCenter\",\r\n                    \"value\": \"US-EAST4\"\r\n                },\r\n                {\r\n                    \"key\": \"domain\",\r\n                    \"value\": \"welcome-staging.ukg.dev\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"id\": \"8ebeda5b-6a90-48a3-ad41-0f80ec2b82f7\",\r\n            \"tenantLevelServiceId\": \"test-tenantLevelServiceId\",\r\n            \"serviceCode\": \"IAM.UKGAuthN.TCS\",\r\n            \"serviceName\": \"UKGAuthN Customer TCS Url\",\r\n            \"url\": \"https://welcome-staging.ukg.dev\",\r\n            \"region\": \"US\",\r\n            \"status\": \"Active\",\r\n            \"version\": \"1.0.1\",\r\n            \"environmentType\": \"PROD\",\r\n            \"extensions\": [\r\n                {\r\n                    \"key\": \"dataCenter\",\r\n                    \"value\": \"US-EAST4\"\r\n                },\r\n                {\r\n                    \"key\": \"domain\",\r\n                    \"value\": \"welcome-staging.ukg.dev\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-tms41-app.int.gss-keng.mykronos.com/tenantmanager/restcall/v1/tenant/8ebeda5b-6a90-48a3-ad41-0f80ec2b82f7/hydrate",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-tms41-app",
+            "int",
+            "gss-keng",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "tenantmanager",
+            "restcall",
+            "v1",
+            "tenant",
+            "8ebeda5b-6a90-48a3-ad41-0f80ec2b82f7",
+            "hydrate"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

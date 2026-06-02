@@ -1,0 +1,267 @@
+{
+  "info": {
+    "_postman_id": "3a32d7a9-8acf-4bc7-8c9e-fcb6255efd7f",
+    "name": "Z-Issue",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "1) Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "xmluser",
+            "type": "default"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "default"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ath20-oam.int.dev.mykronos.com:80/authn/json/hca_boomi_ms01_nonprd_01/authenticate?authIndexType=service&authIndexValue=SystemUserAuthService",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath20-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "authn",
+            "json",
+            "hca_boomi_ms01_nonprd_01",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service"
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2) Create Location(2.1-2.2 steps)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"copy\": {\r\n        \"do\": {\r\n            \"destinationRef\": {\r\n                \"id\": \"-1\"\r\n            },\r\n            \"startDate\": \"2019-02-10\",\r\n            \"endDate\": \"3000-01-01\",\r\n            \"name\": \"Health System-20230221100333\",\r\n            \"fullName\": \"Health System-20230221100333\"\r\n        },\r\n        \"where\": {\r\n            \"sourceRef\": {\r\n                \"id\": \"555\"\r\n            },\r\n            \"date\": \"2019-02-10\"\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca13-a-back-k8s.int.dev.mykronos.com:80/wfc/restcall/v1/commons/locations/apply_create",
+          "protocol": "http",
+          "host": [
+            "hca13-a-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "commons",
+            "locations",
+            "apply_create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3) Create Work Unit",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"workWeekFTEHours\": \"40\",\r\n        \"serviceLine\": \"WUserviceline\",\r\n        \"unitOfService\": \"WUunitofservice\",\r\n        \"payRule\": {\r\n            \"qualifier\": \"ACMEA NONEXEMPT WE 30 MIN PT\"\r\n        },\r\n        \r\n        \"caregiverSwt\": 0,\r\n        \"name\": \"STG_WUName1-20230221100333\",\r\n        \"workUnitType\": {\r\n            \"qualifier\": \"Facility\"\r\n        },\r\n        \"locations\": [\r\n            {\r\n                \"qualifier\": \"Health System-20230221100333/Hospitals/East Hospital/Nursing/Med Surg 1\"\r\n            }\r\n        ],\r\n        \"workUnitCode\": \"STG_WUBDSCode1-20230221100333\"\r\n    }\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca13-a-back-k8s.int.dev.mykronos.com:80/wfc/restcall/v1/commons/work_units/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "hca13-a-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "commons",
+            "work_units",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4) Create Work Unit Billing Department Mapping",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"workUnit\": {\r\n            \"qualifier\": \"STG_WUBDSCode1-20230221100333\"\r\n        },\r\n        \"deleteSwitch\": \"0\",\r\n        \"billingDepartment\": {\r\n            \"facilityCode\": \"1\",\r\n            \"departmentCode\": \"1\"\r\n        }\r\n    }\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca13-a-back-k8s.int.dev.mykronos.com:80/wfc/restcall/v1/hca/volume/billing_department_maps/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "hca13-a-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "volume",
+            "billing_department_maps",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5) Create Charge Master",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"volumeLabel\": {\r\n            \"qualifier\": \"X-Ray-20230221100333\",\r\n            \"description\": \"Volume Code Description\"\r\n        },\r\n        \"weight\": \"19\",\r\n        \"billingDepartment\": {\r\n            \"facilityCode\": \"F-20230221100333\",\r\n            \"departmentCode\": \"D2-20230221100333\"\r\n        },\r\n        \"effectiveDate\": \"2017-11-01\"\r\n    }\r\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca16-a-back-k8s.int.dev.mykronos.com:80/wfc/restcall/v1/hca/volume/charge_masters/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "hca16-a-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "volume",
+            "charge_masters",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Raw Volume",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"loadDateTime\": \"2023-02-17T00:00:00.00\",\r\n    \"patType\":\"true\",\r\n    \"rawVolumes\": [\r\n        {\r\n            \"volumeLabel\": {\r\n                \"qualifier\": \"X-Ray-20230221100333\",\r\n                \"description\": \"Description for Volume Code 1\"\r\n            },\r\n            \"quantity\": \"7\",\r\n            \"serviceDate\": \"2019-02-15\",\r\n            \"postingDate\": \"2019-02-20\",\r\n            \"patTypeValue\" :\"X\",\r\n            \"weight\": \"40\",\r\n            \"billingDepartment\": {\r\n                \"facilityCode\": \"F-20230221100333\",\r\n                \"departmentCode\": \"D8-20230221100333\"\r\n            }\r\n        }\r\n    ],\r\n    \"source\": \"AUTO\",\r\n    \"eof\": \"TRUE\",\r\n    \"updateType\": \"All\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca16-a-back-k8s.int.dev.mykronos.com:80/wfc/restcall/v1/analytics/raw_volume/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "hca16-a-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "analytics",
+            "raw_volume",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"totalRecords\": 1,\r\n    \"records\": [\r\n        {\r\n            \"facilityCode\": \"F-20230221100333\",\r\n            \"departmentCode\": \"J-20230221100333\",\r\n            \"volumeLabel\": \"X-Ray-20230221100333\",\r\n            \"postingDate\": \"2019-02-20\",\r\n            \"serviceDate\": \"2019-02-15\",\r\n            \"patType\": \"FALSE\",\r\n            \"rawVolumes\": [\r\n                {\r\n                    \"quantity\": \"7.000000\",\r\n                    \"weight\": \"\",\r\n                    \"volumeLabelDescription\": \"Description for Volume Code 1\",\r\n                    \"createDtm\": \"2023-08-17 20:28:20.693\",\r\n                    \"updateDtm\": \"2023-08-17 20:28:20.693\",\r\n                    \"errors\": [\r\n                        {\r\n                            \"errorCode\": \"WCO-127324\",\r\n                            \"message\": \"The Billing Department Code doesn't exist in the system.\"\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    }
+  ]
+}

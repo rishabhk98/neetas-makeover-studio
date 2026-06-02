@@ -1,0 +1,126 @@
+{
+  "info": {
+    "_postman_id": "4265cd85-f0f5-40a2-833c-719079cf48e6",
+    "name": "TMS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "TMSIntegrationUser",
+            "type": "default"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "default"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "default",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-idp40-oam.int.gss-keng.mykronos.com:80/authn/json/tms/authenticate",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-idp40-oam",
+            "int",
+            "gss-keng",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "authn",
+            "json",
+            "tms",
+            "authenticate"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "RegisterWFMWithTMS",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "default"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"wfmCluster\": {\r\n        \"dataSet\": [\r\n            {\r\n                \"name\": \"backEndpoint\",\r\n                \"value\": \"http://hca15-b-back.int.dev.mykronos.com/wfc\"\r\n            },\r\n            {\r\n                \"name\": \"frontEndpoint\",\r\n                \"value\": \"http://hca15-b.int.dev.mykronos.com\"\r\n            },\r\n            {\r\n                \"name\": \"dbServer\",\r\n                \"value\": \"keng03-dev01-ins10-wfm25-dbs-01.int.dev.mykronos.com:5444,keng03-dev01-ins10-wfm25-dbs-02.int.dev.mykronos.com:5444,keng03-dev01-ins10-wfm25-dbs-03.int.dev.mykronos.com:5444\"\r\n            },\r\n            {\r\n                \"name\": \"dbPort\",\r\n                \"value\": \"5444\"\r\n            },\r\n            {\r\n                \"name\": \"dbName\",\r\n                \"value\": \"ppas_team_trox\"\r\n            }\r\n        ],\r\n        \"instance\": {\r\n            \"environment\": {\r\n                \"name\": \"b\",\r\n                \"services\": [\r\n                    {\r\n                        \"serviceEndpoint\": \"http://keng03-dev01-ums41-app.int.dev.mykronos.com\",\r\n                        \"serviceName\": \"ums\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://keng03-dev01-sdm41-app.int.dev.mykronos.com/sdm\",\r\n                        \"serviceName\": \"sdm\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://keng03-dev01-api-gtw41-app.int.dev.mykronos.com\",\r\n                        \"serviceName\": \"api\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://keng03-dev01-ath41-oam.int.dev.mykronos.com:80/authn\",\r\n                        \"serviceName\": \"authn\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://keng03-dev01-hub41-app.int.dev.mykronos.com\",\r\n                        \"serviceName\": \"iHub\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://keng03-dev01-trt41-app.int.dev.mykronos.com:8080/tr\",\r\n                        \"serviceName\": \"tenantrouter\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://keng03-dev01-wit41-app.int.dev.mykronos.com/wit\",\r\n                        \"serviceName\": \"wit\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"http://keng03-dev01-ecs41-app.int.dev.mykronos.com/ecs\",\r\n                        \"serviceName\": \"ECS\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"b_$$IGNORE$$\",\r\n                        \"serviceName\": \"edwiservice\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"b_ciselb_$$IGNORE$$\",\r\n                        \"serviceName\": \"ciselb\"\r\n                    },\r\n                    {\r\n                        \"serviceEndpoint\": \"https://b_pes_$$IGNORE$$\",\r\n                        \"serviceName\": \"pes\"\r\n                    }\r\n                ]\r\n            },\r\n            \"name\": \"ins01\",\r\n            \"services\": [\r\n                {\r\n                    \"serviceEndpoint\": \"http://keng03-dev01-ins01-rpt41-app.int.dev.mykronos.com\",\r\n                    \"serviceName\": \"reports\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl41-app.int.dev.mykronos.com\",\r\n                    \"serviceName\": \"workflow\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl41-mgt.int.dev.mykronos.com/bpm-admin\",\r\n                    \"serviceName\": \"workflowAdmin\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfl41-app.int.dev.mykronos.com/bpm-designer\",\r\n                    \"serviceName\": \"workflowDesigner\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://keng03-dev01-ins01-rpt41-web.int.dev.mykronos.com\",\r\n                    \"serviceName\": \"Report-designer\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://keng03-dev01-ins01-udm41-app.int.dev.mykronos.com/udm\",\r\n                    \"serviceName\": \"udm\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://keng03-dev01-ins01-wfm41-dmc-1.int.dev.mykronos.com\",\r\n                    \"serviceName\": \"Caching\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://keng03-dev01-ins01-dmq41-app.int.dev.mykronos.com\",\r\n                    \"serviceName\": \"Messaging\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://keng03-dev01-ins01-fcs40-nsq-1.int.dev.mykronos.com\",\r\n                    \"serviceName\": \"fcs\"\r\n                },\r\n                {\r\n                    \"serviceEndpoint\": \"http://keng03-dev01-ins01-hca92-bck.int.dev.mykronos.com/hcaservice\",\r\n                    \"serviceName\": \"hcaservice\"\r\n                }\r\n            ]\r\n        },\r\n        \"name\": \"hca15-b.int.dev.mykronos.com\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-tms21-app.int.gss-keng.mykronos.com/tenantmanager/restcall/commoninfra",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-tms21-app",
+            "int",
+            "gss-keng",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "tenantmanager",
+            "restcall",
+            "commoninfra"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Skip Service in Provisioning",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"tenantProvisionStatus\": {\r\n        \"provisionId\": 248032,\r\n        \"componentId\": -16,\r\n        \"componentName\": \"Tenantrouter\",\r\n        \"dataSet\": [\r\n            {\r\n                \"name\": \"status\",\r\n                \"value\": \"Success\"\r\n            },\r\n            {\r\n                \"name\": \"description\",\r\n                \"value\": \"Bypassed\"\r\n            }\r\n        ]\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://keng03-dev01-tms21-app.int.gss-keng.mykronos.com:80/tenantmanager/restcall/callbackTenantProvision",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-tms21-app",
+            "int",
+            "gss-keng",
+            "mykronos",
+            "com"
+          ],
+          "port": "80",
+          "path": [
+            "tenantmanager",
+            "restcall",
+            "callbackTenantProvision"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

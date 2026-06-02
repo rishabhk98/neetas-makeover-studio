@@ -1,0 +1,440 @@
+{
+  "info": {
+    "_postman_id": "19e388ba-3a44-494d-b4ca-46a2699868cc",
+    "name": "MMR APIS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Login Report User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "REPORTUSER1",
+            "type": "default"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "default"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ath20-oam.int.dev.mykronos.com/authn/json/hca_wfc_cr09050621_nonprd_01/authenticate?authIndexType=service&authIndexValue=SystemUserAuthService",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath20-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "authn",
+            "json",
+            "hca_wfc_cr09050621_nonprd_01",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service"
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login Report User Copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "REPORTUSER1",
+            "type": "default"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "default"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ath20-oam.int.dev.mykronos.com/authn/json/hca_wfc_cr09050621_nonprd_01/authenticate?authIndexType=service&authIndexValue=SystemUserAuthService",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath20-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "authn",
+            "json",
+            "hca_wfc_cr09050621_nonprd_01",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service"
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Report Provisioning",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"volumeName\": \"hca_wfc_cr11340508_nonprd_01\",\r\n  \"volumeDescription\": \"Provisioning the report due to missing artifacts\",\r\n  \"volumeAdminEmail\": \"\"\r\n }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://hca06-b-back-k8s.int.dev.mykronos.com/wfc/restcall/v1/platform/tenant_provisionings",
+          "protocol": "http",
+          "host": [
+            "hca06-b-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "tenant_provisionings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Enable HCA Info Logs",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca92-bck.int.dev.mykronos.com/hcaservice/restcall/v1/hca/loglevel?log_context=com.kronos.authz.sac.validator.util.AuthzRestClient&level=DEBUG",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca92-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "loglevel"
+          ],
+          "query": [
+            {
+              "key": "log_context",
+              "value": "com.kronos.authz.sac.validator.util.AuthzRestClient"
+            },
+            {
+              "key": "level",
+              "value": "DEBUG"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login WFMUSER1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "WFMUSER1",
+            "type": "default"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "7iY{0rP-5y4xR*8eZ#8y6sO~6vZ=H3",
+            "type": "default"
+          },
+          {
+            "key": "X-Kronos-OnBehalfUser",
+            "value": "HerbertPeterson",
+            "type": "default"
+          },
+          {
+            "key": "delegatorId",
+            "value": "5",
+            "type": "default",
+            "disabled": true
+          },
+          {
+            "key": "roleId",
+            "value": "602",
+            "type": "default",
+            "disabled": true
+          },
+          {
+            "key": "X-Kronos-OnBehalfUserType",
+            "value": "NONE",
+            "type": "default"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ath20-oam.int.dev.mykronos.com/authn/json/hca_mmr01_nonprd_01/authenticate?authIndexType=service&authIndexValue=SystemUserAuthService",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath20-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "authn",
+            "json",
+            "hca_mmr01_nonprd_01",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service"
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Process Monitoring",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Kronos-OnBehalfUser",
+            "value": "HerbertPeterson",
+            "type": "default",
+            "disabled": true
+          },
+          {
+            "key": "delegatorId",
+            "value": "5",
+            "type": "default",
+            "disabled": true
+          },
+          {
+            "key": "roleId",
+            "value": "3",
+            "type": "default",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca92-bck.int.dev.mykronos.com/hcaservice/restcall/v1/hca/monitoring/processes",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca92-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "monitoring",
+            "processes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "HCA Version API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca40-bck.int.dev.mykronos.com/hcaservice/restcall/v1/hca/version",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca40-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "version"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Login From HerbertPeterson",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "herbertpeterson",
+            "type": "default"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "default"
+          }
+        ],
+        "url": {
+          "raw": "http://keng03-dev01-ath41-oam.int.dev.mykronos.com/authn/json/hca_apr25_nonprd_01/authenticate",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath41-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "authn",
+            "json",
+            "hca_apr25_nonprd_01",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service",
+              "disabled": true
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AuthZ",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "roleId",
+            "value": "598",
+            "type": "default",
+            "disabled": true
+          },
+          {
+            "key": "X-Kronos-OnBehalfUser",
+            "value": "HerbertPeterson",
+            "type": "default",
+            "disabled": true
+          },
+          {
+            "key": "X-Kronos-OnBehalfUserType",
+            "value": "NONE",
+            "type": "default",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "http://rishabh-e-kumar-k8s.int.dev.mykronos.com/wfc/restcall/authz/v1/token",
+          "protocol": "http",
+          "host": [
+            "rishabh-e-kumar-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "authz",
+            "v1",
+            "token"
+          ],
+          "query": [
+            {
+              "key": "roleId",
+              "value": "598",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Check current role",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Check current role Copy",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Switch Role Auth Api",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,792 @@
+{
+  "info": {
+    "_postman_id": "58d5cbec-001d-490e-8e1b-420c6d5acddb",
+    "name": "PayRoll ",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "34459486"
+  },
+  "item": [
+    {
+      "name": "Payroll Department Mapping",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n\t{\r\n        \"workUnit\": {\r\n            \"id\": 1\r\n        },\r\n        \"payrollDepartment\": {\r\n            \"facilityCode\": \"HFacility1-2019061202\",\r\n            \"departmentCode\": \"HDept1-2019061202\"\r\n        },\r\n        \"payrollSource\": {\r\n            \"name\": \"HPayrollSource1\"\r\n        },\r\n        \"deleteSwitch\": 0\r\n    }\r\n    ]"
+        },
+        "url": {
+          "raw": "http://{{URL}}/wfc/restcall/v1/hca/payroll/department_maps/",
+          "protocol": "http",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "department_maps",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Employment Status Mapping",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n  {\r\n    \"payrollStatus\": {\r\n      \"code\": \"FT\",\r\n      \"description\": \"Status Full Time\"\r\n    },\r\n    \"analyticsLaborType\": {\r\n      \"qualifier\": \"FullTime\"\r\n    },\r\n    \"payrollSource\": {\r\n      \"name\": \"Source1\"\r\n    },\r\n    \"deleteSwitch\": \"0\"\r\n  }\r\n]\r\n"
+        },
+        "url": {
+          "raw": "http://sagar-saini-back-k8s.int.dev.mykronos.com/wfc/restcall/v1/hca/payroll/employment_status_maps/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "sagar-saini-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "employment_status_maps",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Employment Status Mapping",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "SeanIvan",
+            "type": "text"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://{{URL}}/wfc/restcall/v1/hca/payroll/employment_status_maps?InDex=0",
+          "protocol": "http",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "employment_status_maps"
+          ],
+          "query": [
+            {
+              "key": "InDex",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Consolidation API",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"employee\": {\r\n            \"qualifier\": \"20043\"\r\n        },\r\n        \"payperiodEndDate\": \"2024-05-19\",\r\n        \"homeFacilityCode\": \"East Hospital\",\r\n        \"homeDepartmentCode\": \"Agency 1\",\r\n        \"payrollJob\": \"RNFT\",\r\n        \"payrollPayCode\": \"6th Day OT\",\r\n        \"employmentStatusCode\": \"FT\",\r\n        \"facilityCode\": \"East Hospital\",\r\n        \"departmentCode\": \"Agency 1\",\r\n        \"payrollSource\": \"Source1\",\r\n        \"standardHours\": \"80\",\r\n        \"workedHours\": \"15\",\r\n        \"workedAmount\": \"150\"\r\n    },\r\n    {\r\n        \"employee\": {\r\n            \"qualifier\": \"20043\"\r\n        },\r\n        \"payperiodEndDate\": \"2024-05-19\",\r\n        \"homeFacilityCode\": \"East Hospital\",\r\n        \"homeDepartmentCode\": \"Agency 1\",\r\n        \"payrollJob\": \"RNFT\",\r\n        \"payrollPayCode\": \"Regular Hours\",\r\n        \"employmentStatusCode\": \"PT\",\r\n        \"facilityCode\": \"East Hospital\",\r\n        \"departmentCode\": \"Agency 1\",\r\n        \"payrollSource\": \"Source1\",\r\n        \"standardHours\": \"80\",\r\n        \"workedHours\": \"85.000000\",\r\n        \"ckey\": \"1\",\r\n        \"rkey\": \"2\",\r\n        \"workedAmount\": \"750.000000\"\r\n    }\r\n]"
+        },
+        "url": {
+          "raw": "http://{{URL}}/wfc/restcall/v1/hca/payroll/apply_read?net_down=true",
+          "protocol": "http",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "apply_read"
+          ],
+          "query": [
+            {
+              "key": "net_down",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payroll Job Mapping",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n\t{\r\n    \"payrollSource\": {\r\n      \"name\": \"Source1\"\r\n    },\r\n    \"laborCategoryEntry\": {\r\n      \"qualifier\": \"RNFT\"  \r\n    },\r\n    \"genericJob\": { \r\n      \"qualifier\": \"RN\"\r\n    },\r\n    \"deleteSwitch\": 0\r\n  }\r\n  ]"
+        },
+        "url": {
+          "raw": "http://utkarsh-utkarsh-back-k8s.int.dev.mykronos.com/wfc/restcall/v1/hca/payroll/job_maps/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "utkarsh-utkarsh-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "job_maps",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payroll Job Mapping",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://{{URL}}/wfc/restcall/v1/hca/payroll/job_maps/",
+          "protocol": "http",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "job_maps",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payroll Import",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "SeanIvan",
+            "disabled": true
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "Kr0n0s@Cloud",
+            "disabled": true
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n    {\n        \"employee\": {\n            \"qualifier\": \"PN1056192\",\n            \"attributes\": {\n                \"terminationDate\": \"2050-01-01\",\n                \"employeeName\": \"1056192, auto G\",\n                \"hireDate\": \"2010-01-01\",\n                \"standardHours\": \"80\"\n            }\n        },\n        \"payPeriodEndDate\": \"2024-08-04\",\n        \"rawPaidActuals\": [\n            {\n                \"facilityCode\": \"India\",\n                \"assignedShift\": \"shift1\",\n                \"payrollPayCode\": \"Hours Regular\",\n                \"departmentCode\": \"com1\",\n                \"homeDepartmentCode\": \"com1\",\n                \"payrollJob\": \"RNPT\",\n                \"primaryPayrollJob\": \"RNPT\",\n                \"payRateAmount\": \"10\",\n                \"homeFacilityCode\": \"India\",\n                \"payrollSource\": \"Source1\",\n                \"employmentStatusCode\": \"P\",\n                \"payrollPayCodeHours\": \"100\",\n                \"payrollPayCodeAmount\": \"100\"\n            }\n        ]\n    }\n]"
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ins01-hca81-bck.int.dev.mykronos.com/hcaservice/restcall/v1/hca/payroll/raw_paid_actuals/multi_create",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ins01-hca81-bck",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "raw_paid_actuals",
+            "multi_create"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Payroll Import",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-OpenAM-Username",
+                "value": "SeanIvan",
+                "disabled": true
+              },
+              {
+                "key": "X-OpenAM-Password",
+                "value": "Kr0n0s@Cloud",
+                "disabled": true
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n    {\n        \"employee\": {\n            \"qualifier\": \"20043\",\n            \"attributes\": {\n                \"terminationDate\": \"2050-01-01\",\n                \"employeeName\": \"Jarvis, Thomas\",\n                \"hireDate\": \"2010-01-01\",\n                \"standardHours\": \"80\"\n            }\n        },\n        \"payPeriodEndDate\": \"2024-08-04\",\n        \"rawPaidActuals\": [\n            {\n                \"facilityCode\": \"India\",\n                \"assignedShift\": \"shift1\",\n                \"payrollPayCode\": \"Regular Hours\",\n                \"departmentCode\": \"Combined1\",\n                \"homeDepartmentCode\": \"Combined1\",\n                \"payrollJob\": \"RNFT\",\n                \"primaryPayrollJob\": \"RNFT\",\n                \"payRateAmount\": \"10\",\n                \"homeFacilityCode\": \"India\",\n                \"payrollSource\": \"Source1\",\n                \"employmentStatusCode\": \"FT\",\n                \"payrollPayCodeHours\": \"100\",\n                \"payrollPayCodeAmount\": \"1000\"\n            }\n        ]\n    }\n]"
+            },
+            "url": {
+              "raw": "http://keng03-dev01-ins01-hca81-bck.int.dev.mykronos.com/hcaservice/restcall/v1/hca/payroll/raw_paid_actuals/multi_create",
+              "protocol": "http",
+              "host": [
+                "keng03-dev01-ins01-hca81-bck",
+                "int",
+                "dev",
+                "mykronos",
+                "com"
+              ],
+              "path": [
+                "hcaservice",
+                "restcall",
+                "v1",
+                "hca",
+                "payroll",
+                "raw_paid_actuals",
+                "multi_create"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Date",
+              "value": "Tue, 13 Aug 2024 10:11:16 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "Content-Language",
+              "value": "en"
+            },
+            {
+              "key": "kronos-tid",
+              "value": "0099a2091cb24e8c980abdb701834b15"
+            },
+            {
+              "key": "Allow",
+              "value": "POST"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "gzip"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"employee\": {\n            \"qualifier\": \"20043\",\n            \"attributes\": {\n                \"employeeName\": \"Jarvis, Thomas\",\n                \"standardHours\": \"80\",\n                \"hireDate\": \"2010-01-01\",\n                \"terminationDate\": \"2050-01-01\"\n            }\n        },\n        \"rawPaidActuals\": [\n            {\n                \"homeFacilityCode\": \"India\",\n                \"homeDepartmentCode\": \"Agency1\",\n                \"payrollJob\": \"RNFT\",\n                \"employmentStatusCode\": \"FT\",\n                \"payRateAmount\": \"10\",\n                \"facilityCode\": \"India\",\n                \"departmentCode\": \"Agency1\",\n                \"payrollPayCode\": \"Regular Hours\",\n                \"payrollPayCodeHours\": \"100\",\n                \"payrollPayCodeAmount\": \"1000\",\n                \"assignedShift\": \"shift1\",\n                \"primaryPayrollJob\": \"RNFT\",\n                \"payrollSource\": \"Source1\"\n            }\n        ],\n        \"payPeriodEndDate\": \"2024-08-18\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Authenticate - HCA Service",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-OpenAM-Username",
+            "value": "WFMUSER1",
+            "type": "text"
+          },
+          {
+            "key": "X-OpenAM-Password",
+            "value": "CGTkIS8ovyU6vD8D",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://keng03-dev01-ath30-oam.int.dev.mykronos.com/authn/json/kimi15sep02_nonprd_01/authenticate?authIndexType=service&authIndexValue=SystemUserAuthService",
+          "protocol": "http",
+          "host": [
+            "keng03-dev01-ath30-oam",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "authn",
+            "json",
+            "kimi15sep02_nonprd_01",
+            "authenticate"
+          ],
+          "query": [
+            {
+              "key": "authIndexType",
+              "value": "service"
+            },
+            {
+              "key": "authIndexValue",
+              "value": "SystemUserAuthService"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Payroll Department Mapping",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n\t{\r\n        \"workUnit\": {\r\n            \"qualifier\": \"EastHosp_Agency1\"\r\n        },\r\n        \"payrollDepartment\": {\r\n            \"facilityCode\": \"East Hospital\",\r\n            \"departmentCode\": \"Agency 1\"\r\n        },\r\n        \"payrollSource\": {\r\n            \"name\": \"Source1\"\r\n        },\r\n        \"deleteSwitch\": 0\r\n    }\r\n    ]"
+        },
+        "url": {
+          "raw": "http://{{URL}}/wfc/restcall/v1/hca/payroll/department_maps/multi_upsert",
+          "protocol": "http",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "department_maps",
+            "multi_upsert"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get org job id from org",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"where\": {\r\n    \"childrenOf\": {\r\n      \"context\": \"ORG\",\r\n      \"date\": \"2019-01-01\",\r\n      \"locationRefs\": {\r\n      \"ids\": [542],\r\n      \"qualifiers\":[\r\n      \"\"\r\n       ]\r\n      },\r\n      \"includeLocationTypes\": {\r\n       \"ids\" :[\r\n        -1\r\n       ],\r\n        \"qualifiers\" :[\r\n        \r\n         ]\r\n      }\r\n    }\r\n  }\r\n}\r\n"
+        },
+        "url": {
+          "raw": "http://{{URL}}/wfc/restcall/v1/commons/locations/multi_read",
+          "protocol": "http",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "commons",
+            "locations",
+            "multi_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Data Provider API",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"dimensionRollUpCtx\": {\r\n    \"orgRollupDimension\": \"WORKUNIT\"\r\n  },\r\n  \"dataElementCtx\": [\r\n    {\r\n      \"elementName\": \"PROD_HRS_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"PROD_AMT_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"NP_OTH_FLTOUT_HRS_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"NP_OTH_FLTIN_AMT_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"PROD_OTH_INTAGNCY_AMT_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"NP_OTH_POOL_HRS_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"NP_RNP2_PDIEM_AMT_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"NP_RNP2_POOL_HRS_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"NP_RNP2_INTAGNCY_HRS_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"NP_RNP2_FLTIN_HRS_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"NP_HRS_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"NP_AMT_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"PROD_OTH_FT_AMT_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    },\r\n    {\r\n      \"elementName\": \"PROD_OTH_PT_HRS_PP\",\r\n      \"elementType\": \"METRIC\"\r\n    }\r\n  ],\r\n  \"workUnitLocationCtx\": [\r\n    {\r\n      \"workUnitId\": 13,\r\n      \"workUnitLocationId\": 2032,\r\n    \r\n      \"orgJobIds\": [\r\n        539,533,65101,64711\r\n      ],\r\n      \"timeDimension\": [\r\n        {\r\n          \"timeRollupBy\" : \"PAYPERIOD_DATE\",\r\n          \"symbolicTimePeriodName\": \"1PP\",\r\n          \"rollupRequired\": false,\r\n          \"incrementTotalRequired\": true,\r\n          \"timeIncrements\": [\r\n            \r\n            {\r\n              \"startDate\": \"2019-11-04\",\r\n              \"endDate\": \"2019-11-17\"\r\n            }\r\n          ]\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}\r\n\r\n"
+        },
+        "url": {
+          "raw": "http://{{HCA_URL}}/hcaservice/restcall/business_analytics/v1/hca_kpi/multi_read",
+          "protocol": "http",
+          "host": [
+            "{{HCA_URL}}"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "business_analytics",
+            "v1",
+            "hca_kpi",
+            "multi_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Healthcheck",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://{{HCA_URL}}/hcaservice/restcall/v1/healthCheck\n",
+          "protocol": "http",
+          "host": [
+            "{{HCA_URL}}"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "healthCheck\n"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Data API",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"select\": [\r\n    \t{ \"key\" : \"HCA_ELMNT_WORKUNIT_NAME\"\r\n    \t}, \r\n    \t{ \"key\" : \"HCA_DRVDMTR_DATA_DATE\"\r\n    \t},\r\n        { \"key\": \"HCA_METRIC_PROD_REG_FT_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_PROD_REG_PT_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_PROD_REG_INTAGNCY_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_PROD_OTH_FT_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_NP_RNP_POOL_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_NP_RNP_FT_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_NP_RNP1_PDIEM_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_NP_OTH_PT_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_PROD_OT_FT_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_PROD_OT_PT_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_PROD_OT_FLTIN_HRS_PP\"\r\n        },\r\n        { \"key\": \"HCA_METRIC_PROD_OT_FLTOUT_HRS_PP\"\r\n        }\r\n       \r\n    ],\r\n    \"from\": {\r\n        \"workUnits\": {\r\n            \"ids\": [\r\n                318\r\n            ]\r\n        },\r\n        \"dateRange\": {\r\n            \"symbolicPeriod\": {\r\n                \"qualifier\": \"Pay_Period\"\r\n            },\r\n            \"options\": {\r\n                \"timeIncrement\": \"PAYPERIOD\",\r\n                \"referenceDate\": \"2019-12-15\",\r\n                \"daysOfOperation\": true\r\n            }\r\n        }\r\n    },\r\n    \"options\": {\r\n        \"target\": {\r\n            \"qualifier\": \"DEFAULT\"\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://{{HCA_URL}}/hcaservice/restcall/v1/hca/data/getData",
+          "protocol": "http",
+          "host": [
+            "{{HCA_URL}}"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "data",
+            "getData"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Generic job mapping",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://{{URL}}:80/wfc/restcall/v1/commons/work_groups/job_code_mappings/",
+          "protocol": "http",
+          "host": [
+            "{{URL}}"
+          ],
+          "port": "80",
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "commons",
+            "work_groups",
+            "job_code_mappings",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Re-calc",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"where\": {\r\n    \"startDate\": \"2019-12-16\",\r\n    \"endDate\": \"2019-12-29\"\r\n  }\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://{{HCA_URL}}/hcaservice/restcall/v1/hca/payroll/recalculate/async",
+          "protocol": "http",
+          "host": [
+            "{{HCA_URL}}"
+          ],
+          "path": [
+            "hcaservice",
+            "restcall",
+            "v1",
+            "hca",
+            "payroll",
+            "recalculate",
+            "async"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Paycode mapping",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"where\": {\n        \"paycode\": [\n            {\n                \"qualifier\": \"Personal Errand Hours\"\n            }\n        ]\n    }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://{{URL}}/wfc/restcall/v1/platform/payCodeCategories/paycode/multi_read",
+          "protocol": "http",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "platform",
+            "payCodeCategories",
+            "paycode",
+            "multi_read"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://{{URL}}/wfc/restcall/proxy/v1/paycode/resolve?qualifier=Regular&tenantId=/hca_max_ms2005_nonprd_01",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "http://{{URL}}/wfc/restcall/proxy/v1/paycode/resolve?qualifier=Regular&tenantId=/hca_max_ms2005_nonprd_01",
+          "protocol": "http",
+          "host": [
+            "{{URL}}"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "proxy",
+            "v1",
+            "paycode",
+            "resolve"
+          ],
+          "query": [
+            {
+              "key": "qualifier",
+              "value": "Regular"
+            },
+            {
+              "key": "tenantId",
+              "value": "/hca_max_ms2005_nonprd_01"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Raw Payroll",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"select\": [\r\n        {\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_EMPLOYMENT_STATUS\",\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_EMPLOYMENT_STATUS\"\r\n        },\r\n        {\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_PAID_AMOUNT\",\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_PAID_AMOUNT\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_PAID_HOURS\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_PAID_HOURS\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_PAID_JOB\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_PAID_JOB\"\r\n        },\r\n        {\r\n            \"alias\": \"HCA_METRIC_RAW_PAYROLL_PAYCODE_NAME\",\r\n            \"key\": \"HCA_METRIC_RAW_PAYROLL_PAYCODE_NAME\"\r\n        },\r\n        {\r\n            \"alias\": \"CORE_WORKUNIT_FTE_HRS\",\r\n            \"key\": \"CORE_WORKUNIT_FTE_HRS\"\r\n        },\r\n        {\r\n            \"key\": \"CORE_WORKUNIT_NAME\",\r\n            \"alias\": \"CORE_WORKUNIT_NAME\"\r\n        }\r\n    ],\r\n    \"from\": {\r\n        \"view\": 4,\r\n        \"workUnitSet\": {\r\n            \"rollUpBy\": [],\r\n            \"dateRange\": {\r\n                \"symbolicPeriod\": {\r\n                    \"qualifier\": \"Pay_Period\"\r\n                },\r\n                \"options\": {\r\n                    \"referenceDate\": \"2024-04-21\"\r\n                }\r\n            },\r\n            \"workunits\": {\r\n                \"ids\": [\r\n                    9\r\n                ]\r\n            }\r\n        }\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://manvi-sonker-back-k8s.int.dev.mykronos.com/wfc/restcall/v1/commons/data/multi_read",
+          "protocol": "http",
+          "host": [
+            "manvi-sonker-back-k8s",
+            "int",
+            "dev",
+            "mykronos",
+            "com"
+          ],
+          "path": [
+            "wfc",
+            "restcall",
+            "v1",
+            "commons",
+            "data",
+            "multi_read"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "URL",
+      "value": "sagar-saini-back-k8s.int.dev.mykronos.com"
+    }
+  ]
+}
